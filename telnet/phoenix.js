@@ -13,21 +13,6 @@ hx!------\ \  __\  /  _    \  \  /  _/_(   _U  \    _  \        /   / /-------
 
 //phoenix.js [phoenix/s3 command shell v1.0a] by ispyhumanfly... 
 
-/* p h o e n i x / s 3 _ c o m m a n d _ s h e l l */
-
-/*****************************************************************************
- welcome to the phoenix/s3 command shell.  this command shell was originally 
- based on concepts implimented by tracker1 with his s3 command shell.  many 
- concepts and aspects of that shell have been used/integrated into this 
- command shell.  also, aspects of deuces 'classic_shell.js' have also been 
- used as a learning point for some more up to date and advanced features now
- available within the synchronet javascript object model.  this command shell
- was designed to be simple, less options up front... and more menu's for users
- to browse.  it also serves as an example of a simple yet very powerful 
- javascript command shell.  some of it's features can be modified within the
- configuration script, and also within the menu and lightbar libraries.
-*****************************************************************************/
-
 //create a variable for command keys...
 var cmdkey; 
 
