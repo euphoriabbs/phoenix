@@ -1,10 +1,12 @@
 #!/bin/sh
 
+# Prepare the Environment
+
 export EUPHORIA_INSTALL=`pwd`
 export SBBSCTRL=$EUPHORIA_INSTALL/sbbs/ctrl
 
-# Build Synchronet
-mkdir sbbs; cd sbbs/
+# Build Synchronet from Source
+mkdir -p sbbs; cd sbbs/
 
 wget ftp://vert.synchro.net/Synchronet/sbbs_src.tgz
 wget ftp://vert.synchro.net/Synchronet/sbbs_run.tgz
@@ -30,17 +32,15 @@ mv logon.js logon.js.original
 ln -s $EUPHORIA_INSTALL/phoenix_s3/telnet/logon.js logon.js
 ln -s $EUPHORIA_INSTALL/phoenix_s3/telnet/phoenix.js phoenix.js
 
-# Create Service Scripts
-#touch euphoria-start.js
-#touch euphoria-stop.js
-#touch euphoria-restart.js
-#touch euphroia-config.js
+# Create Euphoria Daemon
 
 cd $EUPHORIA_INSTALL ; touch euphoria.sh ; chmod +x euphoria.sh
 echo "#!/bin/sh" >> euphoria.sh
 echo "export SBBSCTRL=$EUPHORIA_INSTALL/sbbs/ctrl" >> euphoria.sh
 echo "$EUPHORIA_INSTALL/sbbs/exec/sbbs" >> euphoria.sh
 
+# Easy Synchronet Configuration
+ln -s $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini $EUPHORIA_INSTALL/phoenix_s3/config/phoenix.sbbs_config.ini
 
  
 
