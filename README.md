@@ -1,18 +1,23 @@
 # Euphoria
 
 I'm sure at some point, a reall cool description will be place here.
- 
-# Installation. 
 
-1. Download the master branch and run Makefile.sh wherever you want euphoria installed.
-2. The Makefile.sh file will download, build, and configure the Synchronet BBS software automtically. 
-3. Start Euphoria! - sudo ./euphoria.sh to interact with your new BBS.
+# Setup
+
+## Bleeding Edge 
+1. mkdir /opt/euphoria ; cd /opt/euphoria
+2. wget `https://github.com/thoughtpivot/euphoria/archive/master.tar.gz`
+3. ./Makefile.sh
+4. sudo ./euphoria.sh to launch your new BBS.
+
+## Official Releses
+We don't have this yet, unfortunately. But we're working on it.
 
 # Supported Operating Systems
 1. Most UNIX variants.
 2. Most flavors of Linux.
-3. Mac OSX in most all cases.
-4. Yes we'll work towards Windows support.
+3. Mac OSX and in most all cases.
+4. No. But some day.
 
 # Issues
 http://github.com/thoughtpivot.com/euphoria/issues
