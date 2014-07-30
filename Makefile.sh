@@ -24,6 +24,7 @@ make
 
 # Integrate Phoenix_s3
 cd $EUPHORIA_INSTALL/sbbs/exec/
+ln -s ../phoenix_s3/ .
 
 mv login.js login.js.original
 ln -s $EUPHORIA_INSTALL/phoenix_s3/telnet/login.js login.js
