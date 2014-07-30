@@ -5,13 +5,13 @@ A Modern Bulletin Board System built on Synchronet BBS.
 # Setup
 
 ## Cutting Edge 
-1. `mkdir /opt/euphoria ; cd /opt/euphoria`
-2. `wget https://github.com/thoughtpivot/euphoria/archive/master.tar.gz`
-3. `tar -xvf euphoria-master.tar.gz`
-4. `./Makefile.sh`
+1. `sudo mkdir /opt/euphoria ; cd /opt/euphoria`
+2. `sudo wget https://github.com/thoughtpivot/euphoria/archive/master.tar.gz`
+3. `sudo tar -xvf master.tar.gz`
+4. `sudo ./Makefile.sh`
 
 Start Euphoria
-  sudo ./euphoria.sh
+  sudo ./daemon.sh
 
 ## Stable
 We don't have any just. But we're working on it.
