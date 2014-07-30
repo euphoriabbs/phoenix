@@ -20,7 +20,7 @@ We don't have any just. But we're working on it.
 1. Most UNIX variants.
 2. Most flavors of Linux.
 3. Mac OSX in most all cases.
-4. No. But some day.
+4. Windows? No. But some day.
 
 # Issues
 http://github.com/thoughtpivot.com/euphoria/issues
