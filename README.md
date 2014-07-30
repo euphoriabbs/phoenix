@@ -13,7 +13,7 @@ At some point, a really cool description will be placed here.
 Start Euphoria
   sudo ./euphoria.sh
 
-## Stable Releases
+## Stable
 We don't have any just. But we're working on it.
 
 # Supported Operating Systems
