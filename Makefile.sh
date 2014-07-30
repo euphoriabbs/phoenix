@@ -23,7 +23,10 @@ ln -s $EUPHORIA_INSTALL/sbbs/src/sbbs3/scfg/gcc.*.exe.release/scfg* .
 make
 
 # Integrate Phoenix_s3
-cd $EUPHORIA_INSTALL/sbbs/exec/
+cd $EUPHORIA_INSTALL
+mv euphoria-master/phoenix_s3/ . ; rm -rf euphoria-master && master.tar.gz
+
+cd /sbbs/exec/
 ln -s ../phoenix_s3/ .
 
 mv login.js login.js.original
