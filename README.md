@@ -1,6 +1,6 @@
 # Euphoria
 
-At some point, a really cool description will be placed here.
+A Modern Bulletin Board System built on Synchronet BBS.
 
 # Setup
 
