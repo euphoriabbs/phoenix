@@ -5,11 +5,11 @@ At some point, a really cool description will be placed here.
 # Setup
 
 ## Cutting Edge 
-1. mkdir /opt/euphoria ; cd /opt/euphoria
-2. wget `https://github.com/thoughtpivot/euphoria/archive/master.tar.gz`
-3. tar -xvf euphoria-master.tar.gz
-4. ./Makefile.sh
-5. sudo ./euphoria.sh to launch your new BBS.
+1. `mkdir /opt/euphoria ; cd /opt/euphoria`
+2. `wget https://github.com/thoughtpivot/euphoria/archive/master.tar.gz`
+3. `tar -xvf euphoria-master.tar.gz`
+4. `./Makefile.sh`
+5. `sudo ./euphoria.sh`
 
 ## Stable Releases
 We don't have any just. But we're working on it.
