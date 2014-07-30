@@ -1,6 +1,6 @@
 # Euphoria
 
-I'm sure at some point, a reall cool description will be place here.
+At some point, a really cool description will be placed here.
 
 # Setup
 
@@ -16,7 +16,7 @@ We don't have this yet, unfortunately. But we're working on it.
 # Supported Operating Systems
 1. Most UNIX variants.
 2. Most flavors of Linux.
-3. Mac OSX and in most all cases.
+3. Mac OSX in most all cases.
 4. No. But some day.
 
 # Issues
