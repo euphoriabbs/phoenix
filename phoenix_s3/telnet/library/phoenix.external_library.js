@@ -28,7 +28,7 @@ hx!------\ \  __\  /  _    \  \  /  _/_(   _U  \    _  \        /   / /-------
 
 //load the message reader lightbar into the text.dat [if configured] ...
 if(do_message_reader && (!(bbs.sys_status&SS_USERON) || (user.security.exemptions&UFLAG_P))) {
-	bbs.replace_text(71,"@EXEC:external/phoenix.message_reader@"); 
+	bbs.replace_text(71,"@EXEC:../phoenix_s3/telnet/external/phoenix.message_reader@"); 
 
 //if disabled... 
 }else{
