@@ -2308,3 +2308,9 @@
 //logging remote connection information @ 05/20/38 00:10...
 127.0.0.1      localhost                               44485     Telnet    
  
+//logging remote connection information @ 07/31/14 19:38...
+107.5.216.162  c-107-5-216-162.hsd1.mi.comcast.net     51077     Telnet    
+ 
+//logging remote connection information @ 07/31/14 19:41...
+107.5.216.162  c-107-5-216-162.hsd1.mi.comcast.net     51086     Telnet    
+ 
