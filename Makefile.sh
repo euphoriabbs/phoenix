@@ -24,15 +24,11 @@ make
 
 # Integrate Phoenix_s3
 cd $EUPHORIA_INSTALL
-mv euphoria-master/phoenix_s3/ . ; rm -rf euphoria-master/ && master.tar.gz
+mv euphoria-master/phoenix_s3/ .
+rm -rf euphoria-master/ && master.tar.gz
 
-cd $EUPHORIA_INSTALL/sbbs/exec/
-ln -s $EUPHORIA_INSTALL/phoenix_s3/ .
-
-mv login.js login.js.original
+cd $EUPHORIA_INSTALL/sbbs/exec/mods/
 ln -s $EUPHORIA_INSTALL/phoenix_s3/telnet/login.js login.js
-
-mv logon.js logon.js.original
 ln -s $EUPHORIA_INSTALL/phoenix_s3/telnet/logon.js logon.js
 ln -s $EUPHORIA_INSTALL/phoenix_s3/telnet/phoenix.js phoenix.js
 
@@ -43,7 +39,8 @@ echo "#!/bin/sh" >> euphoria.sh
 echo "export SBBSCTRL=$EUPHORIA_INSTALL/sbbs/ctrl" >> euphoria.sh
 echo "$EUPHORIA_INSTALL/sbbs/exec/sbbs" >> euphoria.sh
 
-# Easy Synchronet Configuration
+# Synchronet Configuration
+
 ln -s $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini $EUPHORIA_INSTALL/phoenix_s3/config/phoenix.sbbs_config.ini
 
  
