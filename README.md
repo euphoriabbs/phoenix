@@ -1,13 +1,13 @@
 # Euphoria
 
-A Modern Bulletin Board System built on Synchronet BBS.
+A Modern Bulletin Board System Built on Synchronet.
 
 # Setup
 
 ## Cutting Edge 
 1. `sudo mkdir /opt/euphoria ; cd /opt/euphoria`
 2. `sudo wget https://github.com/thoughtpivot/euphoria/archive/master.tar.gz`
-3. `sudo tar -xvf master.tar.gz`; rm master.tar.gz`
+3. `sudo tar -xvf master.tar.gz ; rm master.tar.gz`
 4. `sudo mv euphoria-master/* . ; rm -rf euphoria-master/`
 4. `sudo ./Makefile.sh`
 
@@ -20,7 +20,7 @@ We don't have any just. But we're working on it.
 # Supported Operating Systems
 1. Most UNIX variants.
 2. Most flavors of Linux.
-3. Mac OSX in most all cases.
+3. Mac OSX in most cases.
 4. Windows? No. But some day.
 
 # Issues
