@@ -24,7 +24,7 @@ make
 
 # Integrate Phoenix_s3
 cd $EUPHORIA_INSTALL
-mv euphoria-master/phoenix_s3/ .
+mv euphoria-master/* .
 rm -rf euphoria-master/ && master.tar.gz
 
 cd $EUPHORIA_INSTALL/sbbs/exec/mods/
