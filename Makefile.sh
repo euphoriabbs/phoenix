@@ -40,8 +40,9 @@ echo "export SBBSCTRL=$EUPHORIA_INSTALL/sbbs/ctrl" >> euphoria.sh
 echo "$EUPHORIA_INSTALL/sbbs/exec/sbbs" >> euphoria.sh
 
 # Synchronet Configuration
+mv $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini-original
+ln -s $EUPHORIA_INSTALL/phoenix_s3/config/phoenix.sbbs_config.ini $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini 
 
-ln -s $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini $EUPHORIA_INSTALL/phoenix_s3/config/phoenix.sbbs_config.ini
 
  
 
