@@ -24,10 +24,10 @@ make
 
 # Integrate Phoenix_s3
 cd $EUPHORIA_INSTALL
-mv euphoria-master/phoenix_s3/ . ; rm -rf euphoria-master && master.tar.gz
+mv euphoria-master/phoenix_s3/ . ; rm -rf euphoria-master/ && master.tar.gz
 
-cd /sbbs/exec/
-ln -s ../phoenix_s3/ .
+cd $EUPHORIA_INSTALL/sbbs/exec/
+ln -s $EUPHORIA_INSTALL/phoenix_s3/ .
 
 mv login.js login.js.original
 ln -s $EUPHORIA_INSTALL/phoenix_s3/telnet/login.js login.js
