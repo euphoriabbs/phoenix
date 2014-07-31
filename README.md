@@ -5,15 +5,20 @@ A Modern Bulletin Board System Built on Synchronet.
 # Setup
 
 ## Cutting Edge 
-1. `sudo mkdir /opt/euphoria ; cd /opt/euphoria`
-2. `sudo wget https://github.com/thoughtpivot/euphoria/archive/master.tar.gz`
-3. `sudo tar -xvf master.tar.gz ; rm master.tar.gz`
-4. `sudo mv euphoria-master/* . ; rm -rf euphoria-master/`
-4. `sudo ./Makefile.sh`
+1. `mkdir ~/euphoria ; cd ~/euphoria`
+2. `wget https://github.com/thoughtpivot/euphoria/archive/master.tar.gz`
+3. `tar -xvf master.tar.gz ; rm master.tar.gz`
+4. `mv euphoria-master/* . ; rm -rf euphoria-master/`
+4. `./Makefile.sh`
 
 Start Euphoria
-  sudo ./daemon.sh
 
+If running on non standar ports...
+  ./euphoria.sh
+
+Otherwise, for standard ports such as 80, 22, 23 and 24 you'll need sudo privileges.
+  sudo ./euphoria.sh
+  
 ## Stable
 We don't have any just. But we're working on it.
 
