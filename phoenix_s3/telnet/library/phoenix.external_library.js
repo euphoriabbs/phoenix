@@ -50,7 +50,7 @@ bbs.replace_text(9,"@NOPAUSE@@CLS@@TYPE:../phoenix_s3/telnet/ansi/art.phoenix.me
 
 //load the email reader lightbar into the text.dat [if configured]...
 if(do_email_reader && (!(bbs.sys_status&SS_USERON) || (user.security.exemptions&UFLAG_P))) {
-	bbs.replace_text(49,"@EXEC:external/phoenix.email_reader@"); 
+	bbs.replace_text(49,"@EXEC:../phoenix_s3/telnet/external/phoenix.email_reader.js@"); 
 
 //if disabled...
 }else{
