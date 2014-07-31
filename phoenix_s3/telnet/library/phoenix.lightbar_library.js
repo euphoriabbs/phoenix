@@ -844,13 +844,13 @@ bbs.lightbar.matrix_login = function() {
 console.crlf();console.ansi_save();   
 
 //assign a variable to center the output... 
-var center = "       "; 
+var center = "           "; 
  
 //create a list of strings to be centered... 
-var stringOne   = " \1n\1r\1h[\1n\1h\1wenter euphoria\1n\1r\1h]\1n s\1n\1h\1kend \1na\1n\1h\1kpplication  \1np\1n\1h\1kage \1ni\1n\1h\1kspy\1n_  s\1n\1h\1kay \1ny\1n\1h\1kour \1ns\1n\1h\1kcared ";  
-var stringTwo   = "  e\1n\1h\1knter \1ne\1n\1h\1kuphoria \1n\1r\1h[\1n\1h\1wsend application\1n\1r\1h]\1n p\1n\1h\1kage \1ni\1n\1h\1kspy\1n_  s\1n\1h\1kay \1ny\1n\1h\1kour \1ns\1n\1h\1kcared "; 
-var stringThree = "  e\1n\1h\1knter \1ne\1n\1h\1kuphoria  \1ns\1n\1h\1kend \1na\1n\1h\1kpplication \1n\1r\1h[\1n\1h\1wpage ispy_\1n\1r\1h]\1n s\1n\1h\1kay \1ny\1n\1h\1kour \1ns\1n\1h\1kcared "; 
-var stringFour  = "  e\1n\1h\1knter \1ne\1n\1h\1kuphoria  \1ns\1n\1h\1kend \1na\1n\1h\1kpplication  \1np\1n\1h\1kage \1ni\1n\1h\1kspy\1n_ \1n\1r\1h[\1n\1h\1wsay your scared\1n\1r\1h]\1n ";  
+var stringOne   = " \1n\1r\1h[\1n\1h\1wenter\1n\1r\1h]\1n s\1n\1h\1kend \1na\1n\1h\1kpplication  \1np\1n\1h\1kage \1ns\1n\1h\1kysop\1n  s\1n\1h\1kay \1ny\1n\1h\1kou're \1ns\1n\1h\1kcared ";  
+var stringTwo   = "  e\1n\1h\1knter \1n\1r\1h[\1n\1h\1wsend application\1n\1r\1h]\1n p\1n\1h\1kage \1ns\1n\1h\1kysop\1n  s\1n\1h\1kay \1ny\1n\1h\1kou're \1ns\1n\1h\1kcared "; 
+var stringThree = "  e\1n\1h\1knter  \1ns\1n\1h\1kend \1na\1n\1h\1kpplication \1n\1r\1h[\1n\1h\1wpage sysop\1n\1r\1h]\1n s\1n\1h\1kay \1ny\1n\1h\1kou're \1ns\1n\1h\1kcared "; 
+var stringFour  = "  e\1n\1h\1knter  \1ns\1n\1h\1kend \1na\1n\1h\1kpplication  \1np\1n\1h\1kage \1ns\1n\1h\1kysop\1n \1n\1r\1h[\1n\1h\1wsay you're scared\1n\1r\1h]\1n ";  
  
 	//array of menu text lines...   
 	var options = new Array();     
@@ -1016,11 +1016,11 @@ function main() {
 
 	//array of menu text lines...
 	var options = new Array();
-	options[0] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::kúŞnk7prevh0Ş next w kreply w kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[1] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprevúŞnk7nexth0Şw kreply w kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[2] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knextúŞnk7replyh0Şw kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[3] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreplyúŞnk7posth0Şw kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[4] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreply w kpostúŞnk7quith0Şw ::k w y<n?-hhkelpny>hk y;n";
+	options[0] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::kÃºÃnk7prevh0Ã next w kreply w kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[1] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprevÃºÃnk7nexth0Ãw kreply w kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[2] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knextÃºÃnk7replyh0Ãw kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[3] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreplyÃºÃnk7posth0Ãw kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[4] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreply w kpostÃºÃnk7quith0Ãw ::k w y<n?-hhkelpny>hk y;n";
 	
 	//array of the commands to return...
 	var values = new Array();
@@ -1210,11 +1210,11 @@ function main() {
 
 	//array of menu text lines...
 	var options = new Array();
-	options[0] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::kúŞnk7prevh0Ş next w kreply w kforward w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[1] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprevúŞnk7nexth0Şw kreply w kforward w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[2] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knextúŞnk7replyh0Şw kforward w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[3] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreplyúŞnk7forwardh0Şw kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[4] = "\1nrŞŞİh±Şnş rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreply w kforwardúŞnk7quith0Şw ::k w y<n?-hhkelpny>hk y;n";
+	options[0] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::kÃºÃnk7prevh0Ã next w kreply w kforward w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[1] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprevÃºÃnk7nexth0Ãw kreply w kforward w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[2] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knextÃºÃnk7replyh0Ãw kforward w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[3] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreplyÃºÃnk7forwardh0Ãw kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[4] = "\1nrÃÃÃhÂ±ÃnÃ¾ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreply w kforwardÃºÃnk7quith0Ãw ::k w y<n?-hhkelpny>hk y;n";
 	
 	//array of the commands to return...
 	var values = new Array();
