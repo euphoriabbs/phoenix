@@ -1003,20 +1003,25 @@ if(do_lightbar_prompts_newscan) {
 	console.gotoxy(1,1); //put your x,y instructions here...
 }			
 
-	switch(cmdkey=console.getkeys("NAGQ",K_UPPER)) {
+	switch(cmdkey=console.getkeys("NAGMQ",K_UPPER)) {
 		case 'N':	//conduct a new message scan... 
-			bbs.scan_subs(SCAN_NEW, true);bbs.phoenix.menu_message();
+			bbs.scan_subs(SCAN_NEW, true); 
 			break;
 		case 'A':	//check message areas in current group... 
 			bbs.menu.msg_select_subboard();bbs.phoenix.menu_message();
 			break;  
 		case 'G':	//check message groups... 
 			bbs.menu.msg_select_group();bbs.phoenix.menu_message();
-			break;  		 
-		default:
-			bbs.phoenix.menu_message();
 			break;
-	}
+		case 'M': //quit to message menu...
+			bbs.phoenix.menu_message();
+			break;			
+		case 'Q': //quit to main...
+			bbs.phoenix.menu_main();
+			break;
+		default:
+			break;
+	} 
 
 //create loop point for the menu...
 while(1) bbs.phoenix.menu_new_msg_scan();
