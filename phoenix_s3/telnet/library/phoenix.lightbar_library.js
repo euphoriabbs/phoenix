@@ -604,11 +604,11 @@ console.crlf();console.ansi_save();
 var center = "     "; 
 
 //create a list of strings to be centered... 
-var stringOne   = "\1n::\1n\1r\1h// \1n\1g\1h[\1n\1h\1wscan messages\1n\1g\1h] \1n\1h\1wc\1nheck \1n\1h\1wa\1nreas  \1n\1h\1wc\1nheck \1n\1h\1wg\1nroups  \1n\1h\1wt\1no \1n\1h\1wm\1nessage \1n\1h\1wm\1nenu  \1n\1r\1h\\\\\1n::\1n\1k";  
-var stringTwo   = "\1n::\1n\1r\1h//  \1n\1h\1ws\1ncan \1n\1h\1wm\1nessages \1n\1g\1h[\1n\1h\1wcheck areas\1n\1g\1h] \1n\1h\1wc\1nheck \1n\1h\1wg\1nroups  \1n\1h\1wt\1no \1n\1h\1wm\1nessage \1n\1h\1wm\1nenu  \1n\1r\1h\\\\\1n::\1n\1k";  
-var stringThree = "\1n::\1n\1r\1h//  \1n\1h\1ws\1ncan \1n\1h\1wm\1nessages  \1n\1h\1wc\1nheck \1n\1h\1wa\1nreas \1n\1g\1h[\1n\1h\1wcheck groups\1n\1g\1h] \1n\1h\1wt\1no \1n\1h\1wm\1nessage \1n\1h\1wm\1nenu  \1n\1r\1h\\\\\1n::\1n\1k"; 
-var stringFour  = "\1n::\1n\1r\1h//  \1n\1h\1ws\1ncan \1n\1h\1wm\1nessages  \1n\1h\1wc\1nheck \1n\1h\1wa\1nreas  \1n\1h\1wc\1nheck \1n\1h\1wg\1nroups \1n\1g\1h[\1n\1h\1wto message menu\1n\1g\1h] \1n\1r\1h\\\\\1n::\1n\1k"; 
- 
+var stringOne   = "\1n::\1n\1r\1h// \1n\1g\1h[\1n\1h\1wnew messages\1n\1g\1h] \1n\1h\1wc\1nheck \1n\1h\1wa\1nreas  \1n\1h\1wc\1nheck \1n\1h\1wg\1nroups  \1n\1h\1wt\1no \1n\1h\1wm\1nessage \1n\1h\1wm\1nenu  \1n\1r\1h\\\\\1n::\1n\1k";  
+var stringTwo   = "\1n::\1n\1r\1h//  \1n\1h\1wn\1new \1n\1h\1wm\1nessages \1n\1g\1h[\1n\1h\1wcheck areas\1n\1g\1h] \1n\1h\1wc\1nheck \1n\1h\1wg\1nroups  \1n\1h\1wt\1no \1n\1h\1wm\1nessage \1n\1h\1wm\1nenu  \1n\1r\1h\\\\\1n::\1n\1k";  
+var stringThree = "\1n::\1n\1r\1h//  \1n\1h\1wn\1new \1n\1h\1wm\1nessages  \1n\1h\1wc\1nheck \1n\1h\1wa\1nreas \1n\1g\1h[\1n\1h\1wcheck groups\1n\1g\1h] \1n\1h\1wt\1no \1n\1h\1wm\1nessage \1n\1h\1wm\1nenu  \1n\1r\1h\\\\\1n::\1n\1k"; 
+var stringFour  = "\1n::\1n\1r\1h//  \1n\1h\1wn\1new \1n\1h\1wm\1nessages  \1n\1h\1wc\1nheck \1n\1h\1wa\1nreas  \1n\1h\1wc\1nheck \1n\1h\1wg\1nroups \1n\1g\1h[\1n\1h\1wto message menu\1n\1g\1h] \1n\1r\1h\\\\\1n::\1n\1k"; 
+
 	//array of menu text lines...   
 	var options = new Array();     
 	options[0] = "\r" + center + "" + stringOne + "";      
@@ -621,7 +621,7 @@ var stringFour  = "\1n::\1n\1r\1h//  \1n\1h\1ws\1ncan \1n\1h\1wm\1nessages  \1n\
 	values[0] = "N";
 	values[1] = "A";
 	values[2] = "G"; 
-	values[3] = "Q"; 
+	values[3] = "M"; 
 	
 	//variables to hold the menu position and return value...
 	var current = 0;
@@ -699,11 +699,11 @@ var stringFour  = "\1n::\1n\1r\1h//  \1n\1h\1ws\1ncan \1n\1h\1wm\1nessages  \1n\
 					//if a sysop...
 					} else if (user.security.level >= 90) {
 						//check for valid input
-						if ("NAGQ".indexOf(c.toUpperCase()) >= 0)
+						if ("NAGMQ".indexOf(c.toUpperCase()) >= 0)
 							ret = c.toUpperCase();
 					}else{
 						//if not a sysop...
-						if ("NAGQ".indexOf(c.toUpperCase()) >= 0)
+						if ("NAGMQ".indexOf(c.toUpperCase()) >= 0)
 							ret = c.toUpperCase();
 					}
 					break;
