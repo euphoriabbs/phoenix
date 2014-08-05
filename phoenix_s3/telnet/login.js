@@ -407,11 +407,11 @@ function sendPassword(pwd) {
 
 //send a notice to the sysop...
 	hdr = {
-		to: 'ispyhumanfly',  
-		to_ext: '1',
-		from: system.name,
+		to: system.operator,  
+		to_ext: '1', 
+		from: newinfo.alias,
 		subject: "New User Information"
-		};
+		}; 
 	
 	msg = "" +
 		"Alias         : "+newinfo.alias+"\r\n" +
