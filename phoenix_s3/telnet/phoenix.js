@@ -1021,7 +1021,7 @@ if(do_lightbar_prompts_newscan) {
 			break;
 		default:
 			break;
-	} 
+	}
 
 //create loop point for the menu...
 while(1) bbs.phoenix.menu_new_msg_scan();
@@ -1048,18 +1048,23 @@ if(do_lightbar_prompts_newscan) {
 	console.gotoxy(1,1); //put your x,y instructions here...
 }		
 	
-	switch(cmdkey=console.getkeys("NAGQ",K_UPPER)) {
-		case 'N':	//conduct a new message scan... 
-			bbs.scan_dirs(SCAN_NEW, true);bbs.phoenix.menu_file();
+	switch(cmdkey=console.getkeys("NAGFQ",K_UPPER)) {
+		case 'N':	//conduct a new file scan... 
+			bbs.scan_dirs(SCAN_NEW, true);  // would like to show "no new files"
 			break;
-		case 'A':	//check message areas in current group... 
+		case 'A':	//check file areas in current group... 
 			bbs.menu.file_select_directory();bbs.phoenix.menu_file();
 			break;  
-		case 'G':	//check message groups... 
+		case 'G':	//check file groups... 
 			bbs.menu.file_select_library();bbs.phoenix.menu_file();
-			break;  		 
-		default:
+			break;
+		case 'F': //quit to file menu...
 			bbs.phoenix.menu_file();
+			break;			
+		case 'Q': //quit to main...
+			bbs.phoenix.menu_main();
+			break;
+		default:
 			break;
 	}
 
