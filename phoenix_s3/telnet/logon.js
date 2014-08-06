@@ -207,6 +207,28 @@ if(do_gallery && user.security.exemptions&UFLAG_G) {
 	console.pause();	
 }
 
+// Check for unread messages for a given user number. Thanks, echicken!
+var checkUnread = function(un) {
+ var unread = false;
+ var mb = new MsgBase('mail');
+ mb.open();
+ for(var m = mb.first_msg; m <= mb.last_msg; m++) {
+  var i = mb.get_msg_index(m);
+  if(i === null || i.to != un || i.attr&MSG_READ)
+   continue;
+  unread = true;
+  break;
+ }
+ mb.close();
+ return unread;
+}
+
+// Would you like to read it?
+if(checkUnread(user.number))
+if (console.yesno("[23;2H\1n\1n:: \1n\1h\1kYou have mail. Read it now? ")) {
+bbs.menu.read_mail();
+}
+
 //loads phoenix/s3 v1.0a command shell... 
 load("phoenix.js");
 
