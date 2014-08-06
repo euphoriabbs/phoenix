@@ -1016,12 +1016,12 @@ function main() {
 
 	//array of menu text lines...
 	var options = new Array();
-	options[0] = "\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::kúÞnk7prevh0Þ next w kreply w kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[1] = "\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprevúÞnk7nexth0Þw kreply w kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[2] = "\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knextúÞnk7replyh0Þw kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[3] = "\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreplyúÞnk7posth0Þw kquit w ::k w y<n?-hhkelpny>hk y;n";
-	options[4] = "\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreply w kpostúÞnk7quith0Þw ::k w y<n?-hhkelpny>hk y;n";
-	
+	options[0] = "\1nrÞÞÝh±Þnþ y[hw@SMB_GROUP@y] k:w: @SMB_SUB@\r\n\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::kúÞnk7prevh0Þ next w kreply w kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[1] = "\1nrÞÞÝh±Þnþ y[hw@SMB_GROUP@y] k:w: @SMB_SUB@\r\n\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprevúÞnk7nexth0Þw kreply w kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[2] = "\1nrÞÞÝh±Þnþ y[hw@SMB_GROUP@y] k:w: @SMB_SUB@\r\n\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knextúÞnk7replyh0Þw kpost w kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[3] = "\1nrÞÞÝh±Þnþ y[hw@SMB_GROUP@y] k:w: @SMB_SUB@\r\n\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreplyúÞnk7posth0Þw kquit w ::k w y<n?-hhkelpny>hk y;n";
+	options[4] = "\1nrÞÞÝh±Þnþ y[hw@SMB_GROUP@y] k:w: @SMB_SUB@\r\n\1nrÞÞÝh±Þnþ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::k w kprev w knext w kreply w kpostúÞnk7quith0Þw ::k w y<n?-hhkelpny>hk y;n";
+		
 	//array of the commands to return...
 	var values = new Array();
 	values[0] = "-";
