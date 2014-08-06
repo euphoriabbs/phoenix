@@ -738,7 +738,7 @@ var stringFour  = "\1n\1h\1c[\1n\1h\1bgo to files\1n\1h\1c]\1n";
 	values[0] = "N";
 	values[1] = "A";
 	values[2] = "G"; 
-	values[3] = "Q"; 
+	values[3] = "F"; 
 	
 	//variables to hold the menu position and return value...
 	var current = 0;
@@ -819,11 +819,11 @@ console.print("[9;58H\1n\1h\1kscan new[10;56H\1n\1h\1kcheck areas[11;58H\1n\1
 					//if a sysop...
 					} else if (user.security.level >= 90) {
 						//check for valid input
-						if ("NAGQ".indexOf(c.toUpperCase()) >= 0)
+						if ("NAGFQ".indexOf(c.toUpperCase()) >= 0)
 							ret = c.toUpperCase();
 					}else{
 						//if not a sysop...
-						if ("NAGQ".indexOf(c.toUpperCase()) >= 0)
+						if ("NAGFQ".indexOf(c.toUpperCase()) >= 0)
 							ret = c.toUpperCase();
 					}
 					break;
