@@ -54,10 +54,18 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
     //commands available for the menu... 
 	switch(cmdkey=console.getkeys("MFECXIORWPG;@#$%-",K_UPPER)) {
 		case 'M':	//message menu... 
-			bbs.phoenix.menu_new_msg_scan(); 
+			if (do_lightbar_prompts  && user.security.exemptions&UFLAG_M) {
+					bbs.phoenix.menu_new_msg_scan(); 
+			} else {
+					bbs.phoenix.menu_message();
+			}
 			break;
 		case 'F':	//file menu... 
-			bbs.phoenix.menu_new_file_scan();
+			if (do_lightbar_prompts  && user.security.exemptions&UFLAG_M) {
+				bbs.phoenix.menu_new_file_scan();
+			} else {
+				bbs.phoenix.menu_file();
+			}
 			break;   
 		case 'E':	//email menu... 
 			bbs.phoenix.menu_email();
@@ -66,7 +74,11 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 			bbs.exec("?irc -a localhost 6667 #euphoria"); 
 			break; 	   		 
 		case 'X':	//xtrn menu... 
-			bbs.phoenix.xtrn_sec();
+			if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
+				bbs.phoenix.xtrn_sec();
+			} else { 
+				bbs.xtrn_sec();
+			}
 			break; 	   		 
 		case 'I':	//system information menu... 
 			bbs.phoenix.menu_information(); 
