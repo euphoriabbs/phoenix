@@ -101,17 +101,21 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case 'P':	//page sysop... 
 			console.clear();bbs.page_sysop(); 
 			break; 	   	
-		case 'G':	//log off... 
+		case 'G':	//log off...
 
-					//if random is true...
+				//Confirm user would like to log off..
+				if (console.yesno("[23;2H\1n\1n:: \1n\1h\1kLeaving so soon")) {
+
+				//if random is true...
 					if(do_random_ansi) {
-					randomAnsi();
+						randomAnsi();
 	
-					//other wise...
+				//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
 					}	
-					bbs.hangup();
+				bbs.hangup();
+				}
 			break;
 		case ';':	//sysop commands...
 		    bbs.menu.sysop_commands(); 
