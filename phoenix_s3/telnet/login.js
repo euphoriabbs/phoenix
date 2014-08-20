@@ -411,7 +411,7 @@ function sendPassword(pwd) {
 		to_ext: '1', 
 		from: newinfo.alias,
 		subject: "New User Information"
-		}; 
+		};
 	
 	msg = "" +
 		"Alias         : "+newinfo.alias+"\r\n" +
