@@ -38,6 +38,7 @@ cd $EUPHORIA_INSTALL/sbbs ; ln -s ../phoenix_s3/ .
 
 mv $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini-original
 ln -s $EUPHORIA_INSTALL/phoenix_s3/config/phoenix.sbbs_config.ini $EUPHORIA_INSTALL/sbbs/ctrl/sbbs.ini 
+ln -s $EUPHORIA_INSTALL/phoenix_s3/web/index.html $EUPHORIA_INSTALL/sbbs/web/root/index.html
 
 
  

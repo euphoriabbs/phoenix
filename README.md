@@ -13,23 +13,20 @@ A Modern Bulletin Board System Built on Synchronet.
 
 Start Euphoria
 
-If running on non standar ports...
+If running on non-privileged ports.
   ./euphoria.sh
 
-Otherwise, for standard ports such as 80, 22, 23 and 24 you'll need sudo privileges.
+Otherwise, for privileged ports such as 80, 22, 23 and 24 you'll need sudo privileges.
   sudo ./euphoria.sh
   
-## Stable
-We don't have any just. But we're working on it.
-
 # Supported Operating Systems
 1. Most UNIX variants.
 2. Most flavors of Linux.
 3. Mac OSX in most cases.
-4. Windows? No. But some day.
+4. Windows? No. But maybe some day.
 
 # Issues
-http://github.com/thoughtpivot.com/euphoria/issues
+http://github.com/thoughtpivot.com/euphoriabbs/issues
 
 # Copyright
 We've yet to figure out which license to go with. But it will be open source, of course.
