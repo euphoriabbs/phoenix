@@ -79,7 +79,7 @@ do_matrix_login = false;
 do_login_statistics = true;
 
 //name the default message editor...
-var editor = "DCT";
+var editor = "SLYDCT";
 
 /* l o g o n _ o p t i o n s - c o n f i g */
 
