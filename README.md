@@ -1,4 +1,4 @@
-# Euphoria
+# Euphoria BBS
 
 A Modern Bulletin Board System Built on Synchronet.
 
@@ -26,7 +26,7 @@ Otherwise, for privileged ports such as 80, 22, 23 and 24 you'll need sudo privi
 4. Windows? No. But maybe some day.
 
 # Issues
-http://github.com/thoughtpivot.com/euphoriabbs/issues
+https://github.com/thoughtpivot/euphoriabbs/issues
 
 # Copyright
 We've yet to figure out which license to go with. But it will be open source, of course.
