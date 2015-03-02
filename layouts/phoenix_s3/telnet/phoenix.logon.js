@@ -210,7 +210,7 @@ load("phoenix.shell.js");
 
 /* s t a r t _ u p */
 
-//start up options configured via phoenix.telnet_config.js...
+//start up options configured via phoenix.config.js...
 if(do_quick_logon) {
 	bbs.phoenix.menu_quick_logon();
 
