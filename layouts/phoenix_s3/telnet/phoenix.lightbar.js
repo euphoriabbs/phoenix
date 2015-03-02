@@ -1,26 +1,4 @@
-/*****************************************************************************  
-         _____         _____                            ____     ______
-         \    \______ _)    \______  vanguard mods  ___/ __ )____>    /
-          \    \    /_\_,    \    /___  ____ _______\_ ____  /  _    /
-hx!------\ \  __\  /  _    \  \  /  _/_(   _U  \    _  \        /   / /-------
-           /_______   \  ___\_____  L_     )        \  _\     ______\
-                 /_______\       \   /  ___,----,______\ \_____\
-                                 /_______\
-                                           >>> vanguardmoddingcrew.com
-                                           
-*****************************************************************************/
-//open_euphoria 2.0 development!
-
-//phoenix.lightbar_library.js [phoenix/s3 lightbar object library] by ispyhumanfly... 
-
-/* p h o e n i x / s 3 _ l i g h t b a r _ l i b r a r y */
-
-/*****************************************************************************
- welcome to the phoenix/s3 lightbar library.  here you will find everything
- related to lightbars and animations used by phoenix/s3.  i made it a point to 
- make things as easy to configure as possible, especially in reference to 
- string customization... 
-*****************************************************************************/
+//phoenix.lightbar.js
 
 //create variables for the ansi keys... 
 var KEY_UP    = String.fromCharCode(0x1e);

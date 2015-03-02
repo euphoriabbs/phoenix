@@ -1,37 +1,14 @@
-/*****************************************************************************  
-         _____         _____                            ____     ______
-         \    \______ _)    \______  vanguard mods  ___/ __ )____>    /
-          \    \    /_\_,    \    /___  ____ _______\_ ____  /  _    /
-hx!------\ \  __\  /  _    \  \  /  _/_(   _U  \    _  \        /   / /-------
-           /_______   \  ___\_____  L_     )        \  _\     ______\
-                 /_______\       \   /  ___,----,______\ \_____\
-                                 /_______\
-                                           >>> vanguardmoddingcrew.com
-                                           
-*****************************************************************************/
-//open_euphoria 2.0 development!
+//phoenux.login.js
 
-//login.js [phoenix/s3 matrix login & application module] by ispyhumanfly... 
-
-/* p h o e n i x / s 3 _ l o g i n _ a p p l i c a t i o n */
-
-/*****************************************************************************
- welcome to the login module for phoenix/s3. this script was intended to be 
- the most complete login experiance possible.  it includes a welcome ansi,
- matrix login, login input and new user application with telnet verification.
- many of it's features can be configured within the configuration script.
-*****************************************************************************/
-
-//definitions by digital man...
 load("sbbsdefs.js");
 
 //load the phoenix/s3 configuration script...
-load("../phoenix_s3/config/phoenix.telnet_config.js");
+load("../../layouts/phoenix_s3/config.js");
 
 //load phoenix/s3 required libraries...
-load("../phoenix_s3/telnet/library/phoenix.external_library.js");
-load("../phoenix_s3/telnet/library/phoenix.menu_library.js");
-load("../phoenix_s3/telnet/library/phoenix.lightbar_library.js");
+load("phoenix.external.js");
+load("phoenix.menu.js");
+load("phoenix.lightbar.js");
 
 //loads the telnet verifying new user application program... 
 bbs.newuser = new Function("bbs.phoenix.application();return false;"); 

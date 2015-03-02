@@ -1,4 +1,8 @@
 sbbs/
 sbbs
-euphoria.sh
+.sbbs
+.system
+euphoria*
+*.bak
+*~
 
