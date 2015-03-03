@@ -1,28 +1,4 @@
-/*****************************************************************************  
-         _____         _____                            ____     ______
-         \    \______ _)    \______  vanguard mods  ___/ __ )____>    /
-          \    \    /_\_,    \    /___  ____ _______\_ ____  /  _    /
-hx!------\ \  __\  /  _    \  \  /  _/_(   _U  \    _  \        /   / /-------
-           /_______   \  ___\_____  L_     )        \  _\     ______\
-                 /_______\       \   /  ___,----,______\ \_____\
-                                 /_______\
-                                           >>> vanguardmoddingcrew.com
-                                           
-*****************************************************************************/
-//open_euphoria 2.0 development!
-
-//phoenix.telnet_config.js [phoenix/s3 config script] by ispyhumanfly... 
-
-/* p h o e n i x / s 3 _ c o n f i g u r a t i o n_ s c r i p t */
-
-/*****************************************************************************
- this configuration file is intended to add abit more flexibility to phoenix.
- obviously this file is very much in it's alpha phase, and will carry more 
- features in future releases. a fairly deep level of debugging has gone into 
- effect with this new addition to the interface, but i've yet to try every 
- single possible combination of true/false declarations within the script, so 
- i can't always promise you the output desired.
-*****************************************************************************/
+//config.js
 
 /* r a n d o m _ a n s i _ d i s p l a y */
 
