@@ -6,9 +6,9 @@ load("sbbsdefs.js");
 load("../../layouts/phoenix_s3/config.js");
 
 //load phoenix/s3 required libraries...
-load("phoenix.external.js");
-load("phoenix.menu.js");
-load("phoenix.lightbar.js");
+load("../../layouts/phoenix_s3/telnet/phoenix.external.js");
+load("../../layouts/phoenix_s3/telnet/phoenix.menu.js");
+load("../../layouts/phoenix_s3/telnet/phoenix.lightbar.js");
 
 //loads the telnet verifying new user application program... 
 bbs.newuser = new Function("bbs.phoenix.application();return false;"); 
