@@ -54,4 +54,7 @@ echo "exit 0" >> euphoria-config
 mv $EUPHORIA_HOME/.system/ctrl/sbbs.ini $EUPHORIA_HOME/.system/ctrl/sbbs.ini-original
 ln -s $EUPHORIA_HOME/system.ini $EUPHORIA_HOME/.system/ctrl/sbbs.ini 
 
+cd $EUPHORIA_HOME
+mkdir data/ tmp/ logs/
+
 exit 0
