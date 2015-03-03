@@ -1,17 +1,4 @@
-/*****************************************************************************  
-         _____         _____                            ____     ______
-         \    \______ _)    \______  vanguard mods  ___/ __ )____>    /
-          \    \    /_\_,    \    /___  ____ _______\_ ____  /  _    /
-hx!------\ \  __\  /  _    \  \  /  _/_(   _U  \    _  \        /   / /-------
-           /_______   \  ___\_____  L_     )        \  _\     ______\
-                 /_______\       \   /  ___,----,______\ \_____\
-                                 /_______\
-                                           >>> vanguardmoddingcrew.com
-                                           
-*****************************************************************************/
-//open_euphoria 2.0 development!
-
-//phoenix.menu_library.js [phoenix/s3 menu object library] by ispyhumanfly... 
+//phoenix.menu.js
  
 /* p h o e n i x / s 3 _ m e n u _ l i b r a r y */
 
@@ -847,7 +834,7 @@ system.node_list[bbs.node_num-1].action = NODE_DFLT;
 system.node_list[bbs.node_num-1].misc|=NODE_UDAT;bbs.nodesync();sleep(100);
 
 //re-load the external library for refreshing of external options...
-load('../phoenix_s3/telnet/library/phoenix.external_library.js');
+load('../../layouts/phoenix_s3/telnet/phoenix.external.js');
 
 //clear the console...
 console.clear();
@@ -1144,7 +1131,7 @@ bbs.menu.msg_select_subboard();
 bbs.menu.list_files = function() {
 
 //need to re-load the file lister header ansi, cause synchronet fucks up...
-bbs.replace_text(661,"@NOPAUSE@@CLS@@TYPE:../phoenix_s3/telnet/ansi/art.phoenix.file_lister.ans@@NOPAUSE@"); 
+bbs.replace_text(661,"@NOPAUSE@@CLS@@TYPE:../../layouts/phoenix_s3/artwork/art.phoenix.file_lister.ans@@NOPAUSE@"); 
 	
 //removes the empty directory listing string...
 bbs.replace_text(169,"\1n\1k---]");
@@ -1538,7 +1525,7 @@ bbs.replace_text(169,"\1n\1k---]");
 bbs.replace_text(290,"\1n\1k---]");
 
 //need to re-load the file lister header ansi, cause synchronet fucks up...
-bbs.replace_text(661,"@NOPAUSE@@CLS@@TYPE:../phoenix_s3/telnet/ansi/art.phoenix.file_lister.ans@@NOPAUSE@"); 
+bbs.replace_text(661,"@NOPAUSE@@CLS@@TYPE:../layouts/phoenix_s3/artwork/art.phoenix.file_lister.ans@@NOPAUSE@"); 
 			
 }
 
@@ -1578,7 +1565,7 @@ var prot 	= (client.protocol + "          ").substring(0,10);
 //now begin writing the file...
 
 	//assign a variable to the data file...
-	f = new File("../phoenix_s3/logs/phoenix.telnet_login.log"); 
+	f = new File("../../logs/telnet.log"); 
 
 	//create, then open the data file for appending...
 	f.open("a");
@@ -1611,7 +1598,7 @@ var prot 	= (client.protocol + "          ").substring(0,10);
 //now begin writing the file...
 
 	//assign a variable to the data file...
-	f = new File("../phoenix_s3/logs/phoenix.telnet_logon.log"); 
+	f = new File("../../logs/telnet.log"); 
 
 	//create, then open the data file for appending...
 	f.open("a");
@@ -1673,7 +1660,7 @@ console.gotoxy(79,22);console.crlf();
 bbs.menu.last_few_callers = function() {
 
 //remove the old lastcalls file from the shared folder [for web use only]...
-if (file_exists("../phoenix_s3/data/data.phoenix.lastcalls.dat")) file_remove("../phoenix_s3/data/data.phoenix.lastcalls.dat"); 	
+if (file_exists("../../data/data.phoenix.lastcalls.dat")) file_remove("../../data/data.phoenix.lastcalls.dat"); 	
 
 //display the last few callers ansi, and print the logon list...
 bbs.ansi_norm("art.phoenix.last_few_callers");
@@ -1815,8 +1802,8 @@ var System = eval("s" + "ystem"); //crimson editor autocap's System
 var bDone = false; //done with oneliners
 var bAnsi = ((user.settings&USER_ANSI) != 0) //user has ansi
 var cDelim = String.fromCharCode(255); //data delimiter
-var strHeaderFile = "../phoenix_s3/telnet/ansi/art.phoenix.menu_oneliner.ans"; //ansi header...
-var strDataFile = "../phoenix_s3/data/data.phoenix.oneliners.dat"; //data file...
+var strHeaderFile = "../../layouts/phoenix_s3/artwork/art.phoenix.menu_oneliner.ans"; //ansi header...
+var strDataFile = "../../data/data.phoenix.oneliners.dat"; //data file...
 
 //Formats DateTime for logging "YYYY-MM-DD HH:NN"
 function formatDT(inDate) {
@@ -1984,7 +1971,7 @@ showOneliners();
 bbs.menu.ansi_gallery = function() {
 
 	//load the files into an array...
-	var string = directory('../phoenix_s3/telnet/ansi/gallery/*.ans');
+	var string = directory('../../layouts/phoenix_s3/artwork/gallery/*.ans');
     	
 	//assign a handler name...
 	var handlerName = 'ansi_gallery';
@@ -2070,7 +2057,7 @@ var color 	= "\1n\1n";
 if (text.length > 0) {
 
 	//assign a variable and open the data file...
-	f = new File("../phoenix_s3/data/data.phoenix.rumors.dat"); 
+	f = new File("../../data/data.phoenix.rumors.dat"); 
 
 	//open the date file for writing...
 	f.open("a");
@@ -2095,7 +2082,7 @@ if (text.length > 0) {
 bbs.menu.rumor_display = function() {
 
 	//assign a variable and open the data file...
-	f = new File("../phoenix_s3/data/data.phoenix.rumors.dat"); 
+	f = new File("../../data/data.phoenix.rumors.dat"); 
 
 	//open the date file for writing...
 	f.open("r");
@@ -2127,7 +2114,7 @@ console.print("\1n\1n");
 console.line_counter = 0;console.clear();		     	 
 
 //output the desired file...
-console.putmsg("@TYPE:../phoenix_s3/telnet/ansi/" + fname + ".ans@"); 
+console.putmsg("@TYPE:../../layouts/phoenix_s3/artwork/" + fname + ".ans@"); 
 
 }
 
@@ -2135,7 +2122,7 @@ bbs.ansi_norm = bbs.mods.vanguard.ansinorm;
 
 //display ansis in slow motion, from any location but without @-code support... 
 bbs.mods.vanguard.ansislow = function(fname) {
-	file_base = "../phoenix_s3/telnet/ansi/" + fname;
+	file_base = "../../layouts/phoenix_s3/artwork/" + fname;
 	if (file_exists(file_base))
 		f = new File(file_base);
 	else if (file_exists(file_base+".ans") && (((console.autoterm & USER_ANSI) > 1) || (user && (user.number > 0) && ((user.settings&USER_ANSI) > 1))))
@@ -2144,7 +2131,7 @@ bbs.mods.vanguard.ansislow = function(fname) {
 		f = new File(file_base+".asc");
 	else {
 		//console.print(file_base+".ans\r\n")
-		console.print("file doesn't exist: phoenix_s3/telnet/ansi/" + fname + ".???\r\n");
+		console.print("file doesn't exist: ../../layouts/phoenix_s3/artwork/" + fname + ".???\r\n");
 		return;
 	}
 	if(!f.open("r")) {
@@ -2198,7 +2185,7 @@ bbs.mods.vanguard.ansinoclear = function(fname) {
 console.print("\1n\1n");
 
 //output the desired file...
-console.putmsg("@TYPE:../phoenix_s3/telnet/ansi/" + fname + ".ans@"); 
+console.putmsg("@TYPE:../../layouts/phoenix_s3/artwork/" + fname + ".ans@"); 
 
 }
 

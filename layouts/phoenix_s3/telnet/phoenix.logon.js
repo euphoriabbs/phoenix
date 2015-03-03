@@ -97,8 +97,7 @@ console.pause();
 	
 }	
 
-//now load phoenix/s3 v1.0a command shell...
-load("phoenix.js");
+load("phoenix.shell.js");
 
 }
 

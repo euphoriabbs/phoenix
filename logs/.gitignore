@@ -1,6 +1,3 @@
-*.log
-*.bak
-*.dat
-*.json
-*.pid
-
+!.gitignore
+*
+.*
