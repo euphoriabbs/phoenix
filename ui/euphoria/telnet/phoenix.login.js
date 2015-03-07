@@ -137,7 +137,7 @@ if(do_login_statistics) {
 		count++;
 		
 		//show login prompt...
-		if (system.matchuser("guest"))
+		if (system.matchuser("guest")||system.matchuser("anonymous"))
 			console.print("[4;51Hnk3");
 		else
 			console.print("[4;51Hnk3");
