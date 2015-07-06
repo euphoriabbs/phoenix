@@ -4,14 +4,16 @@ A Modern Bulletin Board System Built on Synchronet.
 
 # Setup
 	./Makefile
- 
+
+# Start
+
+	./euphoria-sbbs
+	
 # Supported Operating Systems
-1. UNIX
-2. Linux
-3. OSX
+Linux
 
 # Issues
-https://github.com/thoughtpivot/euphoriabbs/issues
+https://github.com/euphoriabbs/euphoriabbs/issues
 
 # Copyright
 We've yet to figure out which license to go with. But it will be open source, of course.
