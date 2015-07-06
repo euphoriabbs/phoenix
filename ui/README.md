@@ -1,4 +1,4 @@
-# bbs/README
+# ui/README
 This directory contains the various Euphoria command shells available to the bbs.
 
 ## phoenix_s3

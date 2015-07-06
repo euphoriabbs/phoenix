@@ -13,8 +13,8 @@ export EUPHORIA_VERSION=3.0.0
 
 	wget ftp://vert.synchro.net/Synchronet/sbbs_src.tgz
 	wget ftp://vert.synchro.net/Synchronet/sbbs_run.tgz
-	tar -xzf sbbs_src.tgz
-	tar -xzf sbbs_run.tgz
+	tar -xvf sbbs_src.tgz
+	tar -xvf sbbs_run.tgz
 
 	cd $EUPHORIA_HOME/.sbbs/src/sbbs3; make RELEASE=1
 	cd $EUPHORIA_HOME/.sbbs/src/sbbs3/scfg; make RELEASE=1
