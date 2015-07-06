@@ -1,6 +1,6 @@
 #!/bin/sh
 
-export EUPHORIA_VERSION=0.0.3
+export EUPHORIA_VERSION=3.0.0
 
 ## Environment Setup
 
@@ -9,7 +9,7 @@ export EUPHORIA_VERSION=0.0.3
 
 ## Download, Compile & Install Synchronet
 
-	mkdir -p .sbbs; cd .sbbs/
+	mkdir .sbbs; cd .sbbs/
 
 	wget ftp://vert.synchro.net/Synchronet/sbbs_src.tgz
 	wget ftp://vert.synchro.net/Synchronet/sbbs_run.tgz
@@ -41,9 +41,9 @@ export EUPHORIA_VERSION=0.0.3
 		cd $EUPHORIA_HOME/.sbbs/exec/
 		mv login.js login.js-original
 		mv logon.js logon.js-original
-		ln -s $EUPHORIA_HOME/ui/euphoria/telnet/phoenix.login.js $EUPHORIA_HOME/.sbbs/exec/login.js
-		ln -s $EUPHORIA_HOME/ui/euphoria/telnet/phoenix.logon.js $EUPHORIA_HOME/.sbbs/exec/logon.js
-		ln -s $EUPHORIA_HOME/ui/euphoria/telnet/phoenix.shell.js $EUPHORIA_HOME/.sbbs/exec/phoenix.shell.js
+		ln -s $EUPHORIA_HOME/ui/phoenix_s3/telnet/phoenix.login.js $EUPHORIA_HOME/.sbbs/exec/login.js
+		ln -s $EUPHORIA_HOME/ui/phoenix_s3/telnet/phoenix.logon.js $EUPHORIA_HOME/.sbbs/exec/logon.js
+		ln -s $EUPHORIA_HOME/ui/phoenix_s3/telnet/phoenix.shell.js $EUPHORIA_HOME/.sbbs/exec/phoenix.shell.js
 
 		cd $EUPHORIA_HOME/.sbbs/text/
 		mv answer.wip answer.wip-original
