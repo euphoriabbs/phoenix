@@ -31,6 +31,7 @@ export EUPHORIA_VERSION=0.0.3
 	### Core Integration
 	
 	cd $EUPHORIA_HOME
+	mv .sbbs/ctrl/sbbs.ini .sbbs/ctrl/sbbs-original.ini	
 	ln -s $EUPHORIA_HOME/euphoria-sbbs.ini $EUPHORIA_HOME/.sbbs/ctrl/sbbs.ini
 	ln -s $EUPHORIA_HOME/.sbbs/data/ .
 	ln -s $EUPHORIA_HOME/.sbbs/data/logs .
@@ -40,22 +41,22 @@ export EUPHORIA_VERSION=0.0.3
 		cd $EUPHORIA_HOME/.sbbs/exec/
 		mv login.js login.js-original
 		mv logon.js logon.js-original
-		ln -s $EUPHORIA_HOME/layouts/phoenix_s3/telnet/phoenix.login.js $EUPHORIA_HOME/.sbbs/exec/login.js
-		ln -s $EUPHORIA_HOME/layouts/phoenix_s3/telnet/phoenix.logon.js $EUPHORIA_HOME/.sbbs/exec/logon.js
-		ln -s $EUPHORIA_HOME/layouts/phoenix_s3/telnet/phoenix.shell.js $EUPHORIA_HOME/.sbbs/exec/phoenix.shell.js
+		ln -s $EUPHORIA_HOME/ui/euphoria/telnet/phoenix.login.js $EUPHORIA_HOME/.sbbs/exec/login.js
+		ln -s $EUPHORIA_HOME/ui/euphoria/telnet/phoenix.logon.js $EUPHORIA_HOME/.sbbs/exec/logon.js
+		ln -s $EUPHORIA_HOME/ui/euphoria/telnet/phoenix.shell.js $EUPHORIA_HOME/.sbbs/exec/phoenix.shell.js
 
 		cd $EUPHORIA_HOME/.sbbs/text/
 		mv answer.wip answer.wip-original
 		mv answer.asc answer.asc-original
 
-		cd $EUPHORIA_HOME/.sbbs/ ; rm -rf src/
-		rm exec/*.src ; rm exec/*.bin
+		#cd $EUPHORIA_HOME/.sbbs/ ; rm -rf src/
+		#rm exec/*.src ; rm exec/*.bin
 
 	### Make 'euphoria-sbbs' Command
 
 		cd $EUPHORIA_HOME ; touch euphoria-sbbs ; chmod +x euphoria-sbbs
 		echo "#!/bin/sh" >> euphoria-sbbs
-		echo "\nEuphoria $EUPHORIA_VERSION 'sbbs' Program.\n"
+		echo "\nEuphoria $EUPHORIA_VERSION 'sbbs' Generated.\n"
 		echo "export SBBSCTRL=$EUPHORIA_HOME/.sbbs/ctrl" >> euphoria-sbbs
 		echo "$EUPHORIA_HOME/.sbbs/exec/sbbs" >> euphoria-sbbs
 		echo "exit 0" >> euphoria-sbbs
@@ -64,16 +65,16 @@ export EUPHORIA_VERSION=0.0.3
 
 		cd $EUPHORIA_HOME ; touch euphoria-scfg ; chmod +x euphoria-scfg
 		echo "#!/bin/sh" >> euphoria-scfg
-		echo "\nEuphoria $EUPHORIA_VERSION 'scfg' Program.\n"
+		echo "\nEuphoria $EUPHORIA_VERSION 'scfg' Generated.\n"
 		echo "export SBBSCTRL=$EUPHORIA_HOME/.sbbs/ctrl" >> euphoria-scfg
 		echo "$EUPHORIA_HOME/.sbbs/exec/scfg" >> euphoria-scfg
 		echo "exit 0" >> euphoria-scfg
 
-	### Make euphoria-jsexec' Command
+	### Make 'euphoria-jsexec' Command
 
 		cd $EUPHORIA_HOME ; touch euphoria-jsexec ; chmod +x euphoria-jsexec
 		echo "#!/bin/sh" >> euphoria-jsexec
-		echo "\nEuphoria $EUPHORIA_VERSION 'jsexec' Program.\n"
+		echo "\nEuphoria $EUPHORIA_VERSION 'jsexec' Generated.\n"
 		echo "export SBBSCTRL=$EUPHORIA_HOME/.sbbs/ctrl" >> euphoria-jsexec
 		echo "$EUPHORIA_HOME/.sbbs/exec/jsexec" >> euphoria-jsexec
 		echo "exit 0" >> euphoria-jsexec

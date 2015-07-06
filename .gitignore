@@ -1,4 +1,5 @@
-euphoria*
+euphoria-*
+.sbbs/
 *.bak
 *~
 data/
