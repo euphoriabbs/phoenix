@@ -31,8 +31,8 @@ export EUPHORIA_VERSION=3.0.0
 	### Core Integration
 	
 	cd $EUPHORIA_HOME
-	mv sbbs/ctrl/sbbs.ini sbbs/ctrl/sbbs-original.ini	
-	ln -s $EUPHORIA_HOME/euphoria-sbbs.ini $EUPHORIA_HOME/sbbs/ctrl/sbbs.ini
+	cp sbbs/ctrl/sbbs.ini sbbs/ctrl/sbbs-original.ini	
+	ln -s $EUPHORIA_HOME/sbbs/ctrl/sbbs.ini euphoria-sbbs.ini
 	ln -s $EUPHORIA_HOME/sbbs/data/ .
 	ln -s $EUPHORIA_HOME/sbbs/data/logs .
 
