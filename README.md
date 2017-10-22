@@ -1,19 +1,22 @@
-# Euphoria BBS
+# euphoriabbs
 
 A Modern Bulletin Board System Built on Synchronet.
 
-# Setup
-	./Makefile
+# Download & Install
+	./Build
 
-# Start
-
+# Configure
+	./euphoria-scfg
+and...
+	vim euphoria-sbbs.ini
+# Server Start
 	./euphoria-sbbs
-	
-# Supported Operating Systems
+
+# Operating Systems
 Linux
 
 # Issues
-https://github.com/euphoriabbs/euphoriabbs/issues
+https://github.com/euphoriabbs/euphoria_s3/issues
 
 # Copyright
 We've yet to figure out which license to go with. But it will be open source, of course.
