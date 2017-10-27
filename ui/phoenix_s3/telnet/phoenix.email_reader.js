@@ -1,6 +1,6 @@
 //phoenix.email_reader.js
 
-load("../../layouts/phoenix_s3/config.js");
+load("../../ui/phoenix_s3/config.js");
 
 /* s t r i n g _ c u s t o m i z a t i o n */
 messageReaderStrings();
