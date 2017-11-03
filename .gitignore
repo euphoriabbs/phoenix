@@ -6,4 +6,6 @@ sbbs/
 data/
 logs/
 tmp/
+files/
+backups/
 

@@ -93,7 +93,7 @@ function quickLogonLightbar (handlerName) {
 }
 
 //display the quick logon welcome ansi?
-do_quick_welcome = true;
+do_quick_welcome = false;
 
 //display the scan header text animation sequence?
 do_sequence_scan = false;
@@ -102,7 +102,7 @@ do_sequence_scan = false;
 do_logon_ansi = true;
 
 //display the user statistics?
-do_user_stats = true;
+do_user_stats = false;
 
 //display the oneliners?
 do_oneliners = true;
@@ -130,10 +130,10 @@ function onelinerLightbar (handlerName) {
 do_lastcalls = true;
 
 //display the node listings?
-do_node_list = true;
+do_node_list = false;
 
 //display the ansi gallery?
-do_gallery = true;
+do_gallery = false;
 
 //name the system notices sub id to be scanned for new system notices...
 var notices = "notices";
