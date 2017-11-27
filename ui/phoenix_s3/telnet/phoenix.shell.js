@@ -1,140 +1,141 @@
 //phoenix.shell.js
 
 //create a variable for command keys...
-var cmdkey; 
+var cmdkey;
 
 /* m a i n _ m e n u */
 
 //name the phoenix main menus routine...
 bbs.phoenix.menu_main = function() {
- 		
-//update node status... 
+
+//update node status...
 system.node_list[bbs.node_num-1].action = NODE_MAIN;
 
-//display the menu... 
-bbs.ansi_norm("art.phoenix.menu_main");   
+//display the menu...
+bbs.ansi_norm("art.phoenix.menu_main");
 
 //display the random rumor [if configured]...
 if(do_rumors && user.security.exemptions&UFLAG_N) {
-	
+
 	//where you would like the rumor located...
 	console.gotoxy(rumorMain_column,rumorMain_line);console.print(rumorMain_string);
-	
+
 	//display the rumor...
 	bbs.menu.rumor_display();
 
 }
-		
+
 //load the lightbar prompt module [if configured]...
 if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 
 	//launch the lightbar setup from the config file...
 	mainLightbarPrompt();
 
-//if disabled...	
+//if disabled...
 } else {
 
 	//put your x,y instructions here...
-	console.gotoxy(promptMain_column,promptMain_line); 
-}		
-    
-    //commands available for the menu... 
+	console.gotoxy(promptMain_column,promptMain_line);
+}
+
+    //commands available for the menu...
 	switch(cmdkey=console.getkeys("MFECXIORWPG;@#$%-",K_UPPER)) {
-		case 'M':	//message menu... 
+		case 'M':	//message menu...
 			if (do_lightbar_prompts  && user.security.exemptions&UFLAG_M) {
-					bbs.phoenix.menu_new_msg_scan(); 
+					bbs.phoenix.menu_new_msg_scan();
 			} else {
 					bbs.phoenix.menu_message();
 			}
 			break;
-		case 'F':	//file menu... 
+		case 'F':	//file menu...
 			if (do_lightbar_prompts  && user.security.exemptions&UFLAG_M) {
 				bbs.phoenix.menu_new_file_scan();
 			} else {
 				bbs.phoenix.menu_file();
 			}
-			break;   
-		case 'E':	//email menu... 
+			break;
+		case 'E':	//email menu...
 			bbs.phoenix.menu_email();
 			break;
-		case 'C':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria"); 
-			break; 	   		 
-		case 'X':	//xtrn menu... 
+		case 'C':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
+			break;
+		case 'X':	//xtrn menu...
 			if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 				bbs.phoenix.xtrn_sec();
-			} else { 
+			} else {
 				bbs.xtrn_sec();
 			}
-			break; 	   		 
-		case 'I':	//system information menu... 
-			bbs.phoenix.menu_information(); 
 			break;
-		case 'O':	//oneliners...  
+		case 'I':	//system information menu...
+			bbs.phoenix.menu_information();
+			break;
+		case 'O':	//oneliners...
 			bbs.menu.oneliners();
 			break;
-		case 'R':	//rumors... 
-		
+		case 'R':	//rumors...
+
 					//if rumors are disabled...
 					if(do_rumors && user.security.exemptions&UFLAG_N) {
-					
-					//then send to rumor input... 
+
+					//then send to rumor input...
 					bbs.menu.rumor_input();
 					}
 			break;
-		case 'W':	//who's online... 
+		case 'W':	//who's online...
 			console.gotoxy(1,22);bbs.menu.node_list();
-			break; 	   		 	 	   		  	   		 
-		case 'P':	//page sysop... 
-			console.clear();bbs.page_sysop(); 
-			break; 	   	
-		case 'G':	//log off...
+			break;
+		case 'P':	//page sysop...
+			console.clear();bbs.page_sysop();
+			break;
+		case 'G' || '/G':	//log off...
 
-				//Confirm user would like to log off..
+				//Confirm user would like to log off...
+				console.gotoxy(5,23);
 				if (console.yesno("[23;2H\1n\1n:: \1n\1h\1kLeaving so soon")) {
 
 				//if random is true...
 					if(do_random_ansi) {
 						randomAnsi();
-	
+
 				//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 				bbs.hangup();
 				}
 			break;
 		case ';':	//sysop commands...
-		    bbs.menu.sysop_commands(); 
-			break;  
-
-        //global jump points for the lightbar prompt... 
-		case '@':	//main menu... 
-			bbs.phoenix.menu_main();
-			break; 
-		case '#':	//message menu...  
-			bbs.phoenix.menu_new_msg_scan(); 
+		    bbs.menu.sysop_commands();
 			break;
-		case '$':	//file menu... 
+
+        //global jump points for the lightbar prompt...
+		case '@':	//main menu...
+			bbs.phoenix.menu_main();
+			break;
+		case '#':	//message menu...
+			bbs.phoenix.menu_new_msg_scan();
+			break;
+		case '$':	//file menu...
 			bbs.phoenix.menu_new_file_scan();
 			break;
-		case '%':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria");     
+		case '%':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...  
+		case '-':	//logoff...
 
 					//if random is true...
 					if(do_random_ansi) {
 					randomAnsi();
-	
+
 					//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 					bbs.hangup();
 			break;
 		default:
-			break;			
+			break;
 	}
 
 //create loop point for the menu...
@@ -142,16 +143,16 @@ while(1) bbs.phoenix.menu_main();
 
 }
 
-/* i n f o r m a t i o n _ m e n u */ 
+/* i n f o r m a t i o n _ m e n u */
 
 //name the phoenix information menus routine...
 bbs.phoenix.menu_information = function() {
 
-//update node status... 
-system.node_list[bbs.node_num-1].action = NODE_DFLT; 
+//update node status...
+system.node_list[bbs.node_num-1].action = NODE_DFLT;
 
-//display the menu... 
-bbs.ansi_norm("art.phoenix.menu_information");   
+//display the menu...
+bbs.ansi_norm("art.phoenix.menu_information");
 
 //load the lightbar module [if configured]...
 if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
@@ -159,67 +160,67 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 	//launch the lightbar setup from the config file...
 	infoLightbarPrompt();
 
-//if disabled...	
+//if disabled...
 } else {
 
 	//put your x,y instructions here...
-	console.gotoxy(promptInfo_column,promptInfo_line); 
-}		
-	    
-    //commands available for the menu... 
+	console.gotoxy(promptInfo_column,promptInfo_line);
+}
+
+    //commands available for the menu...
 	switch(cmdkey=console.getkeys("SKULCYBQ;@#$%-",K_UPPER)) {
-		case 'S':	//system information... 
+		case 'S':	//system information...
 			 bbs.menu.system_info();
 			break;
-		case 'K':	//credits to euphoria... 
+		case 'K':	//credits to euphoria...
 			 bbs.menu.system_kredits();
-			break;   
-		case 'U':	//user listings... 
+			break;
+		case 'U':	//user listings...
 			bbs.menu.user_list();console.pause();
 			break;
-		case 'L':	//last few callers... 
+		case 'L':	//last few callers...
 			bbs.menu.last_few_callers();
-			break; 	   		 
-		case 'C':	//configure setup... 
+			break;
+		case 'C':	//configure setup...
 			bbs.menu.config_setupOne();bbs.menu.config_setupTwo();
-			break; 	   		 
-		case 'Y':	//your stats... 
-			bbs.menu.user_stats();console.pause(); 
+			break;
+		case 'Y':	//your stats...
+			bbs.menu.user_stats();console.pause();
 			break;
 		case 'B':	//bbs list...
-			
-			break;
-		case 'Q':	//quit... 
-			bbs.phoenix.menu_main();
-			break; 	   		 	 	   		  	   		  
 
-        //global jump points for the lightbar prompt... 
-		case '@':	//main menu... 
-			bbs.phoenix.menu_main();
-			break; 
-		case '#':	//message menu...  
-			bbs.phoenix.menu_new_msg_scan(); 
 			break;
-		case '$':	//file menu... 
+		case 'Q':	//quit...
+			bbs.phoenix.menu_main();
+			break;
+
+        //global jump points for the lightbar prompt...
+		case '@':	//main menu...
+			bbs.phoenix.menu_main();
+			break;
+		case '#':	//message menu...
+			bbs.phoenix.menu_new_msg_scan();
+			break;
+		case '$':	//file menu...
 			bbs.phoenix.menu_new_file_scan();
 			break;
-		case '%':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria");     
+		case '%':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...  
+		case '-':	//logoff...
 
 					//if random is true...
 					if(do_random_ansi) {
 					randomAnsi();
-	
+
 					//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 					bbs.hangup();
 			break;
 		default:
-			break;			
+			break;
 
 	}
 
@@ -232,8 +233,8 @@ while(1) bbs.phoenix.menu_information();
 
 //name the xtrn menus routine...
 bbs.phoenix.xtrn_sec = function() {
-		
-//update node status... 
+
+//update node status...
 bbs.node_action=NODE_XTRN;
 
 //begin select list settings...
@@ -268,7 +269,7 @@ bbs.mods.vanguard.assault.xtrn_sec.ctrl_handler = function(k) {
 			sleep(1000); //longer wait after message (sometimes multiple msgs from logon/off).
 		}
 		console.print("\1h\1k---\1n\r\n");
-		
+
 		bbs.sys_status &= ~SS_ABORT;
 		while (console.inkey() != "") {/*do nothing - clear buffer*/};
 		console.pause();
@@ -277,7 +278,7 @@ bbs.mods.vanguard.assault.xtrn_sec.ctrl_handler = function(k) {
 		console.line_counter = 0;
 		console.clear();
 		console.line_counter = 0;
-		
+
 		if (k.toString().length) {
 			switch(k.charCodeAt(0)) {
 				case 26: //ctrl-z - unfiltered input - ignore
@@ -296,9 +297,9 @@ bbs.mods.vanguard.assault.xtrn_sec.ctrl_handler = function(k) {
 					break;
 			}
 		}
-		
+
 		bbs.mods.vanguard.assault.xtrn_sec.options.reloadAnsi = true;
-	}	
+	}
 }
 
 //returns a sub selection...
@@ -309,7 +310,7 @@ bbs.mods.vanguard.assault.xtrn_sec.runProgram = function(current_group) {
 	var _group = xtrn_area.sec_list[current_group]
 	var x;
 	options[""] = "(back)";
-	
+
 	//populate list based on _group...
 	if (_group) {
 		for (x in _group.prog_list) {
@@ -318,11 +319,11 @@ bbs.mods.vanguard.assault.xtrn_sec.runProgram = function(current_group) {
 			}
 		}
 	}
-	
+
 	var sl = new bbs.mods.vanguard.selectList(options,bbs.mods.vanguard.assault.xtrn_sec.select_options.x1,bbs.mods.vanguard.assault.xtrn_sec.select_options.y1+3,bbs.mods.vanguard.assault.xtrn_sec.select_options.x2,bbs.mods.vanguard.assault.xtrn_sec.select_options.y2);
 	sl.padText = true;
 	sl.current = 0;
-	
+
 	bbs.mods.vanguard.assault.xtrn_sec.options.reloadAnsi = true;
 
 	while (bbs.online && !bbs.mods.vanguard.assault.xtrn_sec.options.mainExit) {
@@ -335,7 +336,7 @@ bbs.mods.vanguard.assault.xtrn_sec.runProgram = function(current_group) {
 			console.gotoxy(bbs.mods.vanguard.assault.xtrn_sec.select_options.x1,bbs.mods.vanguard.assault.xtrn_sec.select_options.y1+2);
 			print("\1n" + sl.padding.replace(/ /g,"-").substring(0,bbs.mods.vanguard.assault.xtrn_sec.select_options.x2 - bbs.mods.vanguard.assault.xtrn_sec.select_options.x1));
 		}
-		
+
 		var k = sl.choose();
 		if (sl.raised != null) {
 			bbs.mods.vanguard.assault.xtrn_sec.ctrl_handler(sl.raised);
@@ -362,7 +363,7 @@ bbs.mods.vanguard.assault.xtrn_sec.getgrp = function(current_group) {
 			options[x] = xtrn_area.sec_list[x].name;
 			if (x == current_group)
 				iCurrent = iCount;
-		}			
+		}
 	}
 	if (!iCount) {
 		console.line_count = 0;
@@ -371,12 +372,12 @@ bbs.mods.vanguard.assault.xtrn_sec.getgrp = function(current_group) {
 		console.pause();
 		return "";
 	}
-			
+
 	var sl = new bbs.mods.vanguard.selectList(options,bbs.mods.vanguard.assault.xtrn_sec.select_options.x1,bbs.mods.vanguard.assault.xtrn_sec.select_options.y1+2,bbs.mods.vanguard.assault.xtrn_sec.select_options.x2,bbs.mods.vanguard.assault.xtrn_sec.select_options.y2);
 	sl.current = iCurrent;
 	sl.padText = true;
 	sl.showKeys = false;
-	
+
 	bbs.mods.vanguard.assault.xtrn_sec.options.reloadAnsi = true;
 	while (bbs.online && !bbs.mods.vanguard.assault.xtrn_sec.options.mainExit) {
 		if (bbs.mods.vanguard.assault.xtrn_sec.options.reloadAnsi == true) {
@@ -403,11 +404,11 @@ bbs.mods.vanguard.assault.xtrn_sec.getgrp = function(current_group) {
 bbs.mods.vanguard.assault.xtrn_sec.main = function() {
 	try {
 		system.node_list[bbs.node_num-1].action = NODE_XTRN;
-		
+
 		//bbs.trace.write("vanguard.assault.xtrn_sec","begin main()");
 		if (console.line_counter)
 			console.pause();
-		
+
 		console.status &= ~CON_RAW_IN; // no raw input
 		var exit_menu = false;
 
@@ -426,27 +427,27 @@ bbs.mods.vanguard.assault.xtrn_sec.main = function() {
 				bbs.mods.vanguard.assault.xtrn_sec.options.reloadAnsi = true;
 			}
 		}
-		
+
 	//bbs.trace.write("vanguard.assault.xtrn_sec","end main()");
 	} catch(err) {
 		bbs.trace.render(err);
 	}
 	console.line_counter = 0;
 	console.clear();
-	
+
 /* Begin trace/debug settings ************************************************/
 if (bbs.mods.vanguard.assault.xtrn_sec.debug) {
 	if (bbs.mods.vanguard.assault.xtrn_sec.firstTrace) {
-		
+
 	}
-	
+
 }
 /* End trace/debug settings **************************************************/
-	
+
 }
 
 //begin the menu...
-bbs.mods.vanguard.assault.xtrn_sec.main();  
+bbs.mods.vanguard.assault.xtrn_sec.main();
 
 }
 
@@ -458,18 +459,18 @@ bbs.phoenix.menu_message = function() {
 //load the menu specific strings...
 bbs.menu.message_strings();
 
-//update node status... 
-system.node_list[bbs.node_num-1].action = NODE_RMSG; 
+//update node status...
+system.node_list[bbs.node_num-1].action = NODE_RMSG;
 
-//display the menu... 
-bbs.ansi_norm("art.phoenix.menu_message");   
+//display the menu...
+bbs.ansi_norm("art.phoenix.menu_message");
 
 //display the random rumor [if configured]...
 if(do_rumors && user.security.exemptions&UFLAG_N) {
-	
+
 	//where you would like the rumor located...
 	console.gotoxy(rumorMessage_column,rumorMessage_line);console.print(rumorMessage_string);
-	
+
 	//display the rumor...
 	bbs.menu.rumor_display();
 
@@ -481,83 +482,83 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 	//launch the lightbar setup from the config file...
 	messageLightbarPrompt();
 
-//if disabled...	
+//if disabled...
 } else {
 
 	//put your x,y instructions here...
-	console.gotoxy(promptMessage_column,promptMessage_line); 
-}		
-	
-//commands available for the menu... 
+	console.gotoxy(promptMessage_column,promptMessage_line);
+}
+
+//commands available for the menu...
 	switch(cmdkey=console.getkeys("AGRPONSC@Q[]<>#$%-",K_UPPER)) {
-		case '[':	//previous message sub... 
+		case '[':	//previous message sub...
 			bbs.lastsub=bbs.cursub;bbs.cursub--;if (bbs.lastsub == bbs.cursub) bbs.cursub = msg_area.grp_list[bbs.curgrp].sub_list.length-1
 			break;
-		case ']':	//next message sub... 
+		case ']':	//next message sub...
 			bbs.lastsub=bbs.cursub;bbs.cursub++;if (bbs.lastsub == bbs.cursub) bbs.cursub = 0
-			break;   
-		case '<':	//previous message group... 
+			break;
+		case '<':	//previous message group...
 			bbs.lastgrp=bbs.curgrp;bbs.curgrp--;if (bbs.lastgrp == bbs.curgrp) bbs.curgrp = msg_area.grp_list.length-1
 			break;
-		case '>':	//next message group... 
+		case '>':	//next message group...
 			bbs.lastgrp=bbs.curgrp;bbs.curgrp++;if (bbs.lastgrp == bbs.curgrp) bbs.curgrp = 0
-			break; 	   		 
-		case 'A':	//check area listings... 
-			bbs.menu.msg_select_subboard(); 
 			break;
-		case 'G':	//check group listings... 
-			bbs.menu.msg_select_group(); 
+		case 'A':	//check area listings...
+			bbs.menu.msg_select_subboard();
 			break;
-		case 'R':	//read messages... 
+		case 'G':	//check group listings...
+			bbs.menu.msg_select_group();
+			break;
+		case 'R':	//read messages...
 			bbs.menu.read_msgs();
-			break;  	   		 
+			break;
 		case 'P':	//post a message...
 		 	bbs.menu.post_msgs();
 			break;
-		case 'O':	//offline mail... 
-			console.gotoxy(1,24); //where you want the cursor located... 
-			console.print("\1n\1g\1h<\1neuphoria\1n\1g\1h> \1n\1h\1k::\1n dude, wake up, and realize that it's 2006!\1.");	 
+		case 'O':	//offline mail...
+			console.gotoxy(1,24); //where you want the cursor located...
+			console.print("\1n\1g\1h<\1neuphoria\1n\1g\1h> \1n\1h\1k::\1n dude, wake up, and realize that it's 2006!\1.");
 			break;
-		case 'N':	//new message scan... 
-			bbs.scan_subs(SCAN_NEW, true); 
-			break; 	   		 	 	   		  	   		 
-		case 'S':	//scan messages menu... 
-			bbs.phoenix.menu_message_scan(); 
-			break; 	   	
-		case 'C':	//configure message scan menu... 
-			bbs.phoenix.menu_message_config_scan(); 
+		case 'N':	//new message scan...
+			bbs.scan_subs(SCAN_NEW, true);
 			break;
-		case 'Q':	//quit to main... 
-		        bbs.phoenix.menu_main();   
-			break;  
+		case 'S':	//scan messages menu...
+			bbs.phoenix.menu_message_scan();
+			break;
+		case 'C':	//configure message scan menu...
+			bbs.phoenix.menu_message_config_scan();
+			break;
+		case 'Q':	//quit to main...
+		        bbs.phoenix.menu_main();
+			break;
 
-        //global jump points for the lightbar prompt... 
-		case '@':	//main menu... 
+        //global jump points for the lightbar prompt...
+		case '@':	//main menu...
 			bbs.phoenix.menu_main();
-			break; 
-		case '#':	//message menu...  
-			bbs.phoenix.menu_new_msg_scan(); 
 			break;
-		case '$':	//file menu... 
+		case '#':	//message menu...
+			bbs.phoenix.menu_new_msg_scan();
+			break;
+		case '$':	//file menu...
 			bbs.phoenix.menu_new_file_scan();
 			break;
-		case '%':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria");     
+		case '%':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...  
+		case '-':	//logoff...
 
 					//if random is true...
 					if(do_random_ansi) {
 					randomAnsi();
-	
+
 					//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 					bbs.hangup();
 			break;
 		default:
-			break;			
+			break;
 	}
 
 //create loop point for the menu...
@@ -570,11 +571,11 @@ while(1) bbs.phoenix.menu_message();
 //name the phoenix message scan menus routine...
 bbs.phoenix.menu_message_scan = function() {
 
-//update node status... 
-system.node_list[bbs.node_num-1].action = NODE_DFLT; 
+//update node status...
+system.node_list[bbs.node_num-1].action = NODE_DFLT;
 
-//display the menu... 
-bbs.ansi_norm("art.phoenix.menu_message_scan");   
+//display the menu...
+bbs.ansi_norm("art.phoenix.menu_message_scan");
 
 //load the lightbar module [if configured]...
 if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
@@ -582,58 +583,58 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 	//launch the lightbar setup from the config file...
 	msgScanMenuLightbarPrompt();
 
-//if disabled...	
+//if disabled...
 } else {
 
 	//put your x,y instructions here...
-	console.gotoxy(promptMsgScanMenu_column,promptMsgScanMenu_line); 
-}				
-	    
-    //commands available for the menu... 
+	console.gotoxy(promptMsgScanMenu_column,promptMsgScanMenu_line);
+}
+
+    //commands available for the menu...
 	switch(cmdkey=console.getkeys("NYTCQ;@#$%-",K_UPPER)) {
-		case 'N':   //new scan messages... 
+		case 'N':   //new scan messages...
 			console.clear();bbs.scan_subs(SCAN_NEW);
 			break;
-		case 'Y':	//your messages... 
+		case 'Y':	//your messages...
 			console.clear();bbs.scan_subs(SCAN_TOYOU);
-			break;   
-		case 'T':	//search text... 
+			break;
+		case 'T':	//search text...
 			console.clear();bbs.scan_subs(SCAN_FIND);
 			break;
-		case 'C':	//configure newscan... 
+		case 'C':	//configure newscan...
 			bbs.phoenix.menu_message_config_scan();
-			break; 	   		 
-		case 'Q':	//quit... 
-			bbs.phoenix.menu_message();
-			break; 	   		 	 	   		  	   		 
-
-        //global jump points for the lightbar prompt... 
-		case '@':	//main menu... 
-			bbs.phoenix.menu_main();
-			break; 
-		case '#':	//message menu...  
-			bbs.phoenix.menu_new_msg_scan(); 
 			break;
-		case '$':	//file menu... 
+		case 'Q':	//quit...
+			bbs.phoenix.menu_message();
+			break;
+
+        //global jump points for the lightbar prompt...
+		case '@':	//main menu...
+			bbs.phoenix.menu_main();
+			break;
+		case '#':	//message menu...
+			bbs.phoenix.menu_new_msg_scan();
+			break;
+		case '$':	//file menu...
 			bbs.phoenix.menu_new_file_scan();
 			break;
-		case '%':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria");     
+		case '%':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...  
+		case '-':	//logoff...
 
 					//if random is true...
 					if(do_random_ansi) {
 					randomAnsi();
-	
+
 					//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 					bbs.hangup();
 			break;
 		default:
-			break;			
+			break;
 	}
 
 //create loop point for the menu...
@@ -646,70 +647,70 @@ while(1) bbs.phoenix.menu_message_scan();
 //name the phoenix message config scan menus routine...
 bbs.phoenix.menu_message_config_scan = function() {
 
-//update node status... 
-system.node_list[bbs.node_num-1].action = NODE_DFLT; 
+//update node status...
+system.node_list[bbs.node_num-1].action = NODE_DFLT;
 
-//display the menu... 
-bbs.ansi_slow("art.phoenix.menu_message_config_scan");   
+//display the menu...
+bbs.ansi_slow("art.phoenix.menu_message_config_scan");
 
 //load the lightbar module [if configured]...
 if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 
 	//launch the lightbar setup from the config file...
 	msgConfigScanMenuLightbarPrompt();
-	
-//if disabled...	
+
+//if disabled...
 } else {
 
 	//put your x,y instructions here...
-	console.gotoxy(promptMsgConfigMenu_column,promptMsgConfigMenu_line); 
-}				
-	    
-    //commands available for the menu... 
-	switch(cmdkey=console.getkeys("SYCIQ;@#$%-",K_UPPER)) {
-		case 'S':	//scan configuration... 
-			console.clear();bbs.cfg_msg_scan(); 
-			break;
-		case 'Y':	//your message scan configuration... 
-			console.clear();bbs.cfg_msg_scan(SCAN_TOYOU); 
-			break;   
-		case 'C':	//config message pointers... 
-			console.clear();bbs.cfg_msg_ptrs(); 
-			break;
-		case 'I':	//reinit point defaults... 
-			console.clear();bbs.reinit_msg_ptrs();
-			break; 	   		 
-		case 'Q':	//quit... 
-			bbs.phoenix.menu_message();
-			break;			
+	console.gotoxy(promptMsgConfigMenu_column,promptMsgConfigMenu_line);
+}
 
-        //global jump points for the lightbar prompt... 
-		case '@':	//main menu... 
-			bbs.phoenix.menu_main();
-			break; 
-		case '#':	//message menu...  
-			bbs.phoenix.menu_new_msg_scan(); 
+    //commands available for the menu...
+	switch(cmdkey=console.getkeys("SYCIQ;@#$%-",K_UPPER)) {
+		case 'S':	//scan configuration...
+			console.clear();bbs.cfg_msg_scan();
 			break;
-		case '$':	//file menu... 
+		case 'Y':	//your message scan configuration...
+			console.clear();bbs.cfg_msg_scan(SCAN_TOYOU);
+			break;
+		case 'C':	//config message pointers...
+			console.clear();bbs.cfg_msg_ptrs();
+			break;
+		case 'I':	//reinit point defaults...
+			console.clear();bbs.reinit_msg_ptrs();
+			break;
+		case 'Q':	//quit...
+			bbs.phoenix.menu_message();
+			break;
+
+        //global jump points for the lightbar prompt...
+		case '@':	//main menu...
+			bbs.phoenix.menu_main();
+			break;
+		case '#':	//message menu...
+			bbs.phoenix.menu_new_msg_scan();
+			break;
+		case '$':	//file menu...
 			bbs.phoenix.menu_new_file_scan();
 			break;
-		case '%':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria");     
+		case '%':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...  
+		case '-':	//logoff...
 
 					//if random is true...
 					if(do_random_ansi) {
 					randomAnsi();
-	
+
 					//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 					bbs.hangup();
 			break;
 		default:
-			break;			
+			break;
 	}
 
 //create loop point for the menu...
@@ -721,19 +722,19 @@ while(1) bbs.phoenix.menu_message_config_scan();
 
 //name the phoenix file menus routine...
 bbs.phoenix.menu_file = function() {
-	 		
-//update node status... 
+
+//update node status...
 system.node_list[bbs.node_num-1].action = NODE_XFER;
 
-//display the menu... 
-bbs.ansi_norm("art.phoenix.menu_file");   
+//display the menu...
+bbs.ansi_norm("art.phoenix.menu_file");
 
 //display the random rumor [if configured]...
 if(do_rumors && user.security.exemptions&UFLAG_N) {
-	
+
 	//where you would like the rumor located...
 	console.gotoxy(rumorFile_column,rumorFile_line);console.print(rumorFile_string);
-	
+
 	//display the rumor...
 	bbs.menu.rumor_display();
 
@@ -745,30 +746,30 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 	//launch the lightbar setup from the config file...
 	fileLightbarPrompt();
 
-//if disabled...	
+//if disabled...
 } else {
 
 	//put your x,y instructions here...
-	console.gotoxy(promptFile_column,promptFile_line); 
-}				
-	    
-    //commands available for the menu... 
+	console.gotoxy(promptFile_column,promptFile_line);
+}
+
+    //commands available for the menu...
 	switch(cmdkey=console.getkeys("[]<>AGTLNUDXBSQ;@#$%-",K_UPPER)) {
 		case '[':	//previous file library...
 			bbs.lastlib=bbs.curlib;bbs.curlib--;if (bbs.lastlib == bbs.curlib) bbs.curlib = file_area.lib_list.length-1
 			break;
 		case ']':	//next file library...
 			bbs.lastlib=bbs.curlib;bbs.curlib++;if (bbs.lastlib == bbs.curlib) bbs.curlib = 0
-			break;   
+			break;
 		case '<':	//previous file directory...
 			bbs.lastdir=bbs.curdir;bbs.curdir--;if (bbs.lastdir == bbs.curdir) bbs.curdir = file_area.lib_list[bbs.curlib].dir_list.length-1
 			break;
 		case '>':	//next file directory...
 			bbs.lastdir=bbs.curdir;bbs.curdir++;if (bbs.lastdir == bbs.curdir) bbs.curdir = 0
-			break; 	   		 
+			break;
 		case 'A':	//check directory listings...
 			bbs.menu.file_select_directory();
-			break; 	   		 
+			break;
 		case 'G':	//check library listings...
 			bbs.menu.file_select_library();
 			break;
@@ -776,60 +777,60 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 			bbs.temp_xfer();
 			break;
 		case 'L':	//list files in current directory...
-			bbs.menu.list_files();			
-			break; 	   		 	 	   		  	   		 
+			bbs.menu.list_files();
+			break;
 		case 'N':	//new file scan...
-			bbs.scan_dirs(SCAN_NEW, true); 
-			break; 	   	
+			bbs.scan_dirs(SCAN_NEW, true);
+			break;
 		case 'U':	//upload files...
 			bbs.menu.upload_files();
 			break;
 		case 'D':	//download files...
 		    bbs.menu.download_files();
-			break;  
+			break;
 		case 'X':	//archive contents...
 		    bbs.list_files(bbs.curdir,FL_VIEW);
-			break;  
+			break;
 		case 'B':	//batch transfers menu...
 		    bbs.batch_menu();
-			break;    
+			break;
 		case 'S':	//search files...
 		    bbs.phoenix.menu_file_search();
-			break;  	
+			break;
 		case 'Q':	//quit to main...
 		    bbs.phoenix.menu_main();
-			break;  	
+			break;
 		case ';':	//sysop commands...
 		    bbs.menu.sysop_commands();
-			break;  			
-											 
-        //global jump points for the lightbar prompt... 
-		case '@':	//main menu... 
-			bbs.phoenix.menu_main();
-			break; 
-		case '#':	//message menu...  
-			bbs.phoenix.menu_new_msg_scan(); 
 			break;
-		case '$':	//file menu... 
+
+        //global jump points for the lightbar prompt...
+		case '@':	//main menu...
+			bbs.phoenix.menu_main();
+			break;
+		case '#':	//message menu...
+			bbs.phoenix.menu_new_msg_scan();
+			break;
+		case '$':	//file menu...
 			bbs.phoenix.menu_new_file_scan();
 			break;
-		case '%':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria");     
+		case '%':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...  
+		case '-':	//logoff...
 
 					//if random is true...
 					if(do_random_ansi) {
 					randomAnsi();
-	
+
 					//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 					bbs.hangup();
 			break;
 		default:
-			break;			
+			break;
 	}
 
 //create loop point for the menu...
@@ -841,12 +842,12 @@ while(1) bbs.phoenix.menu_file();
 
 //name the phoenix file menus routine...
 bbs.phoenix.menu_file_search = function() {
-	 		
-//update node status... 
+
+//update node status...
 system.node_list[bbs.node_num-1].action = NODE_DFLT;
 
-//display the menu... 
-bbs.ansi_norm("art.phoenix.menu_file_search");    
+//display the menu...
+bbs.ansi_norm("art.phoenix.menu_file_search");
 
 //load the lightbar prompt module [if configured]...
 if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
@@ -854,58 +855,58 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 	//launch the lightbar setup from the config file...
 	fileSearchMenuLightbarPrompt();
 
-//if disabled...	
+//if disabled...
 } else {
 
 	//put your x,y instructions here...
-	console.gotoxy(promptFileSearch_column,promptFileSearch_line); 
-}				
-    
-    //commands available for the menu... 
+	console.gotoxy(promptFileSearch_column,promptFileSearch_line);
+}
+
+    //commands available for the menu...
 	switch(cmdkey=console.getkeys("PEDFQ;@#$%-",K_UPPER)) {
 		case 'P':	//configure file pointers...
 		    bbs.menu.config_pointers();
-			break; 
+			break;
 		case 'E':	//toggle extended descriptions...
 		    bbs.menu.toggle_extended();
-			break;  
+			break;
 		case 'D':	//search file descriptions...
 			bbs.menu.search_descriptions();
-			break;    
+			break;
 		case 'F':	//search file names...
 			bbs.menu.search_names();
-			break;    	
-		case 'Q':	//quit... 
-			bbs.phoenix.menu_file();
-			break;  	  			
-											 
-        //global jump points for the lightbar prompt... 
-		case '@':	//main menu... 
-			bbs.phoenix.menu_main();
-			break; 
-		case '#':	//message menu...  
-			bbs.phoenix.menu_new_msg_scan(); 
 			break;
-		case '$':	//file menu... 
+		case 'Q':	//quit...
+			bbs.phoenix.menu_file();
+			break;
+
+        //global jump points for the lightbar prompt...
+		case '@':	//main menu...
+			bbs.phoenix.menu_main();
+			break;
+		case '#':	//message menu...
+			bbs.phoenix.menu_new_msg_scan();
+			break;
+		case '$':	//file menu...
 			bbs.phoenix.menu_new_file_scan();
 			break;
-		case '%':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria");     
+		case '%':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...  
+		case '-':	//logoff...
 
 					//if random is true...
 					if(do_random_ansi) {
 					randomAnsi();
-	
+
 					//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 					bbs.hangup();
 			break;
 		default:
-			break;			
+			break;
 	}
 
 //create loop point for the menu...
@@ -917,12 +918,12 @@ while(1) bbs.phoenix.menu_file_search();
 
 //name the phoenix file menus routine...
 bbs.phoenix.menu_email = function() {
-	 		
-//update node status... 
+
+//update node status...
 system.node_list[bbs.node_num-1].action = NODE_RMAL;
 
-//display the menu... 
-bbs.ansi_norm("art.phoenix.menu_email");   
+//display the menu...
+bbs.ansi_norm("art.phoenix.menu_email");
 
 //load the lightbar prompt module [if configured]...
 if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
@@ -930,55 +931,55 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 	//launch the lightbar setup from the config file...
 	emailLightbarPrompt();
 
-//if disabled...	
+//if disabled...
 } else {
 
 	//put your x,y instructions here...
-	console.gotoxy(promptEmail_column,promptEmail_line); 
-}				
-     
-    //commands available for the menu... 
+	console.gotoxy(promptEmail_column,promptEmail_line);
+}
+
+    //commands available for the menu...
 	switch(cmdkey=console.getkeys("RSFQ;@#$%-",K_UPPER)) {
 		case 'R':	//read your email...
 		    bbs.menu.read_mail();
-			break; 
+			break;
 		case 'S':	//send mail...
-		    bbs.menu.send_mail(); 
-			break;  
+		    bbs.menu.send_mail();
+			break;
 		case 'F':	//send feed back to sysop...
 			bbs.menu.feedback();
-			break;    
-		case 'Q':	//quit... 
+			break;
+		case 'Q':	//quit...
 			bbs.phoenix.menu_main();
 			break;
-											 
-        //global jump points for the lightbar prompt... 
-		case '@':	//main menu... 
+
+        //global jump points for the lightbar prompt...
+		case '@':	//main menu...
 			bbs.phoenix.menu_main();
-			break; 
-		case '#':	//message menu...  
-			bbs.phoenix.menu_new_msg_scan(); 
 			break;
-		case '$':	//file menu... 
+		case '#':	//message menu...
+			bbs.phoenix.menu_new_msg_scan();
+			break;
+		case '$':	//file menu...
 			bbs.phoenix.menu_new_file_scan();
 			break;
-		case '%':	//chat menu... 
-			bbs.exec("?irc -a localhost 6667 #euphoria");     
+		case '%':	//chat menu...
+			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...  
+		case '-':	//logoff...
 
 					//if random is true...
 					if(do_random_ansi) {
 					randomAnsi();
-	
+
 					//other wise...
 					}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}	
+					}
 					bbs.hangup();
 			break;
 		default:
-			break;			
+			break;
 	}
 
 //create loop point for the menu...
@@ -999,26 +1000,26 @@ bbs.ansi_norm("art.phoenix.menu_new_msg_scan");
 
 //load the lightbar module [if configured]...
 if(do_lightbar_prompts_newscan) {
-	bbs.lightbar.menu_new_msg_scan(); 
+	bbs.lightbar.menu_new_msg_scan();
 
-//if disabled...		
+//if disabled...
 } else {
 	console.gotoxy(1,1); //put your x,y instructions here...
-}			
+}
 
 	switch(cmdkey=console.getkeys("NAGMQ",K_UPPER)) {
-		case 'N':	//conduct a new message scan... 
-			bbs.scan_subs(SCAN_NEW, true); 
+		case 'N':	//conduct a new message scan...
+			bbs.scan_subs(SCAN_NEW, true);
 			break;
-		case 'A':	//check message areas in current group... 
+		case 'A':	//check message areas in current group...
 			bbs.menu.msg_select_subboard();bbs.phoenix.menu_message();
-			break;  
-		case 'G':	//check message groups... 
+			break;
+		case 'G':	//check message groups...
 			bbs.menu.msg_select_group();bbs.phoenix.menu_message();
 			break;
 		case 'M': //quit to message menu...
 			bbs.phoenix.menu_message();
-			break;			
+			break;
 		case 'Q': //quit to main...
 			bbs.phoenix.menu_main();
 			break;
@@ -1038,32 +1039,32 @@ bbs.phoenix.menu_new_file_scan = function() {
 
 //load menu specific strings...
 bbs.menu.new_file_scan_strings();
-			
+
 //display the ansi file...
 bbs.ansi_norm("art.phoenix.menu_new_file_scan");
 
 //load the lightbar module [if configured]...
 if(do_lightbar_prompts_newscan) {
-	bbs.lightbar.menu_new_file_scan(); 
+	bbs.lightbar.menu_new_file_scan();
 
-//if disabled...		
+//if disabled...
 } else {
 	console.gotoxy(1,1); //put your x,y instructions here...
-}		
-	
+}
+
 	switch(cmdkey=console.getkeys("NAGFQ",K_UPPER)) {
-		case 'N':	//conduct a new file scan... 
+		case 'N':	//conduct a new file scan...
 			bbs.scan_dirs(SCAN_NEW, true);  // would like to show "no new files"
 			break;
-		case 'A':	//check file areas in current group... 
+		case 'A':	//check file areas in current group...
 			bbs.menu.file_select_directory();bbs.phoenix.menu_file();
-			break;  
-		case 'G':	//check file groups... 
+			break;
+		case 'G':	//check file groups...
 			bbs.menu.file_select_library();bbs.phoenix.menu_file();
 			break;
 		case 'F': //quit to file menu...
 			bbs.phoenix.menu_file();
-			break;			
+			break;
 		case 'Q': //quit to main...
 			bbs.phoenix.menu_main();
 			break;

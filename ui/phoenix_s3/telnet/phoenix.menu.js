@@ -1137,7 +1137,8 @@ bbs.replace_text(661,"@NOPAUSE@@CLS@@TYPE:../../ui/phoenix_s3/artwork/art.phoeni
 bbs.replace_text(169,"\1n\1k---]");
 
 //load the baja string to execute the file listings...
-bbs.menu.baja("setstr *.*" + "\r\n" + "file_list");
+//bbs.menu.baja("setstr *.*" + "\r\n" + "file_list");
+system.exec("?filearea-lb");
 
 }
 
