@@ -10,8 +10,12 @@ load("../../ui/phoenix_s3/telnet/phoenix.external.js");
 load("../../ui/phoenix_s3/telnet/phoenix.menu.js");
 load("../../ui/phoenix_s3/telnet/phoenix.lightbar.js");
 
-//loads the telnet verifying new user application program...
-bbs.newuser = new Function("bbs.phoenix.application();return false;");
+if(do_no_new_users) {
+	bbs.newuser = new Function("return false;");
+}
+else {
+	bbs.newuser = new Function("bbs.phoenix.application();return false;");
+}
 
 //log all remote connections to the system [if configured]...
 if(do_login_log) {
@@ -76,6 +80,7 @@ bbs.lightbar.matrix_login();
 			break;
 		case 'A':	//send application...
 			bbs.phoenix.application();
+			//system.exec("../exec/newuser.js");
 			break;
 		case 'G':	//say your scared (logoff)...
 
@@ -147,6 +152,9 @@ if(do_login_statistics) {
 			continue;
 
 		if (user_name == "NEW") {
+			// system.exec("?newuser.js");
+			// break;
+
 			if (bbs.newuser())
 				logged_in = true;
 			else

@@ -9,6 +9,10 @@
  you will need to edit the source code.
 ******************************************************/
 
+// lock new system users
+
+do_no_new_users = true;
+
 //use the random long ansi generator?
 do_random_ansi = true;
 
@@ -50,7 +54,7 @@ do_login_log = true;
 do_welcome_ansi = true;
 
 //use the matrix login?
-do_matrix_login = true;
+do_matrix_login = false;
 
 //display login statistics on user login?
 do_login_statistics = true;
@@ -133,7 +137,7 @@ do_lastcalls = true;
 do_node_list = false;
 
 //display the ansi gallery?
-do_gallery = false;
+do_gallery = true;
 
 //name the system notices sub id to be scanned for new system notices...
 var notices = "notices";
@@ -272,7 +276,7 @@ do_lightbar_prompts = true;
 do_lightbar_prompts_newscan = true;
 
 //allow the user to configure his/her bbs experiance?
-do_user_config_bbs = true;
+do_user_config_bbs = false;
 
 //use the rumors module?
 do_rumors = true;
