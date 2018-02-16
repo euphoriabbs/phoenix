@@ -8,4 +8,6 @@ logs/
 tmp/
 files/
 backups/
+data
+logs
 
