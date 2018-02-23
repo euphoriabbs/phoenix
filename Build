@@ -29,9 +29,9 @@ export EUPHORIA_VERSION=3.0.0
 ## Integrate Synchronet w/ Euphoria
 
 	### Core Integration
-	
+
 	cd $EUPHORIA_HOME
-	cp sbbs/ctrl/sbbs.ini sbbs/ctrl/sbbs-original.ini	
+	cp sbbs/ctrl/sbbs.ini sbbs/ctrl/sbbs-original.ini
 	ln -s $EUPHORIA_HOME/sbbs/ctrl/sbbs.ini euphoria-sbbs.ini
 	ln -s $EUPHORIA_HOME/sbbs/data/ .
 	ln -s $EUPHORIA_HOME/sbbs/data/logs .
@@ -78,6 +78,24 @@ export EUPHORIA_VERSION=3.0.0
 		echo "export SBBSCTRL=$EUPHORIA_HOME/sbbs/ctrl" >> euphoria-jsexec
 		echo "$EUPHORIA_HOME/sbbs/exec/jsexec" >> euphoria-jsexec
 		echo "exit 0" >> euphoria-jsexec
+
+	### Make 'euphoria-makeuser' Command
+
+		cd $EUPHORIA_HOME ; touch euphoria-makeuser ; chmod +x euphoria-makeuser
+		echo "#!/bin/sh" >> euphoria-makeuser
+		echo "\nEuphoria $EUPHORIA_VERSION 'makeuser' Generated.\n"
+		echo "export SBBSCTRL=$EUPHORIA_HOME/sbbs/ctrl" >> euphoria-makeuser
+		echo "$EUPHORIA_HOME/sbbs/exec/makeuser" >> euphoria-makeuser
+		echo "exit 0" >> euphoria-makeuser
+
+	### Make 'euphoria-allusers' Command
+
+		cd $EUPHORIA_HOME ; touch euphoria-allusers ; chmod +x euphoria-allusers
+		echo "#!/bin/sh" >> euphoria-allusers
+		echo "\nEuphoria $EUPHORIA_VERSION 'allusers' Generated.\n"
+		echo "export SBBSCTRL=$EUPHORIA_HOME/sbbs/ctrl" >> euphoria-allusers
+		echo "$EUPHORIA_HOME/sbbs/exec/allusers" >> euphoria-allusers
+		echo "exit 0" >> euphoria-allusers
 
 exit 0
 

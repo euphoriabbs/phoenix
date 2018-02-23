@@ -106,7 +106,7 @@ do_sequence_scan = false;
 do_logon_ansi = true;
 
 //display the user statistics?
-do_user_stats = false;
+do_user_stats = true;
 
 //display the oneliners?
 do_oneliners = true;
@@ -276,7 +276,7 @@ do_lightbar_prompts = true;
 do_lightbar_prompts_newscan = true;
 
 //allow the user to configure his/her bbs experiance?
-do_user_config_bbs = false;
+do_user_config_bbs = true;
 
 //use the rumors module?
 do_rumors = true;
