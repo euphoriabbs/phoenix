@@ -363,7 +363,7 @@ function sendPassword(pwd) {
 	}
 
 	var hdr = {
-		from:system.name,
+		from: system.operator + "@" + system.inet_addr,
 		from_net_addr:system.operator + "@" + system.inet_addr,
 		to:newinfo.alias,
 		to_net_addr:newinfo.email,

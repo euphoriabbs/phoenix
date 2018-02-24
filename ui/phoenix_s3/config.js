@@ -11,10 +11,10 @@
 
 // lock new system users
 
-do_no_new_users = false;
+do_no_new_users = true;
 
 //use the random long ansi generator?
-do_random_ansi = true;
+do_random_ansi = false;
 
 //if random ansi's are enabled, assign a function to handle random ansis...
 function randomAnsi () {
@@ -100,13 +100,13 @@ function quickLogonLightbar (handlerName) {
 do_quick_welcome = false;
 
 //display the scan header text animation sequence?
-do_sequence_scan = false;
+do_sequence_scan = true;
 
 //display the ansi logon sequence?
 do_logon_ansi = true;
 
 //display the user statistics?
-do_user_stats = true;
+do_user_stats = false;
 
 //display the oneliners?
 do_oneliners = true;
@@ -137,7 +137,7 @@ do_lastcalls = true;
 do_node_list = false;
 
 //display the ansi gallery?
-do_gallery = true;
+do_gallery = false;
 
 //name the system notices sub id to be scanned for new system notices...
 var notices = "notices";
@@ -275,7 +275,7 @@ do_lightbar_prompts = true;
 //use the lightbars for the new scan modules?
 do_lightbar_prompts_newscan = true;
 
-//allow the user to configure his/her bbs experiance?
+//allow the user to configure his/her bbs experience?
 do_user_config_bbs = true;
 
 //use the rumors module?
