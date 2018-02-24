@@ -11,7 +11,7 @@
 
 // lock new system users
 
-do_no_new_users = true;
+do_no_new_users = false;
 
 //use the random long ansi generator?
 do_random_ansi = true;

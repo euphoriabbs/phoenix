@@ -91,19 +91,17 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case 'G' || '/G':	//log off...
 
 				//Confirm user would like to log off...
-				console.gotoxy(5,23);
-				if (console.yesno("[23;2H\1n\1n:: \1n\1h\1kLeaving so soon")) {
 
 				//if random is true...
-					if(do_random_ansi) {
-						randomAnsi();
+				if(do_random_ansi) {
+					randomAnsi();
 
 				//other wise...
-					}else{
+				}else{
 					bbs.ansi_slow("art.phoenix.logoff");
-					}
-				bbs.hangup();
 				}
+				bbs.hangup();
+
 			break;
 		case ';':	//sysop commands...
 		    bbs.menu.sysop_commands();
@@ -490,7 +488,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
 //commands available for the menu...
-	switch(cmdkey=console.getkeys("AGRPONSC@Q[]<>#$%-",K_UPPER)) {
+	switch(cmdkey=console.getkeys("AGRPONSC@;Q[]<>#$%-",K_UPPER)) {
 		case '[':	//previous message sub...
 			bbs.lastsub=bbs.cursub;bbs.cursub--;if (bbs.lastsub == bbs.cursub) bbs.cursub = msg_area.grp_list[bbs.curgrp].sub_list.length-1
 			break;
@@ -516,8 +514,9 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		 	bbs.menu.post_msgs();
 			break;
 		case 'O':	//offline mail...
-			console.gotoxy(1,24); //where you want the cursor located...
-			console.print("\1n\1g\1h<\1neuphoria\1n\1g\1h> \1n\1h\1k::\1n dude, wake up, and realize that it's 2006!\1.");
+			// console.gotoxy(1,24); //where you want the cursor located...
+			// console.print("\1n\1g\1h<\1neuphoria\1n\1g\1h> \1n\1h\1k::\1n dude, wake up, and realize that it's 2006!\1.");
+			bbs.qwk_sec();
 			break;
 		case 'N':	//new message scan...
 			bbs.scan_subs(SCAN_NEW, true);
@@ -530,6 +529,10 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 			break;
 		case 'Q':	//quit to main...
 		        bbs.phoenix.menu_main();
+			break;
+
+		case ';':	//sysop commands...
+		    bbs.menu.sysop_commands();
 			break;
 
         //global jump points for the lightbar prompt...
