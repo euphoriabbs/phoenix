@@ -25,22 +25,10 @@ if(do_login_log) {
 //disable the system to ascii users [if configured]...
 if(do_ascii) {
 
-	//if the user has an ansi terminal...
-	if((console.autoterm&USER_ANSI) != 0) {
-
-	//continue down the login options...
-
-	//if the client has an ascii terminal...
-	}else{
-
-	//display the message via an ascii file...
-	bbs.ansi_norm("art.phoenix.login_ascii");
-
-	//now terminate the telnet session...
-	bbs.hangup();
-
- }
-
+    if (!(console.autoterm&USER_ANSI)) {
+        bbs.ansi_norm("art.phoenix.login_ascii");
+        bbs.hangup();
+    }
 }
 
 //display the login welcome ansi [if configured]...

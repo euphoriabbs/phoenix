@@ -202,7 +202,7 @@ var checkUnread = function(un) {
 
 // Would you like to read it?
 if(checkUnread(user.number))
-    if (console.yesno("\n\1n\1n :: \1n\1h\1kYou have mail. Would you like to read it now? ")) {
+    if (console.yesno( "\n\1n\1n :: \1n\1h\1kYou have mail. Would you like to read it now? " )) {
     bbs.menu.read_mail();
 }
 

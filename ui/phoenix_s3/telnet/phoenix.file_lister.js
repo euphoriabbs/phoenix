@@ -13,6 +13,6 @@ fileListerLightbar();
 
 
 //load the module from the lightbar library...
-//bbs.lightbar.file_lister();
+bbs.lightbar.file_lister();
 //bbs.exec("/srv/phoenix/sbbs/exec/filelister-lb.js");
 

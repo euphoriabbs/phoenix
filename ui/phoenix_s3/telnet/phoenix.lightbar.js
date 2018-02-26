@@ -1453,7 +1453,7 @@ function main() {
 		if (bAnsi) {
 
 			//Ansi User
-			var sRet = pausePrompt("p a u s e");
+			var sRet = pausePrompt("c o n t i n u e");
 			if (sRet != "") {
 				sleep(10)
 				while (console.inkey() != "") {};
@@ -1463,7 +1463,9 @@ function main() {
 				console.ungetstr("\r");
 			}
 		} else {
-			console.print("\1h\1n\r:: p a u s e ::"); //Ascii User, display default prompt.
+
+			// Ascii User
+			console.print("\1h\1n\r:: c o n t i n u e ::"); //Ascii User, display default prompt.
 			sleep(100);
 		}
 		bbs.menu.paused = false;
