@@ -39,7 +39,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
     //commands available for the menu...
-	switch(cmdkey=console.getkeys("MFECXIORWPG;@#$%-",K_UPPER)) {
+	switch(cmdkey=console.getkeys("MFECXIORWPGQ;@#$%-",K_UPPER)) {
 		case 'M':	//message menu...
 			if (do_lightbar_prompts  && user.security.exemptions&UFLAG_M) {
 					bbs.phoenix.menu_new_msg_scan();
@@ -120,17 +120,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '%':	//chat menu...
 			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...
-
-					//if random is true...
-					if(do_random_ansi) {
-					randomAnsi();
-
-					//other wise...
-					}else{
-					bbs.ansi_slow("art.phoenix.logoff");
-					}
-					bbs.hangup();
+		case '-':	//information...
+			bbs.phoenix.menu_information();
 			break;
 		default:
 			break;
@@ -205,17 +196,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '%':	//chat menu...
 			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...
-
-					//if random is true...
-					if(do_random_ansi) {
-					randomAnsi();
-
-					//other wise...
-					}else{
-					bbs.ansi_slow("art.phoenix.logoff");
-					}
-					bbs.hangup();
+		case '-':	//information...
+			bbs.phoenix.menu_information();
 			break;
 		default:
 			break;
@@ -548,17 +530,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '%':	//chat menu...
 			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...
-
-					//if random is true...
-					if(do_random_ansi) {
-					randomAnsi();
-
-					//other wise...
-					}else{
-					bbs.ansi_slow("art.phoenix.logoff");
-					}
-					bbs.hangup();
+		case '-':	//information...
+			bbs.phoenix.menu_information();
 			break;
 		default:
 			break;
@@ -624,17 +597,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '%':	//chat menu...
 			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...
-
-					//if random is true...
-					if(do_random_ansi) {
-					randomAnsi();
-
-					//other wise...
-					}else{
-					bbs.ansi_slow("art.phoenix.logoff");
-					}
-					bbs.hangup();
+		case '-':	//information...
+			bbs.phoenix.menu_information();
 			break;
 		default:
 			break;
@@ -700,17 +664,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '%':	//chat menu...
 			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...
-
-					//if random is true...
-					if(do_random_ansi) {
-					randomAnsi();
-
-					//other wise...
-					}else{
-					bbs.ansi_slow("art.phoenix.logoff");
-					}
-					bbs.hangup();
+		case '-':	//information...
+			bbs.phoenix.menu_information();
 			break;
 		default:
 			break;
@@ -780,7 +735,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 			bbs.temp_xfer();
 			break;
 		case 'L':	//list files in current directory...
-			bbs.menu.list_files();
+			//bbs.menu.list_files();
+			bbs.exec_xtrn("LBFILES"); //load("filearea-lb.js");
 			break;
 		case 'N':	//new file scan...
 			bbs.scan_dirs(SCAN_NEW, true);
@@ -820,17 +776,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '%':	//chat menu...
 			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...
-
-					//if random is true...
-					if(do_random_ansi) {
-					randomAnsi();
-
-					//other wise...
-					}else{
-					bbs.ansi_slow("art.phoenix.logoff");
-					}
-					bbs.hangup();
+		case '-':	//information...
+			bbs.phoenix.menu_information();
 			break;
 		default:
 			break;
@@ -896,17 +843,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '%':	//chat menu...
 			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...
-
-					//if random is true...
-					if(do_random_ansi) {
-					randomAnsi();
-
-					//other wise...
-					}else{
-					bbs.ansi_slow("art.phoenix.logoff");
-					}
-					bbs.hangup();
+		case '-':	//information...
+			bbs.phoenix.menu_information();
 			break;
 		default:
 			break;
@@ -969,17 +907,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '%':	//chat menu...
 			bbs.exec("?irc -a localhost 6667 #euphoria");
 			break;
-		case '-':	//logoff...
-
-					//if random is true...
-					if(do_random_ansi) {
-					randomAnsi();
-
-					//other wise...
-					}else{
-					bbs.ansi_slow("art.phoenix.logoff");
-					}
-					bbs.hangup();
+		case '-':	//information...
+			bbs.phoenix.menu_information();
 			break;
 		default:
 			break;

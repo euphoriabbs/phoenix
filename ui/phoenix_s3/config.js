@@ -140,14 +140,14 @@ do_node_list = false;
 do_gallery = false;
 
 //name the system notices sub id to be scanned for new system notices...
-var notices = "notices";
+var notices = 0;
 
 /* e x t e r n a l _ m o d u l e s - c o n f i g */
 
 /******************************************************
  below are boolean variables for the above mentioned
  section.  these variables can only be set to true or
- false.  for more indepth modification of phoenix/s3
+ false.  for more in depth modification of phoenix/s3
  you will need to edit the source code.
 ******************************************************/
 
@@ -161,34 +161,34 @@ var pausePrompt = "\1n\1h\1c[\1n\1h\1kpause\1n\1h\1c]\1n";
 do_message_reader = true;
 
 //if disabled... enter your desired string here...
-var messageReader = "\1nrﬁﬁ›h±ﬁn˛ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::y <n?-hhkelpny>hk y;n";
+var messageReader = "\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::y <n?-hhkelpny>hk y;n";
 
 //function to create custom strings for message/email readers...
 function messageReaderStrings () {
 
     //make the according strings match the lightbar reader [even if disabled]...
-    bbs.replace_text(33,"\r\n\1nrﬁﬁ›h±ﬁn˛ shkaving..."); //saving statement...
-    bbs.replace_text(34,"\r\n\1nrﬁﬁ›h±ﬁn˛ shkaved \1n%lun characters (n%un lines)...n"); //saved statement...
-    bbs.replace_text(35,"\r\n\1nrﬁﬁ›h±ﬁn˛ whkriting index..."); //writing index statement...
-    bbs.replace_text(37,"\r\n\1nrﬁﬁ›h±ﬁn˛ phkosted on \1n%s %s\r\n"); //posted on statement...
-    bbs.replace_text(11,"\r\n\1nrﬁﬁ›h±ﬁn˛ phkost on \1n%s %s"); //post on question...
-    bbs.replace_text(19,"\r\n\1nrﬁﬁ›h±ﬁn˛ phkosting on \1n%s %s"); //posting on statement...
-    bbs.replace_text(597,"\r\n\r\n\1nrﬁﬁ›h±ﬁn˛ phkost to: "); //post to...
-    bbs.replace_text(21,"\r\n\1nrﬁﬁ›h±ﬁn˛ shkubject...\r\n\1nrﬁﬁ›h±ﬁn˛ "); //subject...
-    bbs.replace_text(30,"\r\n\1nrﬁﬁ›h±ﬁn˛ ahkborted...\r\n\1n\1k"); //aborted...
-    bbs.replace_text(56,"\r\n\1nrﬁﬁ›h±ﬁn˛ fhkorward mail to\1n\1h\1y: ");	//forward mail to...
+    bbs.replace_text(33,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. shkaving..."); //saving statement...
+    bbs.replace_text(34,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. shkaved \1n%lun characters (n%un lines)...n"); //saved statement...
+    bbs.replace_text(35,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. whkriting index..."); //writing index statement...
+    bbs.replace_text(37,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. phkosted on \1n%s %s\r\n"); //posted on statement...
+    bbs.replace_text(11,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. phkost on \1n%s %s"); //post on question...
+    bbs.replace_text(19,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. phkosting on \1n%s %s"); //posting on statement...
+    bbs.replace_text(597,"\r\n\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. phkost to: "); //post to...
+    bbs.replace_text(21,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. shkubject...\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. "); //subject...
+    bbs.replace_text(30,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. ahkborted...\r\n\1n\1k"); //aborted...
+    bbs.replace_text(56,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. fhkorward mail to\1n\1h\1y: ");	//forward mail to...
 
     //string changes for the help menu and additional commands...
-    bbs.replace_text(48,"\r\n\1nrﬁﬁ›h±ﬁn˛ shn\1k\1htart with number \1n\1y\1h<<w%lu\1ny>> \1n\1y\1h; w"); //start with # string...
-    bbs.replace_text(76,"\r\n\1nrﬁﬁ›h±ﬁn˛ s\1n\1h\1ktring to search for \1n\1y\1h; \1h\1w"); //string to search for...
-    bbs.replace_text(625,"\r\n\1nrﬁﬁ›h±ﬁn˛ d\1n\1k\1hisplay subjects only "); //display subjects only question...
-    bbs.replace_text(70,"\r\n\1nrﬁﬁ›h±ﬁn˛ \1np\1n\1h\1kost \1n\1h\1w:: \1n\1y<<\1n\1h\1w%un\1y\1h>> <<h\1n\1w\1h%un\1y>> h\1w%lun/h\1w%lu\r\n"); //continuous read prompt...
-    bbs.replace_text(620,"\r\n\1nrﬁﬁ›h±ﬁn˛ \1nr\1n\1h\1kemove sub from newscan list"); //bypass subboard from newscan question....
-    bbs.replace_text(10,"\r\n\1nrﬁﬁ›h±ﬁn˛ \1ne\1n\1h\1kmail username or number \1n\1h\1y; \1n"); //reply via email option...
-    bbs.replace_text(432,"\r\n\1nrﬁﬁ›h±ﬁn˛ \1nn\1h\1ketmail  \1n\1h\1y; \1nh%s\r\n");  //netmail info...
-    bbs.replace_text(499,"\r\n\1nrﬁﬁ›h±ﬁn˛ \1nf\1n\1h\1korward to netmail account"); //forward mail question...
-    bbs.replace_text(62,"\r\n\1nrﬁﬁ›h±ﬁn˛ \1ns\1n\1h\1kending netmail to \1n%s\r\n\1nrﬁﬁ›h±ﬁn˛ \1nf\1h\1krom \1n%s\r\n"); //sending netmail info...
-    bbs.replace_text(18,"\r\n\1nrﬁﬁ›h±ﬁn˛ \1ns\1n\1h\1kending email to \1n%s\r\n"); //sending email statement...
+    bbs.replace_text(48,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. shn\1k\1htart with number \1n\1y\1h<<w%lu\1ny>> \1n\1y\1h; w"); //start with # string...
+    bbs.replace_text(76,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. s\1n\1h\1ktring to search for \1n\1y\1h; \1h\1w"); //string to search for...
+    bbs.replace_text(625,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. d\1n\1k\1hisplay subjects only "); //display subjects only question...
+    bbs.replace_text(70,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. \1np\1n\1h\1kost \1n\1h\1w:: \1n\1y<<\1n\1h\1w%un\1y\1h>> <<h\1n\1w\1h%un\1y>> h\1w%lun/h\1w%lu\r\n"); //continuous read prompt...
+    bbs.replace_text(620,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. \1nr\1n\1h\1kemove sub from newscan list"); //bypass subboard from newscan question....
+    bbs.replace_text(10,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. \1ne\1n\1h\1kmail username or number \1n\1h\1y; \1n"); //reply via email option...
+    bbs.replace_text(432,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. \1nn\1h\1ketmail  \1n\1h\1y; \1nh%s\r\n");  //netmail info...
+    bbs.replace_text(499,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. \1nf\1n\1h\1korward to netmail account"); //forward mail question...
+    bbs.replace_text(62,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. \1ns\1n\1h\1kending netmail to \1n%s\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. \1nf\1h\1krom \1n%s\r\n"); //sending netmail info...
+    bbs.replace_text(18,"\r\n\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. \1ns\1n\1h\1kending email to \1n%s\r\n"); //sending email statement...
 
     //make the from, subject, to ... listing headers and format match the reader...
     bbs.replace_text(65,"_\r\nnh      f\1n\1h\1krom\1n...                \1nt\1n\1h\1ko\1n...                    \1ns\1n\1h\1kubject\1n...\r\nn"); //list header...
@@ -200,7 +200,7 @@ function messageReaderStrings () {
 do_email_reader = true;
 
 //if disabled... enter your desired string here...
-var emailReader = "\1nrﬁﬁ›h±ﬁn˛ rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::y <n?-hhkelpny>hk y;n";
+var emailReader = "\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::y <n?-hhkelpny>hk y;n";
 
 //use the file lister lightbar?
 do_file_lister = true;
@@ -314,11 +314,11 @@ function mainLightbarPrompt () {
     string.center = "";
 
     //create a list of lightbar options w/ strings...
-    string.optionOne     = "\1n\1n\1r\1h[\1n\1h\1wmain\1n\1h\1r]\1n message  file  chat  logoff ";
-    string.optionTwo     = "\1n\1n main \1n\1n\1r\1h[\1n\1h\1wmessage\1n\1h\1r]\1n file  chat  logoff ";
-    string.optionThree   = "\1n\1n main  message \1n\1n\1r\1h[\1n\1h\1wfile\1n\1h\1r]\1n chat  logoff ";
-    string.optionFour    = "\1n\1n main  message  file \1n\1n\1r\1h[\1n\1h\1wchat\1n\1h\1r]\1n logoff ";
-    string.optionFive    = "\1n\1n main  message  file  chat \1n\1n\1r\1h[\1n\1h\1wlogoff\1n\1h\1r]\1n";
+    string.optionOne     = "\1n\1n\1r\1h[\1n\1h\1wmain\1n\1h\1r]\1n message  file  chat  info ";
+    string.optionTwo     = "\1n\1n main \1n\1n\1r\1h[\1n\1h\1wmessage\1n\1h\1r]\1n file  chat  info ";
+    string.optionThree   = "\1n\1n main  message \1n\1n\1r\1h[\1n\1h\1wfile\1n\1h\1r]\1n chat  info ";
+    string.optionFour    = "\1n\1n main  message  file \1n\1n\1r\1h[\1n\1h\1wchat\1n\1h\1r]\1n info ";
+    string.optionFive    = "\1n\1n main  message  file  chat \1n\1n\1r\1h[\1n\1h\1winfo\1n\1h\1r]\1n";
 
     //now launch the prompt [if enabled]...
     bbs.lightbar.prompt(string);
@@ -363,11 +363,11 @@ function messageLightbarPrompt () {
     string.center = "        ";
 
     //create a list of lightbar options w/ strings...
-    string.optionOne     = "\1n\1n\1c[\1n\1h\1wm\1n a i n\1n\1c]\1n  \1n\1b\1hm \1n\1be s s a g e   \1n\1b\1hf \1n\1bi l e   \1n\1b\1hc \1n\1bh a t   \1n\1b\1hl \1n\1bo g o f f  ";
-    string.optionTwo     = "\1n\1b\1h m \1n\1ba i n  \1n\1c[\1n\1h\1wm\1n e s s a g e\1n\1c]\1n  \1n\1b\1hf \1n\1bi l e   \1n\1b\1hc \1n\1bh a t   \1n\1b\1hl \1n\1bo g o f f  ";
-    string.optionThree   = "\1n\1b\1h m \1n\1ba i n   \1n\1b\1hm \1n\1be s s a g e  \1n\1c[\1n\1h\1wf\1n i l e\1n\1c]\1n  \1n\1b\1hc \1n\1bh a t   \1n\1b\1hl \1n\1bo g o f f  ";
-    string.optionFour    = "\1n\1b\1h m \1n\1ba i n   \1n\1b\1hm \1n\1be s s a g e   \1n\1b\1hf \1n\1bi l e  \1n\1c[\1n\1h\1wc\1n h a t\1n\1c]\1n  \1n\1b\1hl \1n\1bo g o f f  ";
-    string.optionFive    = "\1n\1b\1h m \1n\1ba i n   \1n\1b\1hm \1n\1be s s a g e   \1n\1b\1hf \1n\1bi l e   \1n\1b\1hc \1n\1bh a t  \1n\1c[\1n\1h\1wl\1n o g o f f\1n\1c]\1n ";
+    string.optionOne     = "\1n\1n\1c[\1n\1h\1wm\1n a i n\1n\1c]\1n  \1n\1b\1hm \1n\1be s s a g e   \1n\1b\1hf \1n\1bi l e   \1n\1b\1hc \1n\1bh a t   \1n\1b\1hi \1n\1bn f o  ";
+    string.optionTwo     = "\1n\1b\1h m \1n\1ba i n  \1n\1c[\1n\1h\1wm\1n e s s a g e\1n\1c]\1n  \1n\1b\1hf \1n\1bi l e   \1n\1b\1hc \1n\1bh a t   \1n\1b\1hi \1n\1bn f o  ";
+    string.optionThree   = "\1n\1b\1h m \1n\1ba i n   \1n\1b\1hm \1n\1be s s a g e  \1n\1c[\1n\1h\1wf\1n i l e\1n\1c]\1n  \1n\1b\1hc \1n\1bh a t   \1n\1b\1hi \1n\1bn f o  ";
+    string.optionFour    = "\1n\1b\1h m \1n\1ba i n   \1n\1b\1hm \1n\1be s s a g e   \1n\1b\1hf \1n\1bi l e  \1n\1c[\1n\1h\1wc\1n h a t\1n\1c]\1n  \1n\1b\1hi \1n\1bn f o  ";
+    string.optionFive    = "\1n\1b\1h m \1n\1ba i n   \1n\1b\1hm \1n\1be s s a g e   \1n\1b\1hf \1n\1bi l e   \1n\1b\1hc \1n\1bh a t  \1n\1c[\1n\1h\1wi\1n n f o\1n\1c]\1n ";
 
     //now launch the prompt [if enabled]...
     bbs.lightbar.prompt(string);
@@ -412,11 +412,11 @@ function fileLightbarPrompt () {
     string.center = "  ";
 
     //create a list of lightbar options w/ strings...
-    string.optionOne     = "\1n\1h\1bm\1n\1bain \1n\1h\1kmessage file chat logoff ";
-    string.optionTwo     = "\1n\1h\1kmain \1n\1h\1bm\1n\1bessage \1n\1h\1kfile chat logoff ";
-    string.optionThree   = "\1n\1h\1kmain message \1n\1h\1bf\1n\1bile \1n\1h\1kchat logoff ";
-    string.optionFour    = "\1n\1h\1kmain message file \1n\1h\1bc\1n\1bhat \1n\1h\1klogoff ";
-    string.optionFive    = "\1n\1h\1kmain message file chat \1n\1h\1bl\1n\1bogoff ";
+    string.optionOne     = "\1n\1h\1bm\1n\1bain \1n\1h\1kmessage file chat info ";
+    string.optionTwo     = "\1n\1h\1kmain \1n\1h\1bm\1n\1bessage \1n\1h\1kfile chat info ";
+    string.optionThree   = "\1n\1h\1kmain message \1n\1h\1bf\1n\1bile \1n\1h\1kchat info ";
+    string.optionFour    = "\1n\1h\1kmain message file \1n\1h\1bc\1n\1bhat \1n\1h\1kinfo ";
+    string.optionFive    = "\1n\1h\1kmain message file chat \1n\1h\1bi\1n\1bnfo ";
 
     //now launch the prompt [if enabled]...
     bbs.lightbar.prompt(string);
@@ -461,11 +461,11 @@ function emailLightbarPrompt () {
     string.center = " ";
 
     //create a list of lightbar options w/ strings...
-    string.optionOne     = "\1n\1h\1g/\1ymain\1n  message  file  chat  logoff \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
-    string.optionTwo     = " main \1n\1h\1g/\1ymessage\1n  file  chat  logoff \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
-    string.optionThree   = " main  message \1n\1h\1g/\1yfile\1n  chat  logoff \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
-    string.optionFour    = " main  message  file \1n\1h\1g/\1ychat\1n  logoff \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
-    string.optionFive    = " main  message  file  chat \1n\1h\1g/\1ylogoff\1n \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
+    string.optionOne     = "\1n\1h\1g/\1ymain\1n  message  file  chat  info \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
+    string.optionTwo     = " main \1n\1h\1g/\1ymessage\1n  file  chat  info \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
+    string.optionThree   = " main  message \1n\1h\1g/\1yfile\1n  chat  info \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
+    string.optionFour    = " main  message  file \1n\1h\1g/\1ychat\1n  info \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
+    string.optionFive    = " main  message  file  chat \1n\1h\1g/\1yinfo\1n \1n\1h\1g!\1n \1n\1h\1ycommand\1nLine\1n\1h\1g_ ";
 
     //now launch the prompt [if enabled]...
     bbs.lightbar.prompt(string);
@@ -503,11 +503,11 @@ function infoLightbarPrompt () {
     string.center = "           ";
 
     //create a list of lightbar options w/ strings...
-    string.optionOne     = "\1n\1c\1h[\1nmain\1h\1c]\1n\1h\1k message  file  chat  logoff ";
-    string.optionTwo     = "\1n\1h\1k main \1n\1c\1h[\1nmessage\1h\1c]\1n\1h\1k file  chat  logoff ";
-    string.optionThree   = "\1n\1h\1k main  message \1n\1c\1h[\1nfile\1h\1c]\1n\1h\1k chat  logoff ";
-    string.optionFour    = "\1n\1h\1k main  message  file \1n\1c\1h[\1nchat\1h\1c]\1n\1h\1k logoff ";
-    string.optionFive    = "\1n\1h\1k main  message  file  chat \1n\1c\1h[\1nlogoff\1h\1c]\1n";
+    string.optionOne     = "\1n\1c\1h[\1nmain\1h\1c]\1n\1h\1k message  file  chat  info ";
+    string.optionTwo     = "\1n\1h\1k main \1n\1c\1h[\1nmessage\1h\1c]\1n\1h\1k file  chat  info ";
+    string.optionThree   = "\1n\1h\1k main  message \1n\1c\1h[\1nfile\1h\1c]\1n\1h\1k chat  info ";
+    string.optionFour    = "\1n\1h\1k main  message  file \1n\1c\1h[\1nchat\1h\1c]\1n\1h\1k info ";
+    string.optionFive    = "\1n\1h\1k main  message  file  chat \1n\1c\1h[\1ninfo\1h\1c]\1n";
 
     //now launch the prompt [if enabled]...
     bbs.lightbar.prompt(string);
@@ -545,11 +545,11 @@ function msgScanMenuLightbarPrompt () {
     string.center = "                ";
 
     //create a list of lightbar options w/ strings...
-    string.optionOne     = "\1n\1h\1g[\1n\1h\1bmain\1n\1g\1h/\1n \1bmessage  file  chat  logoff \1h\1b.\1n \1n\1ccommand\1h_ ";
-    string.optionTwo     = " main \1n\1h\1g[\1n\1h\1bmessage\1n\1g\1h/\1n \1bfile  chat  logoff \1h\1b.\1n \1n\1ccommand\1h_ ";
-    string.optionThree   = " main  message \1n\1h\1g[\1n\1h\1bfile\1n\1g\1h/\1n \1bchat  logoff \1h\1b.\1n \1n\1ccommand\1h_ ";
-    string.optionFour    = " main  message  file \1n\1h\1g[\1n\1h\1bchat\1n\1g\1h/\1n \1blogoff \1h\1b.\1n \1n\1ccommand\1h_ ";
-    string.optionFive    = "\1n main  message  file  chat \1n\1h\1g[\1n\1h\1blogoff\1n\1g\1h/\1n\1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionOne     = "\1n\1h\1g[\1n\1h\1bmain\1n\1g\1h/\1n \1bmessage  file  chat  info \1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionTwo     = " main \1n\1h\1g[\1n\1h\1bmessage\1n\1g\1h/\1n \1bfile  chat  info \1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionThree   = " main  message \1n\1h\1g[\1n\1h\1bfile\1n\1g\1h/\1n \1bchat  info \1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionFour    = " main  message  file \1n\1h\1g[\1n\1h\1bchat\1n\1g\1h/\1n \1binfo \1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionFive    = "\1n main  message  file  chat \1n\1h\1g[\1n\1h\1binfo\1n\1g\1h/\1n\1h\1b.\1n \1n\1ccommand\1h_ ";
 
     //now launch the prompt [if enabled]...
     bbs.lightbar.prompt(string);
@@ -586,11 +586,11 @@ function msgConfigScanMenuLightbarPrompt () {
     string.center = "                ";
 
     //create a list of lightbar options w/ strings...
-    string.optionOne     = "\1n\1h\1g[\1n\1h\1bmain\1n\1g\1h/\1n \1bmessage  file  chat  logoff \1h\1b.\1n \1n\1ccommand\1h_ ";
-    string.optionTwo     = " main \1n\1h\1g[\1n\1h\1bmessage\1n\1g\1h/\1n \1bfile  chat  logoff \1h\1b.\1n \1n\1ccommand\1h_ ";
-    string.optionThree   = " main  message \1n\1h\1g[\1n\1h\1bfile\1n\1g\1h/\1n \1bchat  logoff \1h\1b.\1n \1n\1ccommand\1h_ ";
-    string.optionFour    = " main  message  file \1n\1h\1g[\1n\1h\1bchat\1n\1g\1h/\1n \1blogoff \1h\1b.\1n \1n\1ccommand\1h_ ";
-    string.optionFive    = "\1n main  message  file  chat \1n\1h\1g[\1n\1h\1blogoff\1n\1g\1h/\1n\1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionOne     = "\1n\1h\1g[\1n\1h\1bmain\1n\1g\1h/\1n \1bmessage  file  chat  info \1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionTwo     = " main \1n\1h\1g[\1n\1h\1bmessage\1n\1g\1h/\1n \1bfile  chat  info \1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionThree   = " main  message \1n\1h\1g[\1n\1h\1bfile\1n\1g\1h/\1n \1bchat  info \1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionFour    = " main  message  file \1n\1h\1g[\1n\1h\1bchat\1n\1g\1h/\1n \1binfo \1h\1b.\1n \1n\1ccommand\1h_ ";
+    string.optionFive    = "\1n main  message  file  chat \1n\1h\1g[\1n\1h\1binfo\1n\1g\1h/\1n\1h\1b.\1n \1n\1ccommand\1h_ ";
 
     //now launch the prompt [if enabled]...
     bbs.lightbar.prompt(string);
@@ -628,11 +628,11 @@ function fileSearchMenuLightbarPrompt () {
     string.center = "        ";
 
     //create a list of lightbar options w/ strings...
-    string.optionOne     = "\1n\1h\1g[\1n\1h\1bmain\1n\1g\1h/\1n \1bmessage  file  chat  logoff \1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
-    string.optionTwo     = " main \1n\1h\1g[\1n\1h\1bmessage\1n\1g\1h/\1n \1bfile  chat  logoff \1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
-    string.optionThree   = " main  message \1n\1h\1g[\1n\1h\1bfile\1n\1g\1h/\1n \1bchat  logoff \1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
-    string.optionFour    = " main  message  file \1n\1h\1g[\1n\1h\1bchat\1n\1g\1h/\1n \1blogoff \1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
-    string.optionFive    = "\1n main  message  file  chat \1n\1h\1g[\1n\1h\1blogoff\1n\1g\1h/\1n\1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
+    string.optionOne     = "\1n\1h\1g[\1n\1h\1bmain\1n\1g\1h/\1n \1bmessage  file  chat  info \1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
+    string.optionTwo     = " main \1n\1h\1g[\1n\1h\1bmessage\1n\1g\1h/\1n \1bfile  chat  info \1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
+    string.optionThree   = " main  message \1n\1h\1g[\1n\1h\1bfile\1n\1g\1h/\1n \1bchat  info \1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
+    string.optionFour    = " main  message  file \1n\1h\1g[\1n\1h\1bchat\1n\1g\1h/\1n \1binfo \1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
+    string.optionFive    = "\1n main  message  file  chat \1n\1h\1g[\1n\1h\1binfo\1n\1g\1h/\1n\1h\1b .\1n \\\ . search _ menu :: \1n\1ccommand\1h_ ";
 
     //now launch the prompt [if enabled]...
     bbs.lightbar.prompt(string);

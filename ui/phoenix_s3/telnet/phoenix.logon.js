@@ -131,7 +131,7 @@ console.putmsg(center + three + pause);console.ansi_left(80);
 bbs.replace_text(67,"\r\n");
 
 //must be set to an active 'system notices' sub or will cause errors...
-bbs.scan_posts(""+ notices +"", 2 /* SCAN_NEW */);
+bbs.scan_msgs(notices,2);
 
 //now return the message scanner back to normal...
 bbs.revert_text(67);

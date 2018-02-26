@@ -808,7 +808,7 @@ bbs.replace_text(477,"  \1n\1h\1c>> \1n\1h\1kl\1n\1h\1c_ \1nscreen length       
 bbs.replace_text(486,"  \1n\1h\1c>> \1n\1h\1kr\1n\1h\1c_ \1nremember current sub       n:: c%s\r\n");
 bbs.replace_text(488,"  \1n\1h\1c>> \1n\1h\1km\1n\1h\1c_ \1nforward e-mail to netmail  n:: c%s\r\n");
 bbs.replace_text(493,"  \1n\1h\1c>> \1n\1h\1kz\1n\1h\1c_ \1ndefault download protocol  n:: c%s c%s\r\n");
-bbs.replace_text(491,"  \1n\1h\1c>> \1n\1h\1kw\1n\1h\1c_ \1nchange password\r\n");
+bbs.replace_text(491,"  \1n\1h\1c>> \1n\1h\1kw\1n\1h\1c_ \1nchange password / signature \r\n");
 
 //the option prompt...
 bbs.replace_text(494,"\r\n\1n\1h\1c\\\\ \1npage_[\1n\1c1/2\1n] \1n[\1n\1cq\1n]uit [\1n\1center\1n] to continue //\1n\1h\1kcommand\1n\1h\1c_ ");
@@ -1069,27 +1069,29 @@ bbs.ansi_norm("art.phoenix.message_header-sub");
 
 	//list and select a subboard for the current group...
 	var grp_subs = msg_area.grp_list[bbs.curgrp].sub_list;
-	for (var i=0; i<grp_subs.length; i++)
-		if (grp_subs[i].can_read)
+	for (var i=0; i<grp_subs.length; i++) {
+		if (grp_subs[i].can_read) {
 
-//what the subboard output list will look like...
-console.print("               \1n\1h\1k" + ((i==bbs.cursub)?">>":"  ") + ((i+1)+"   ").substr(0,2) +  "\1k :: \1n\1c" + grp_subs[i].name + "\r\n");
+			//what the subboard output list will look like...
+			console.print("               \1n\1h\1k" + ((i==bbs.cursub)?">>":"  ") + ((i+1)+"   ").substr(0,2) +  "\1k :: \1n\1c" + grp_subs[i].name + "\r\n");
+		}
+	}
 
-//display the ansi footer file [if configured]...
-if(do_message_footer) {
-	bbs.ansi_noclear("art.phoenix.message_footer-sub");
+	//display the ansi footer file [if configured]...
+	if (do_message_footer) {
+		bbs.ansi_noclear("art.phoenix.message_footer-sub");
 
-	//send the cursor to a specific location...
-	console.gotoxy(77,6);
+		//send the cursor to a specific location...
+		console.gotoxy(77,6);
 
-//if disabled...
-}else{
-	console.print("\r\n\1nprompt:\1n ");	//put your string here...
-}
+	//if disabled...
+	}
+	else {
+		console.print("\r\n\1nprompt:\1n ");	//put your string here...
+	}
 
-//show the current subboard location...
-bbs.cursub = console.getnum(grp_subs.length)-1;
-
+	//show the current subboard location...
+	bbs.cursub = console.getnum(grp_subs.length)-1;
 }
 
 //name the select group routine...
@@ -1138,7 +1140,8 @@ bbs.replace_text(169,"\1n\1k---]");
 
 //load the baja string to execute the file listings...
 //bbs.menu.baja("setstr *.*" + "\r\n" + "file_list");
-system.exec("?filearea-lb");
+//bbs.exec("/srv/phoenix/sbbs/exec/filearea-lb.js");
+//bbs.list_files(bbs.cursub);
 
 }
 
@@ -1243,7 +1246,7 @@ bbs.menu.file_select_library = function() {
 
 	var lib_list = file_area.lib_list;
 	for (var i=0; i<lib_list.length; i++)
-		console.print("               \1n\1h\1k" + ((i==bbs.curlib)?">>":"  ") + ((i+1)+"   ").substr(0,2) +  "\1k :: \1b" + lib_list[i].name + "\r\n");
+		console.print("               \1n\1h\1k" + ((i==bbs.curlib)?">>":" ") + ((i+1)+"   ").substr(0,2) +  "\1k :: \1b" + lib_list[i].name + "\r\n");
 
 //display the ansi footer file [if configured]...
 if(do_file_footer) {
