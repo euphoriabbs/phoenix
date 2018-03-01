@@ -5,12 +5,29 @@ A Modern Bulletin Board System Built on Synchronet.
 # Download & Install
 	./Build
 
-# Configure
-	./euphoria-scfg
-and...
-	vim euphoria-sbbs.ini
-# Server Start
-	./euphoria-sbbs
+# Directory Structure
+
+	root@euphoriabbs:/srv/phoenix# ls -alh
+
+	drwxr-xr-x  5 root root 4.0K Feb 24 07:03 .
+	drwxr-xr-x  4 root root 4.0K Feb 25 06:28 ..
+	drwxr-xr-x  8 root root 4.0K Feb 26 15:15 .git
+	-rw-r--r--  1 root root   77 Feb 16 01:53 .gitignore
+	-rwxr-xr-x  1 root root 3.7K Feb 24 20:14 Build
+	-rw-r--r--  1 root root 1.2K Feb 24 06:58 README.md
+	lrwxrwxrwx  1 root root   23 Feb 16 02:18 data
+	-rwxr-xr-x  1 root root   88 Feb 23 18:53 euphoria-allusers
+	-rwxr-xr-x  1 root root   86 Feb 16 02:18 euphoria-jsexec
+	-rwxr-xr-x  1 root root   88 Feb 23 18:45 euphoria-makeuser
+	-rwxr-xr-x  1 root root   84 Feb 24 02:20 euphoria-node
+	-rwxr-xr-x  1 root root   84 Feb 16 02:18 euphoria-sbbs
+	lrwxrwxrwx  1 root root   31 Feb 16 02:18 euphoria-sbbs.ini
+	-rwxr-xr-x  1 root root   84 Feb 16 02:18 euphoria-scfg
+	lrwxrwxrwx  1 root root   27 Feb 16 02:18 logs
+	drwxr-xr-x 17 root root 4.0K Feb 16 02:22 sbbs
+	drwxr-xr-x  3 root root 4.0K Feb 16 01:52 ui
+
+	root@euphoriabbs:/srv/phoenix#
 
 # Post Installation Setup Notes
 A few things I've ran into with recent builds of SBBS that are worth checking into on a first installation of Euphoria.
@@ -22,11 +39,7 @@ A few things I've ran into with recent builds of SBBS that are worth checking in
 Linux
 
 # Issues
-https://github.com/euphoriabbs/euphoria_s3/issues
+https://github.com/euphoriabbs/phoenix/issues
 
 # Copyright
-We've yet to figure out which license to go with. But it will be open source, of course.
-
-
-
-
+MIT
