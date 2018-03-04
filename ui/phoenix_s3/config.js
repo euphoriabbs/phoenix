@@ -5,16 +5,18 @@
 /******************************************************
  below are boolean variables for the above mentioned
  section.  these variables can only be set to true or
- false.  for more indepth modification of phoenix/s3
+ false.  for more in depth modification of phoenix/s3
  you will need to edit the source code.
 ******************************************************/
 
 // lock new system users
 
-do_no_new_users = true;
+var do_no_new_users = true;
 
 //use the random long ansi generator?
-do_random_ansi = false;
+var do_random_ansi = false;
+
+var do_welcome_ansi = true;
 
 //if random ansi's are enabled, assign a function to handle random ansis...
 function randomAnsi () {
@@ -45,19 +47,19 @@ function randomAnsi () {
 ******************************************************/
 
 //disable your system to ascii users?
-do_ascii = true;
+var do_ascii = true;
 
 //log all remote connections?
-do_login_log = true;
+var do_login_log = true;
 
 //display the welcome ansi?
-do_welcome_ansi = true;
+var o_welcome_ansi = true;
 
 //use the matrix login?
-do_matrix_login = false;
+var do_matrix_login = false;
 
 //display login statistics on user login?
-do_login_statistics = true;
+var do_login_statistics = true;
 
 //name the default message editor...
 var editor = "SLYICE";
@@ -72,10 +74,10 @@ var editor = "SLYICE";
 ******************************************************/
 
 //log all user logons?
-do_logon_log = true;
+var do_logon_log = true;
 
 //use the quick logon feature?
-do_quick_logon = true;
+var do_quick_logon = true;
 
 //if enabled, send these strings to the lightbar library...
 function quickLogonLightbar (handlerName) {
@@ -97,19 +99,24 @@ function quickLogonLightbar (handlerName) {
 }
 
 //display the quick logon welcome ansi?
-do_quick_welcome = false;
+var do_quick_welcome = false;
 
 //display the scan header text animation sequence?
-do_sequence_scan = true;
+// This all scans the sysop notices sub and displays new messages.
+
+var do_sequence_scan = true;
+
+var notices = 0; //name the system notices sub id to be scanned for new system notices...
+
 
 //display the ansi logon sequence?
-do_logon_ansi = true;
+var do_logon_ansi = true;
 
 //display the user statistics?
-do_user_stats = false;
+var do_user_stats = false;
 
 //display the oneliners?
-do_oneliners = true;
+var do_oneliners = true;
 
 //if enabled, send these strings to the lightbar library...
 function onelinerLightbar (handlerName) {
@@ -131,16 +138,13 @@ function onelinerLightbar (handlerName) {
 }
 
 //display the last few callers?
-do_lastcalls = true;
+var do_lastcalls = true;
 
 //display the node listings?
-do_node_list = false;
+var do_node_list = false;
 
 //display the ansi gallery?
-do_gallery = false;
-
-//name the system notices sub id to be scanned for new system notices...
-var notices = 0;
+var do_gallery = false;
 
 /* e x t e r n a l _ m o d u l e s - c o n f i g */
 
@@ -152,13 +156,13 @@ var notices = 0;
 ******************************************************/
 
 //use the animated pause prompt?
-do_animated_pause = true;
+var do_animated_pause = true;
 
 //if disabled... enter your desired string here...
 var pausePrompt = "\1n\1h\1c[\1n\1h\1kpause\1n\1h\1c]\1n";
 
 //use the message reader lightbar?
-do_message_reader = true;
+var do_message_reader = true;
 
 //if disabled... enter your desired string here...
 var messageReader = "\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::y <n?-hhkelpny>hk y;n";
@@ -197,27 +201,26 @@ function messageReaderStrings () {
 }
 
 //use the email reader lightbar?
-do_email_reader = true;
+var do_email_reader = false;
 
 //if disabled... enter your desired string here...
 var emailReader = "\1n\1h\1r\\\1n\1r\\\1n\1h\1k.. rhkeadingn y<<hw@SMB_CURMSG@\1yof\1n\1h\1w@SMB_MSGS@y>>kw ::y <n?-hhkelpny>hk y;n";
 
 //use the file lister lightbar?
-do_file_lister = true;
+var do_file_lister = true;
 
 //if enabled, send these strings to the lightbar library...
-function fileListerLightbar () {
+function fileListerLightbar() {
 
     //assign an array to the strings...
-    var string = new Array();
+    var string = [];
 
-    //create a list of lightbar options w/ strings...
-    string.optionOne	= "n\r6∞±≤€ €0ﬁ cNwexthb kprev flag view skip quit nﬁhk˛n nk6 @LIB@ nk6+ nk6@DIR@nk6>n";
-    string.optionTwo	= "n\r6∞±≤€ €0ﬁ hknext ncPwrevhk flag view skip quit nﬁhk˛n nk6 goto nk6previous nk6displaynk6>n";
-    string.optionThree	= "n\r6∞±≤€ €0ﬁ hknext prev ncFwlaghk view skip quit nﬁhk˛n nk6 flag nk6files nk6for nk6download nk6laternk6>n";
-    string.optionFour	= "n\r6∞±≤€ €0ﬁ hknext prev flag ncVwiewhk skip quit nﬁhk˛n nk6 view nk6contents nk6of nk6a nk6filenk6>n";
-    string.optionFive	= "n\r6∞±≤€ €0ﬁ hknext prev flag view ncSwkiphk quit nﬁhk˛n nk6 skip nk6ahead nk6to nk6next nk6directorynk6>n";
-    string.optionSix	= "n\r6∞±≤€ €0ﬁ hknext prev flag view skip ncQwuithk nﬁhk˛n nk6 quit nk6back nk6to nk6file nk6menunk6>n";
+    string.optionOne    = "\r\1n\1g\1h\\\1n\1g\\\1n\1h.\1n. [prev] next  flag  view  skip  quit  \1n||\1nk6 @LIB@ - @DIR@ \1nk6>n";
+    string.optionTwo    = "\r\1n\1g\1h\\\1n\1g\\\1n\1h.\1n.  prev [next] flag  view  skip  quit  \1n||\1nk6 @LIB@ - @DIR@ \1nk6>n";
+    string.optionThree  = "\r\1n\1g\1h\\\1n\1g\\\1n\1h.\1n.  prev  next [flag] view  skip  quit  \1n||\1nk6 @LIB@ - @DIR@ \1nk6>n";
+    string.optionFour   = "\r\1n\1g\1h\\\1n\1g\\\1n\1h.\1n.  prev  next  flag [view] skip  quit  \1n||\1nk6 @LIB@ - @DIR@ \1nk6>n";
+    string.optionFive   = "\r\1n\1g\1h\\\1n\1g\\\1n\1h.\1n.  prev  next  flag  view [skip] quit  \1n||\1nk6 @LIB@ - @DIR@ \1nk6>n";
+    string.optionSix    = "\r\1n\1g\1h\\\1n\1g\\\1n\1h.\1n.  prev  next  flag  view  skip [quit] \1n||\1nk6 @LIB@ - @DIR@ \1nk6>n";
 
     //now send the strings to the lightbar...
     bbs.lightbar.file_lister(string);
@@ -228,7 +231,7 @@ function fileListerLightbar () {
 var fileLister = "n\r6∞±≤€ €0ﬁ hknext prev flag view skip quit nﬁhk˛n nk6 @LIB@ nk6+ nk6@DIR@nk6>n";
 
 //use the yes/no and no/yes lightbars?
-do_yesno_lightbar = true;
+var do_yesno_lightbar = true;
 
 //if enabled, send these strings to the lightbar library...
 function yesnoLightbar (handlerName) {

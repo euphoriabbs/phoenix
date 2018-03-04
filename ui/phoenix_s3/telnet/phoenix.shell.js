@@ -18,7 +18,8 @@ bbs.ansi_norm("art.phoenix.menu_main");
 if(do_rumors && user.security.exemptions&UFLAG_N) {
 
 	//where you would like the rumor located...
-	console.gotoxy(rumorMain_column,rumorMain_line);console.print(rumorMain_string);
+	console.gotoxy(rumorMain_column,rumorMain_line);
+	console.print(rumorMain_string);
 
 	//display the rumor...
 	bbs.menu.rumor_display();
@@ -39,7 +40,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
     //commands available for the menu...
-	switch(cmdkey=console.getkeys("MFECXIORWPGQ;@#$%-",K_UPPER)) {
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?;@#$%-",K_UPPER)) {
 		case 'M':	//message menu...
 			if (do_lightbar_prompts  && user.security.exemptions&UFLAG_M) {
 					bbs.phoenix.menu_new_msg_scan();
@@ -157,7 +158,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
     //commands available for the menu...
-	switch(cmdkey=console.getkeys("SKULCYBQ;@#$%-",K_UPPER)) {
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?;@#$%-",K_UPPER)) {
 		case 'S':	//system information...
 			 bbs.menu.system_info();
 			break;
@@ -470,29 +471,32 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
 //commands available for the menu...
-	switch(cmdkey=console.getkeys("AGRPONSC@;Q[]<>#$%-",K_UPPER)) {
-		case '[':	//previous message sub...
-			bbs.lastsub=bbs.cursub;bbs.cursub--;if (bbs.lastsub == bbs.cursub) bbs.cursub = msg_area.grp_list[bbs.curgrp].sub_list.length-1
-			break;
-		case ']':	//next message sub...
-			bbs.lastsub=bbs.cursub;bbs.cursub++;if (bbs.lastsub == bbs.cursub) bbs.cursub = 0
-			break;
-		case '<':	//previous message group...
-			bbs.lastgrp=bbs.curgrp;bbs.curgrp--;if (bbs.lastgrp == bbs.curgrp) bbs.curgrp = msg_area.grp_list.length-1
-			break;
-		case '>':	//next message group...
-			bbs.lastgrp=bbs.curgrp;bbs.curgrp++;if (bbs.lastgrp == bbs.curgrp) bbs.curgrp = 0
-			break;
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?@;Q#$%-",K_UPPER)) {
+
 		case 'A':	//check area listings...
 			bbs.menu.msg_select_subboard();
 			break;
-		case 'G':	//check group listings...
+
+        // Group / Conference Selector
+        case 'G':
 			bbs.menu.msg_select_group();
 			break;
-		case 'R':	//read messages...
+        case 'J': // for the OBV/2, Iniquity, Mystic peeps.
+			bbs.menu.msg_select_group();
+            break;
+
+        // Read Messages (indexed)
+        case 'I': // Index Listing (kinda like Mystic)
+            load("../../ui/phoenix_s3/mods/DDMsgAreaChooser.js");
+            bbs.menu.read_msgs();
+            break;
+
+        // Read Messages
+        case 'R':	//read messages...
 			bbs.menu.read_msgs();
 			break;
-		case 'P':	//post a message...
+
+        case 'P':	//post a message...
 		 	bbs.menu.post_msgs();
 			break;
 		case 'O':	//offline mail...
@@ -510,7 +514,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 			bbs.phoenix.menu_message_config_scan();
 			break;
 		case 'Q':	//quit to main...
-		        bbs.phoenix.menu_main();
+		    bbs.phoenix.menu_main();
 			break;
 
 		case ';':	//sysop commands...
@@ -533,8 +537,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 		case '-':	//information...
 			bbs.phoenix.menu_information();
 			break;
-		default:
-			break;
+        default:
+            break;
 	}
 
 //create loop point for the menu...
@@ -567,7 +571,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
     //commands available for the menu...
-	switch(cmdkey=console.getkeys("NYTCQ;@#$%-",K_UPPER)) {
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?;@#$%-",K_UPPER)) {
 		case 'N':   //new scan messages...
 			console.clear();bbs.scan_subs(SCAN_NEW);
 			break;
@@ -634,7 +638,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
     //commands available for the menu...
-	switch(cmdkey=console.getkeys("SYCIQ;@#$%-",K_UPPER)) {
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?;@#$%-",K_UPPER)) {
 		case 'S':	//scan configuration...
 			console.clear();bbs.cfg_msg_scan();
 			break;
@@ -712,32 +716,34 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
     //commands available for the menu...
-	switch(cmdkey=console.getkeys("[]<>AGTLNUDXBSQ;@#$%-",K_UPPER)) {
-		case '[':	//previous file library...
-			bbs.lastlib=bbs.curlib;bbs.curlib--;if (bbs.lastlib == bbs.curlib) bbs.curlib = file_area.lib_list.length-1
-			break;
-		case ']':	//next file library...
-			bbs.lastlib=bbs.curlib;bbs.curlib++;if (bbs.lastlib == bbs.curlib) bbs.curlib = 0
-			break;
-		case '<':	//previous file directory...
-			bbs.lastdir=bbs.curdir;bbs.curdir--;if (bbs.lastdir == bbs.curdir) bbs.curdir = file_area.lib_list[bbs.curlib].dir_list.length-1
-			break;
-		case '>':	//next file directory...
-			bbs.lastdir=bbs.curdir;bbs.curdir++;if (bbs.lastdir == bbs.curdir) bbs.curdir = 0
-			break;
-		case 'A':	//check directory listings...
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?;@#$%-",K_UPPER)) {
+
+        case 'A':	//check directory listings...
 			bbs.menu.file_select_directory();
 			break;
-		case 'G':	//check library listings...
+
+        case 'G':	//check library listings...
 			bbs.menu.file_select_library();
 			break;
-		case 'T':	//temporary directory...
+        case 'J':	// For OBV/2, Iniquity, Mystic peeps...
+			bbs.menu.file_select_library();
+			break;
+
+        case 'T':	//temporary directory...
 			bbs.temp_xfer();
 			break;
-		case 'L':	//list files in current directory...
-			//bbs.menu.list_files();
-			bbs.exec_xtrn("LBFILES"); //load("filearea-lb.js");
+
+        // File Lister
+		case 'L':
+			bbs.menu.list_files();
 			break;
+
+        // File Lister (indexed)
+        case 'I': // Index Listing (kinda like Mystic)
+			load("../../ui/phoenix_s3/mods/DDFileAreaChooser.js");
+			bbs.menu.list_files();
+            break;
+
 		case 'N':	//new file scan...
 			bbs.scan_dirs(SCAN_NEW, true);
 			break;
@@ -813,7 +819,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
     //commands available for the menu...
-	switch(cmdkey=console.getkeys("PEDFQ;@#$%-",K_UPPER)) {
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?;@#$%-",K_UPPER)) {
 		case 'P':	//configure file pointers...
 		    bbs.menu.config_pointers();
 			break;
@@ -880,7 +886,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 }
 
     //commands available for the menu...
-	switch(cmdkey=console.getkeys("RSFQ;@#$%-",K_UPPER)) {
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?;@#$%-",K_UPPER)) {
 		case 'R':	//read your email...
 		    bbs.menu.read_mail();
 			break;
@@ -939,7 +945,7 @@ if(do_lightbar_prompts_newscan) {
 	console.gotoxy(1,1); //put your x,y instructions here...
 }
 
-	switch(cmdkey=console.getkeys("NAGMQ",K_UPPER)) {
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?",K_UPPER)) {
 		case 'N':	//conduct a new message scan...
 			bbs.scan_subs(SCAN_NEW, true);
 			break;
@@ -984,7 +990,7 @@ if(do_lightbar_prompts_newscan) {
 	console.gotoxy(1,1); //put your x,y instructions here...
 }
 
-	switch(cmdkey=console.getkeys("NAGFQ",K_UPPER)) {
+	switch(cmdkey=console.getkeys("ABCDEFGHIJKLMNOPQRSTUVWXYZ?",K_UPPER)) {
 		case 'N':	//conduct a new file scan...
 			bbs.scan_dirs(SCAN_NEW, true);  // would like to show "no new files"
 			break;

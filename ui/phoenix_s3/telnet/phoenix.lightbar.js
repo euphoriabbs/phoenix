@@ -451,122 +451,118 @@ var no    = string.no
 //name the file lister modules routine...
 bbs.lightbar.file_lister = function(string) {
 
-//main function to run the spylister module...
-function main() {
 
-	//array of menu text lines
-	var options = new Array();
-	options[0] = string.optionOne
-	options[1] = string.optionTwo
-	options[2] = string.optionThree
-	options[3] = string.optionFour
-	options[4] = string.optionFive
-	options[5] = string.optionSix
+//array of menu text lines
+var options = new Array();
+options[0] = string.optionOne
+options[1] = string.optionTwo
+options[2] = string.optionThree
+options[3] = string.optionFour
+options[4] = string.optionFive
+options[5] = string.optionSix
 
-	//array of the commands to return...
-	var values = new Array();
-	values[0] = "N";
-	values[1] = "P";
-	values[2] = "B";
-	values[3] = "V";
-	values[4] = "S";
-	values[5] = "Q";
+//array of the commands to return...
+var values = new Array();
+values[0] = "P";
+values[1] = "N";
+values[2] = "B";
+values[3] = "V";
+values[4] = "S";
+values[5] = "Q";
 
-	//variables to hold the menu position and return value...
-	var current = 0;
-	var last = 5;
-	var ret = "";
+//variables to hold the menu position and return value...
+var current = 1;
+var last = 5;
+var ret = "";
 
-	//reset ctrl-c/abort...
-	if (bbs.sys_status&SS_ABORT) bbs.sys_status &= ~SS_ABORT;
+//reset ctrl-c/abort...
+if (bbs.sys_status&SS_ABORT)
+    bbs.sys_status &= ~SS_ABORT;
 
-	//begin menu input...
-	while (bbs.online && (ret=="")) {
-	bbs.menu.show_messages(); //show waiting messages, if any.
+//begin menu input...
+while (bbs.online && (ret=="")) {
+bbs.menu.show_messages(); //show waiting messages, if any.
 
-	//release cpu time...
-	sleep(20);
+//release cpu time...
+sleep(20);
 
-		//main order for the module...
-		if (current != last) {
-			console.ansi_left(80);
-			console.clearline();
-			console.putmsg(options[current]);
-			last=current;
-		}
-
-		//get an input waiting
-		var c = console.inkey();
-
-		//if no input
-		if (c == "") {
-			//if ctrl-c pressed
-			if (bbs.sys_status&SS_ABORT) {
-				//abort reading
-				bbs.sys_status &= ~SS_ABORT;
-				ret = "Q";
-			}
-			//sleep 1/10th of a second, to release cpu time
-			sleep(100);
-		//otherwise if there is input
-		}else{
-			//determin the key pressed
-			switch (c) {
-				//if left or up key
-				case (KEY_LEFT):
-				case (KEY_UP):
-					current--; //decrease the current menu option
-
-					//if outside of range
-					if (current < 0)
-						//set to end of range
-						current = options.length-1;
-					break;
-				//if right or down key pressed
-				case (KEY_RIGHT):
-				case (KEY_DOWN):
-					current++; //increase the current menu option
-
-					//if outside of range
-					if (current >= options.length)
-						current = 0;  //set to beginning of range
-					break;
-				//if cr or lf
-				case "\r":
-				case "\n":
-					//return the currently selected option
-					ret = values[current];
-					break;
-				//check other input
-				default:
-					//if a number
-					if (!isNaN(c)) {
-					//if a sysop
-					} else if (user.security.level >= 90) {
-						//check for valid input
-						if ("?BVESPQDM".indexOf(c.toUpperCase()) >= 0)
-							ret = c.toUpperCase();
-					}else{
-						//check for valid input
-						if ("?BVESPQ".indexOf(c.toUpperCase()) >= 0)
-							ret = c.toUpperCase();
-					}
-					break;
-			}
-		}
+	//main order for the module...
+	if (current != last) {
+		console.ansi_left(80);
+		console.clearline();
+		console.putmsg(options[current]);
+		last=current;
 	}
 
-	//if cold-key input append a cr
-	if ((user.settings&USER_COLDKEYS)&&(ret.indexOf("\r") < 0)) {
-		ret += "\r";
+	//get an input waiting
+	var c = console.inkey();
+
+	//if no input
+	if (c == "") {
+		//if ctrl-c pressed
+		if (bbs.sys_status&SS_ABORT) {
+			//abort listing files
+			bbs.sys_status &= ~SS_ABORT;
+			ret = "Q";
+		}
+		//sleep 1/10th of a second, to release cpu time
+		sleep(100);
+	//otherwise if there is input
+	}else{
+		//determine the key pressed
+		switch (c) {
+			//if left or up key
+			case (KEY_LEFT):
+			case (KEY_UP):
+				current--; //decrease the current menu option
+
+				//if outside of range
+				if (current < 0)
+					//set to end of range
+					current = options.length-1;
+				break;
+			//if right or down key pressed
+			case (KEY_RIGHT):
+			case (KEY_DOWN):
+				current++; //increase the current menu option
+
+				//if outside of range
+				if (current >= options.length)
+					current = 0;  //set to beginning of range
+				break;
+			//if cr or lf
+			case "\r":
+			case "\n":
+				//return the currently selected option
+				ret = values[current];
+				break;
+			//check other input
+			default:
+				//if a number
+				if (!isNaN(c)) {
+				//if a sysop
+				} else if (user.security.level >= 90) {
+					//check for valid input
+					if ("?BVESPQDRM".indexOf(c.toUpperCase()) >= 0)
+						ret = c.toUpperCase();
+				}else{
+					//check for valid input
+					if ("?BVESPQ".indexOf(c.toUpperCase()) >= 0)
+						ret = c.toUpperCase();
+				}
+				break;
+		}
 	}
-
-	//unget selected command key/option to the input buffer
-	console.ungetstr(ret);
-
 }
 
-main();
+//if cold-key input append a cr
+if ((user.settings&USER_COLDKEYS)&&(ret.indexOf("\r") < 0)) {
+	ret += "\r";
+}
+
+//unget selected command key/option to the input buffer
+console.ungetstr(ret);
+
 
 }
 

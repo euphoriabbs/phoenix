@@ -1,5 +1,8 @@
 //phoenix.file_lister.js
 
+load("../../ui/phoenix_s3/config.js");
+// load("../../ui/phoenix_s3/telnet/phoenix.menu.js");
+
 /* s t r i n g _ c u s t o m i z a t i o n */
 
 //additional strings to match the file lister...

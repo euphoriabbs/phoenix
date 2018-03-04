@@ -1,4 +1,5 @@
 //phoenix.menu.js
+load("sbbsdefs.js")
 
 /* p h o e n i x / s 3 _ m e n u _ l i b r a r y */
 
@@ -159,7 +160,7 @@ text = string[random]
 
 /* d a t e _ h a n d l i n g */
 
-//date handling funtions for javascript by tracker1...
+//date handling functions for javascript by tracker1...
 Date.prototype.months = Array("January","February","March","April","May","June","July","August","September","October","November","December");
 Date.prototype.days = Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
 Date.prototype.formatDate = function(strFormat) {
@@ -246,7 +247,7 @@ bbs.menu.baja = function(input) {
 
 /* x t r n _ m e n u - i n c l u d e s */
 
-//name the external menu library selectlist routine...
+//name the external menu library select list routine...
 bbs.mods.vanguard.selectList = function(options,x1,y1,x2,y2,defaultVal) {
 	/*********************************************************************
 	NOTES:
@@ -338,8 +339,8 @@ bbs.mods.vanguard.selectList = function(options,x1,y1,x2,y2,defaultVal) {
 		this.value = defaultVal;
 		this.current = 0;
 		this.start = 0;
-		this.opts = new Array(); //numeric array for internal use
-		this.optsVal = new Array(); //numeric array for internal use
+		this.opts = new Array(); // numeric array for internal use
+		this.optsVal = new Array(); // numeric array for internal use
 
 		for (var x in this.options) {
 			this.opts[this.opts.length] = this.options[x];
@@ -1009,7 +1010,7 @@ bbs.replace_text(67,"\1n\1k---");
 console.gotoxy(1,24);console.clearline();
 
 //display the desired output...
-console.print('\1nb���h��n� \1n\1creading messages...');
+console.print('\1nb���h��n� \1n\1nreading messages...');
 
 //create a slight delay...
 console.print('\1,\1,\1,\1,');
@@ -1027,6 +1028,9 @@ console.gotoxy(1,2);console.clearline();
 
 //post to...
 bbs.replace_text(597,"[2;1H\1n\1c\1hp\1n\1cost \1n\1c\1ht\1n\1co\1n\1h\1c_ \1n");
+
+// do you mean?
+bbs.replace_text(547,"\1_\1n\1b\1hDo you mean %s #%u (\1cY\1bes, \1cN\1bo, or \1cQ\1buit) ? \1n");
 
 //subject...
 bbs.replace_text(21,"[2;1H\1n\1c\1hs\1n\1cubject\1n\1c\1h_ \1n");
@@ -1141,7 +1145,8 @@ bbs.replace_text(169,"\1n\1k---]");
 //load the baja string to execute the file listings...
 //bbs.menu.baja("setstr *.*" + "\r\n" + "file_list");
 //bbs.exec("/srv/phoenix/sbbs/exec/filearea-lb.js");
-//bbs.list_files(bbs.cursub);
+bbs.list_files(bbs.cursub);
+//file_area.lib_list[bbs.curlib].dir_list[bbs.curdir].name;
 
 }
 
