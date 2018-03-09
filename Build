@@ -97,7 +97,8 @@ echo "export SBBSCTRL=$EUPHORIA_HOME/sbbs/ctrl" >> euphoria-allusers
 echo "$EUPHORIA_HOME/sbbs/exec/allusers" >> euphoria-allusers
 echo "exit 0" >> euphoria-allusers
 
-### (Temporary Workaround) Download Phoenix Data Files
+### Download Phoenix Data Files
+mkdir -p data/logs
 cd $EUPHORIA_HOME ;  cd data/ ; wget https://raw.githubusercontent.com/euphoriabbs/phoenix/dc70628c0f7c76abb6e7b6e9035509b577adb07e/phoenix_s3/data/data.phoenix.rumors.dat
 cd $EUPHORIA_HOME ;  cd data/ ; wget https://raw.githubusercontent.com/euphoriabbs/phoenix/dc70628c0f7c76abb6e7b6e9035509b577adb07e/phoenix_s3/data/data.phoenix.oneliners.dat
 
