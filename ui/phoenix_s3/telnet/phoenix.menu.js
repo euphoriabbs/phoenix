@@ -1895,12 +1895,15 @@ function showOnelinersAnsi(arrIn) {
         var username = (arrIn[i].user)
 
         var oneliner = arrIn[i].text;
+        var column_limit = ((console.screen_columns - username.length) - 17) - 3; // - username.length;
+
 
 		//where you want the data located...
-		console.ansi_gotoxy(17,14+i);
+        console.ansi_gotoxy(17,14+i);
+
 		console.print("" +
 			" \1n\1h\1y" + username +
-			"  \1n\1w" + oneliner.substring(0,45)); // not a good fix.
+			"  \1n\1w" + oneliner.substring(0,column_limit));
 	}
 }
 
