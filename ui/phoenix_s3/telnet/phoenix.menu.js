@@ -1357,10 +1357,12 @@ bbs.replace_text(622,"\r\n\r\n\1n\1h\1g :: \1n\1c\1hd\1n\1birectory, \1n\1h\1cl\
 console.clear();
 
 //display the statement...
-console.print("\1n\1h\1g :: \1n\1bsearching file names...");
+console.print("\1n\1h\1g :: \1n\1bsearching file names... (broken currently, sorry)");
 
 //execute command...
-bbs.menu.baja('file_find_name');
+// bbs.menu.baja('file_find_name'); // baja no workies...
+
+
 
 }
 
