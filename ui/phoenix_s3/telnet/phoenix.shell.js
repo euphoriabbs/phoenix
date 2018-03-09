@@ -492,7 +492,7 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
             break;
 
         // Read Messages
-        case 'R':	//read messages...
+        case 'R':	//read <messages className=""></messages>
 			bbs.menu.read_msgs();
 			break;
 
