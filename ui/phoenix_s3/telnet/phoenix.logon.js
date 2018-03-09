@@ -15,7 +15,9 @@ if(do_logon_log) {
 	bbs.menu.logon_log();
 }
 
-//load default phoenix/s3 values...
+// Euphoria system defaults. Mostly things we force on the user.
+// Such as a RENEGADE fallback shell and some other RG behavior.
+
 bbs.menu.user_defaults();
 
 /* r e m o v e _ o l d _ f i l e s */

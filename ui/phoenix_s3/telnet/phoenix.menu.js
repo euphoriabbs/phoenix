@@ -65,11 +65,17 @@ user.chat_settings|=CHAT_SPLITP;
 //no inactivity exemption...
 console.status|=CON_NO_INACT;
 
+/* R E N E G A D E */
+
 //expand to RENEGADE color codes... used for user signatures...
-system.settings|=SYS_RENEGADE
+system.settings|=SYS_RENEGADE;
 
 //changes the message reply command to renegade/iniquity/obv2 standard...
 system.settings|=SYS_RA_EMU;
+
+// force renegade command shell (for fallbacks)
+user.command_shell = "RENEGADE";
+
 
 //add flags required for user logon experience [if configured]...
 if(do_user_config_bbs && !user.security.exemptions&UFLAG_A) {
@@ -1177,7 +1183,8 @@ bbs.replace_text(325,"\r\n\1n\1r\1h  >> \1n\1h\1ktime to download \1n\1r\1h::n 
 bbs.ansi_norm("art.phoenix.downloads");
 
 //load the baja string to execute the download files...
-bbs.menu.baja("\r\n" + "file_download_batch" + "\r\n" + "if_true" + "\r\n" + "goto end" + "\r\n" + "end_if" + "\r\n" + "getfilespec" + "\r\n" + "if_true" + "\r\n" + "file_download" + "\r\n" + "end_if" + "\r\n" + ":end");
+// bbs.menu.baja("\r\n" + "file_download_batch" + "\r\n" + "if_true" + "\r\n" + "goto end" + "\r\n" + "end_if" + "\r\n" + "getfilespec" + "\r\n" + "if_true" + "\r\n" + "file_download" + "\r\n" + "end_if" + "\r\n" + ":end");
+bbs.batch_download();
 
 }
 
@@ -1885,13 +1892,15 @@ function getOneliners(strDataFile) {
 function showOnelinersAnsi(arrIn) {
 	console.print("\r\n");
 	for (var i=0; i<arrIn.length; i++) {
-		var username = (arrIn[i].user)
+        var username = (arrIn[i].user)
+
+        var oneliner = arrIn[i].text;
 
 		//where you want the data located...
 		console.ansi_gotoxy(17,14+i);
 		console.print("" +
 			" \1n\1h\1y" + username +
-			"  \1n\1w" + arrIn[i].text)
+			"  \1n\1w" + oneliner.substring(0,45)); // not a good fix.
 	}
 }
 

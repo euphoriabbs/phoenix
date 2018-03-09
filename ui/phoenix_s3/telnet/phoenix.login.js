@@ -320,7 +320,13 @@ function saveNewUser(pwd) {
 	usr.handle = newinfo.handle;
 
         usr.gender = newinfo.gender;
-        usr.location = newinfo.location;
+		usr.location = newinfo.location;
+
+		// Make RG the default fall back shell.
+		// This is more consistent with how we've already
+		// been doing things.
+
+		usr.command_shell = "RENEGADE";
 
 
 	usr.security.password=pwd;

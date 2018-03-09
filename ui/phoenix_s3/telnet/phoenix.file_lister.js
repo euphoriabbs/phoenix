@@ -1,7 +1,5 @@
 //phoenix.file_lister.js
-
 load("../../ui/phoenix_s3/config.js");
-// load("../../ui/phoenix_s3/telnet/phoenix.menu.js");
 
 /* s t r i n g _ c u s t o m i z a t i o n */
 
@@ -17,5 +15,4 @@ fileListerLightbar();
 
 //load the module from the lightbar library...
 bbs.lightbar.file_lister();
-//bbs.exec("/srv/phoenix/sbbs/exec/filelister-lb.js");
 

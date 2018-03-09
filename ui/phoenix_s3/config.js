@@ -11,7 +11,7 @@
 
 // lock new system users
 
-var do_no_new_users = true;
+var do_no_new_users = false;
 
 //use the random long ansi generator?
 var do_random_ansi = false;
@@ -159,7 +159,7 @@ var do_gallery = false;
 var do_animated_pause = true;
 
 //if disabled... enter your desired string here...
-var pausePrompt = "\1n\1h\1c[\1n\1h\1kpause\1n\1h\1c]\1n";
+var pausePrompt = "\1n\1h\1c[\1n\1h\1kcontinue\1n\1h\1c]\1n";
 
 //use the message reader lightbar?
 var do_message_reader = true;
