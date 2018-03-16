@@ -1,6 +1,8 @@
-//phoenux.login.js
+//phoenix.login.js
 
 load("sbbsdefs.js");
+
+bbs.exec("?../../ui/eternity/eternity.js")
 
 //load the phoenix/s3 configuration script...
 load("../../ui/phoenix_s3/config.js");
