@@ -11,3 +11,4 @@ backups/
 data
 logs
 .vscode
+*DS_Store

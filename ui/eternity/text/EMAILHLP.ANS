@@ -1,0 +1,21 @@
+[40m[2J[22C[0miNiQUiTY Email Reading Command Help
+[30C[1;30m(Temporary Version)
+
+[37mEmail Reading Commands:
+
+[7C?[6C[0mDisplay this help screen
+[7C[1m-[6C[0mBacks to the previous message
+[7C[1mEnter  [0mAdvance to the next message
+[7C[1mA[6C[0mDisplay the current message over again
+[7C[1mR[6C[0mReply to the current message (private)
+[7C[1mD[6C[0mDelete or undelete the current message
+[7C[1mQ[6C[0mQuit reading email
+[7C[1mE[6C[0mEdit current message  [1;30m(only when reading ALL mail)
+[7C[37mX[6C[0mExtract message to file for download
+[7C[1mU[6C[0mEdit author of message [1;30m(sysops only)
+
+[7C[37m###    [0mYou may also type the number of any message to jump
+[17Cdirectly to that message
+
+    [1;31mNote[30m:  [0;31mPlease delete your email when you are through reading it
+[1;30m--[0m

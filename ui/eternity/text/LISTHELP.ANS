@@ -1,0 +1,21 @@
+[40m[2J[23C[0miNiQUiTY File Listing Command Help
+[30C[1;30m(Temporary Version)
+
+[37mFile Listing Commands:
+
+[5Cn[0mext[6Cmove to the next page
+[5C[1mp[0mrevious  move to the previous page
+   [1;30m* [37mf[0mlag[6Cadd a file to your download batch
+   [1;30m* [37md[0mownload  download a file
+   [1;30m* [37mv[0miew[6Cview an archive
+   [1;30m* [37mi[0mnfo[6Cdisplay information on a file
+   [1;30m* [37me[0mdit[6Cedit a file [1;30m(sysops only)
+[5C[37mh[0melp[6Cthis help screen
+[5C[1ms[0mkip[6Cskip to the next file area [1;30m(newscan)
+   * [37mq[0muit[6Cquit file listings
+
+[5Cup[1;30m/[0mdown   move file selection bar to hilight a file
+[5Cescape    quit file listings
+
+   [1;30m* [0mthese commands may be used on specific files via the file selection bar
+[1;30m--[0m
