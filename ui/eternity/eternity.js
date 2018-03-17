@@ -3,29 +3,44 @@
 "use strict";
 load("sbbsdefs.js");
 var Eternity = (function () {
-    function Eternity(name) {
-        this.name = name;
+    function Eternity(root) {
+        this.root = root;
     }
     Eternity.prototype.render = function (options) {
+        var mode = options.mode || "line";
+        var encoding = options.encoding || "CP437";
         if (options.text) {
-            var f = new File("../../ui/eternity/text/#{options.text}");
-            if (!f.open("r")) {
+            var file = new File(this.root + "/text/" + options.text);
+            if (!file.open("r")) {
                 alert("error opening file: " + options.text);
                 return;
             }
-            // console.print("\1n");
-            console.clear();
-            var text = f.readAll();
-            for (var i = 0; i < text.length; i++) {
-                console.print(text[i]);
-                if (i < text.length - 1)
-                    console.print("\r\n");
-                console.line_counter = 0;
-            }
-            f.close();
+            var text = file.readAll();
+            text.forEach(function (line) {
+                switch (mode) {
+                    case "character": {
+                        line.split("").forEach(function (character) {
+                            console.print(character);
+                            sleep(options.speed || 0.5);
+                        });
+                    }
+                    case "line": {
+                        console.print(line);
+                        sleep(options.speed || 25);
+                    }
+                }
+            });
+            file.close();
         }
     };
     return Eternity;
 }());
-var eternity = new Eternity("euphoria");
-eternity.render({ text: "WELCOME.ANS" });
+var eternity = new Eternity("../../ui/eternity");
+eternity.render({
+    text: "WELCOME.ANS",
+    encoding: "CP437",
+    mode: "line",
+    speed: 50
+});
+console.print("\r\n");
+console.pause();

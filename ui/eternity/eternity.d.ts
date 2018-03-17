@@ -4,9 +4,18 @@ function load (library){}
 interface load {library: Object}
 
 interface EternityRenderOptions {
-    text?: string
+    text?: string,
+    encoding?: string,
+    menu?: string,
+    speed?: number,
+    mode?: string,
+    align?: string
 }
 
-function Console {
+function console {
     this.print = Object
+}
+
+declare namespace console {
+    function print(string): string
 }

@@ -7,39 +7,63 @@
 load("sbbsdefs.js")
 
 class Eternity {
-    public name: string
+    public root: string
 
-    constructor(name) {
-        this.name = name
+    constructor(root) {
+        this.root = root
     }
 
     render(options: EternityRenderOptions) {
 
+        let mode = options.mode || "line"
+        let encoding = options.encoding || "CP437"
 
         if (options.text) {
 
-            let f = new File(`../../ui/eternity/text/#{options.text}`)
+            let file = new File(`${this.root}/text/${options.text}`)
 
-            if(!f.open("r")) {
+            if(!file.open("r")) {
                 alert("error opening file: " + options.text)
                 return
             }
 
-            // console.print("\1n");
-            console.clear();
-            let text = f.readAll();
-            for (var i=0;i<text.length;i++) {
-                console.print(text[i]);
-                if (i<text.length-1)
-                    console.print("\r\n")
-                console.line_counter = 0;
-            }
-            f.close();
+            let text = file.readAll();
+
+            text.forEach( line => {
+
+                switch(mode) {
+
+                    case "character": {
+
+                        line.split("").forEach(character => {
+
+                            console.print(character)
+                            sleep(options.speed || 0.5)
+                        })
+                    }
+
+                    case "line": {
+                        console.print(line)
+                        sleep(options.speed || 25)
+                    }
+                }
+            })
+
+            file.close();
         }
     }
 }
 
-const eternity = new Eternity("euphoria")
+const eternity = new Eternity("../../ui/eternity")
 
-eternity.render({ text: "WELCOME.ANS"})
+eternity.render(
+    {
+        text: "WELCOME.ANS",
+        encoding: "CP437",
+        mode: "line",
+        speed: 50
+    }
+)
 
+console.print("\r\n")
+console.pause()
