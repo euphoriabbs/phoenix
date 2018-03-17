@@ -9,6 +9,7 @@ var Eternity = (function () {
     Eternity.prototype.render = function (options) {
         var mode = options.mode || "line";
         var encoding = options.encoding || "CP437";
+        var speed = options.speed || 30;
         if (options.text) {
             var file = new File(this.root + "/text/" + options.text);
             if (!file.open("r")) {
@@ -18,15 +19,17 @@ var Eternity = (function () {
             var text = file.readAll();
             text.forEach(function (line) {
                 switch (mode) {
+                    // For character-at-a-time rendering...
                     case "character": {
                         line.split("").forEach(function (character) {
                             console.print(character);
-                            sleep(options.speed || 0.5);
+                            sleep(speed);
                         });
                     }
+                    // For line-at-a-time rendering...
                     case "line": {
                         console.print(line);
-                        sleep(options.speed || 25);
+                        sleep(speed);
                     }
                 }
             });

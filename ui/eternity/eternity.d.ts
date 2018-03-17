@@ -9,7 +9,8 @@ interface EternityRenderOptions {
     menu?: string,
     speed?: number,
     mode?: string,
-    align?: string
+    align?: string,
+    file?: string
 }
 
 function console {

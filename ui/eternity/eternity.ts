@@ -17,6 +17,7 @@ class Eternity {
 
         let mode = options.mode || "line"
         let encoding = options.encoding || "CP437"
+        let speed = options.speed || 30
 
         if (options.text) {
 
@@ -33,18 +34,21 @@ class Eternity {
 
                 switch(mode) {
 
+                    // For character-at-a-time rendering...
                     case "character": {
 
                         line.split("").forEach(character => {
 
                             console.print(character)
-                            sleep(options.speed || 0.5)
+                            sleep(speed)
                         })
                     }
 
+                    // For line-at-a-time rendering...
                     case "line": {
+
                         console.print(line)
-                        sleep(options.speed || 25)
+                        sleep(speed)
                     }
                 }
             })
