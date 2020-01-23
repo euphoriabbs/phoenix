@@ -11,7 +11,7 @@
 
 // lock new system users
 
-var do_no_new_users = true;
+var do_no_new_users = false;
 
 //use the random long ansi generator?
 var do_random_ansi = false;

@@ -6,4 +6,4 @@ services:
         ports: 
             - "23:23"
         volumes:
-            - ../:/euphoria
+            - .:/euphoria

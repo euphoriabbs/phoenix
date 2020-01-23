@@ -1,6 +1,6 @@
 
 FROM ubuntu:latest as Euphoria
-LABEL name="Euphoria"
+LABEL name="euphoria"
 LABEL version="latest"
 
 WORKDIR /euphoria/sbbs
@@ -31,6 +31,8 @@ RUN cd /euphoria/sbbs/exec/ \
     && ln -s /euphoria/phoenix/telnet/phoenix.login.js /euphoria/sbbs/exec/login.js \
     && ln -s /euphoria/phoenix/telnet/phoenix.logon.js /euphoria/sbbs/exec/logon.js \
     && ln -s /euphoria/phoenix/telnet/phoenix.shell.js /euphoria/sbbs/exec/phoenix.shell.js 
+
+VOLUME .:/euphoria
 
 # Start Euphoria
 EXPOSE 22
