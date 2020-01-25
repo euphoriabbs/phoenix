@@ -841,7 +841,7 @@ system.node_list[bbs.node_num-1].action = NODE_DFLT;
 system.node_list[bbs.node_num-1].misc|=NODE_UDAT;bbs.nodesync();sleep(100);
 
 //re-load the external library for refreshing of external options...
-load('../../phoenix/telnet/phoenix.external.js');
+load('../phoenix/telnet/phoenix.external.js');
 
 //clear the console...
 console.clear();
@@ -1143,7 +1143,7 @@ bbs.menu.msg_select_subboard();
 bbs.menu.list_files = function() {
 
 //need to re-load the file lister header ansi, cause synchronet fucks up...
-bbs.replace_text(661,"@NOPAUSE@@CLS@@TYPE:../../phoenix/artwork/art.phoenix.file_lister.ans@@NOPAUSE@");
+bbs.replace_text(661,"@NOPAUSE@@CLS@@TYPE:../phoenix/artwork/art.phoenix.file_lister.ans@@NOPAUSE@");
 
 //removes the empty directory listing string...
 bbs.replace_text(169,"\1n\1k---]");
@@ -1820,7 +1820,7 @@ var System = eval("s" + "ystem"); //crimson editor autocap's System
 var bDone = false; //done with oneliners
 var bAnsi = ((user.settings&USER_ANSI) != 0) //user has ansi
 var cDelim = String.fromCharCode(255); //data delimiter
-var strHeaderFile = "../../phoenix/artwork/art.phoenix.menu_oneliner.ans"; //ansi header...
+var strHeaderFile = "../phoenix/artwork/art.phoenix.menu_oneliner.ans"; //ansi header...
 var strDataFile = "../../data/data.phoenix.oneliners.dat"; //data file...
 
 //Formats DateTime for logging "YYYY-MM-DD HH:NN"
@@ -1994,7 +1994,7 @@ showOneliners();
 bbs.menu.ansi_gallery = function() {
 
 	//load the files into an array...
-	var string = directory('../../phoenix/artwork/gallery/*.ans');
+	var string = directory('../phoenix/artwork/gallery/*.ans');
 
 	//assign a handler name...
 	var handlerName = 'ansi_gallery';
@@ -2137,7 +2137,7 @@ console.print("\1n\1n");
 console.line_counter = 0;console.clear();
 
 //output the desired file...
-console.putmsg("@TYPE:../../phoenix/artwork/" + fname + ".ans@");
+console.putmsg("@TYPE:../phoenix/artwork/" + fname + ".ans@");
 
 }
 
@@ -2145,7 +2145,7 @@ bbs.ansi_norm = bbs.mods.vanguard.ansinorm;
 
 //display ansis in slow motion, from any location but without @-code support...
 bbs.mods.vanguard.ansislow = function(fname) {
-	file_base = "../../phoenix/artwork/" + fname;
+	file_base = "../phoenix/artwork/" + fname;
 	if (file_exists(file_base))
 		f = new File(file_base);
 	else if (file_exists(file_base+".ans") && (((console.autoterm & USER_ANSI) > 1) || (user && (user.number > 0) && ((user.settings&USER_ANSI) > 1))))
@@ -2154,7 +2154,7 @@ bbs.mods.vanguard.ansislow = function(fname) {
 		f = new File(file_base+".asc");
 	else {
 		//console.print(file_base+".ans\r\n")
-		console.print("file doesn't exist: ../../phoenix/artwork/" + fname + ".???\r\n");
+		console.print("file doesn't exist: ../phoenix/artwork/" + fname + ".???\r\n");
 		return;
 	}
 	if(!f.open("r")) {
@@ -2208,7 +2208,7 @@ bbs.mods.vanguard.ansinoclear = function(fname) {
 console.print("\1n\1n");
 
 //output the desired file...
-console.putmsg("@TYPE:../../phoenix/artwork/" + fname + ".ans@");
+console.putmsg("@TYPE:../phoenix/artwork/" + fname + ".ans@");
 
 }
 

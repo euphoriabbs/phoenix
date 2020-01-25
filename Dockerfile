@@ -1,10 +1,10 @@
 
-FROM ubuntu:latest as Euphoria
-LABEL name="euphoria"
+FROM ubuntu:latest as Synchronet
+LABEL name="synchronet"
 LABEL version="latest"
 
-WORKDIR /euphoria/sbbs
-ENV SBBSCTRL=/euphoria/sbbs/ctrl
+WORKDIR /sbbs
+ENV SBBSCTRL=/sbbs/ctrl
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get -y install build-essential python ruby wget \
@@ -18,19 +18,21 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && make install SYMLINK=1 USE_DOSEMU=1 \
     && apt-get -y autoremove
 
+FROM Synchronet as Euphoria
+
 WORKDIR /euphoria
 COPY . .
 
-RUN cd /euphoria/sbbs/exec/ \
+RUN cd /sbbs/exec/ \
     && mv login.js login.js-original \
     && mv logon.js logon.js-original \
-    && cd /euphoria/sbbs/text/ \
+    && cd /sbbs/text/ \
     && mv answer.msg answer.msg-original ; touch answer.msg \
-    && rm -rf /euphoria/sbbs/web/root \
-    && ln -s /euphoria/phoenix/web/root /euphoria/sbbs/web/root \
-    && ln -s /euphoria/phoenix/telnet/phoenix.login.js /euphoria/sbbs/exec/login.js \
-    && ln -s /euphoria/phoenix/telnet/phoenix.logon.js /euphoria/sbbs/exec/logon.js \
-    && ln -s /euphoria/phoenix/telnet/phoenix.shell.js /euphoria/sbbs/exec/phoenix.shell.js 
+    && rm -rf /sbbs/web/root \
+    && ln -s /euphoria/phoenix/web/root /sbbs/web/root \
+    && ln -s /euphoria/phoenix/telnet/phoenix.login.js /sbbs/exec/login.js \
+    && ln -s /euphoria/phoenix/telnet/phoenix.logon.js /sbbs/exec/logon.js \
+    && ln -s /euphoria/phoenix/telnet/phoenix.shell.js /sbbs/exec/phoenix.shell.js 
 
 VOLUME .:/euphoria
 
@@ -40,4 +42,4 @@ EXPOSE 23
 EXPOSE 80
 EXPOSE 443
 
-CMD ["/euphoria/sbbs/exec/sbbs"]
+CMD ["/sbbs/exec/sbbs"]

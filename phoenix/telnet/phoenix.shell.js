@@ -487,8 +487,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 
         // Read Messages (indexed)
         case 'I': // Index Listing (kinda like Mystic)
-            bbs.exec("?../../phoenix/mods/DDMsgAreaChooser.js");
-            bbs.exec("?../../phoenix/mods/DDMsgReader.js");
+            bbs.exec("?../phoenix/mods/DDMsgAreaChooser.js");
+            bbs.exec("?../phoenix/mods/DDMsgReader.js");
             break;
 
         // Read Messages
@@ -740,8 +740,8 @@ if(do_lightbar_prompts && user.security.exemptions&UFLAG_M) {
 
         // File Lister (indexed)
         case 'I': // Index Listing (kinda like Mystic)
-			// load("../../phoenix/mods/DDFileAreaChooser.js");
-			bbs.exec("?../../phoenix/mods/filearea-lb.js");
+			// load("../phoenix/mods/DDFileAreaChooser.js");
+			bbs.exec("?../phoenix/mods/filearea-lb.js");
             break;
 
 		case 'N':	//new file scan...

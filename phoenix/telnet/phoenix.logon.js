@@ -3,12 +3,12 @@
 load("sbbsdefs.js");
 
 //load the phoenix/s3 configuration script...
-load("../../phoenix/config.js");
+load("../phoenix/config.js");
 
 //load phoenix/s3 required libraries...
-load("../../phoenix/telnet/phoenix.external.js");
-load("../../phoenix/telnet/phoenix.menu.js");
-load("../../phoenix/telnet/phoenix.lightbar.js");
+load("../phoenix/telnet/phoenix.external.js");
+load("../phoenix/telnet/phoenix.menu.js");
+load("../phoenix/telnet/phoenix.lightbar.js");
 
 //log all remote connections to the system [if configured]...
 if(do_logon_log) {
