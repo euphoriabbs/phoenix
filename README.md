@@ -2,7 +2,7 @@
 
 A Modern Bulletin Board System Built on Synchronet.
 
-# Installation
+## Installation
 
 ## Download Euphoria
 
@@ -14,8 +14,10 @@ git clone https://github.com/euphoriabbs/phoenix.git
 
 Docker and Vagrant instructions coming soon...
 
-# Issues
-https://github.com/euphoriabbs/phoenix/issues
+## Issues
 
-# Copyright
+[](https://github.com/euphoriabbs/phoenix/issues)
+
+## License
+
 MIT

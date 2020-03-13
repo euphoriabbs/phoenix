@@ -1,16 +1,16 @@
 //phoenix.login.js
 
-load("sbbsdefs.js");
+require("sbbsdefs.js");
 
 //bbs.exec("?../../ui/eternity/eternity.js")
 
 //load the phoenix/s3 configuration script...
-load("../phoenix/config.js");
+require("../phoenix/config.js");
 
 //load phoenix/s3 required libraries...
-load("../phoenix/telnet/phoenix.external.js");
-load("../phoenix/telnet/phoenix.menu.js");
-load("../phoenix/telnet/phoenix.lightbar.js");
+require("../phoenix/telnet/phoenix.external.js");
+require("../phoenix/telnet/phoenix.menu.js");
+require("../phoenix/telnet/phoenix.lightbar.js");
 
 if(do_no_new_users) {
 	bbs.newuser = new Function("return false;");
