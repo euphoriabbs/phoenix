@@ -1,6 +1,6 @@
 # Phoenix
 
-A pure JavaScript command shell power by Synchronet in Docker 
+A pure JavaScript command shell powered by Synchronet in Docker
 
 ## Installation
 
