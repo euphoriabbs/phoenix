@@ -10,7 +10,6 @@ A pure JavaScript command shell power by Synchronet in Docker
 git clone https://github.com/euphoriabbs/phoenix.git
 ```
 
-### 
 ## Build Euphoria
 
 Docker and Vagrant instructions coming soon...
