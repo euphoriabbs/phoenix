@@ -1,15 +1,16 @@
-# euphoria (phoenix)
+# Phoenix
 
-A Modern Bulletin Board System Built on Synchronet.
+A pure JavaScript command shell power by Synchronet in Docker 
 
 ## Installation
 
-## Download Euphoria
+### Git
 
 ```bash
 git clone https://github.com/euphoriabbs/phoenix.git
 ```
 
+### 
 ## Build Euphoria
 
 Docker and Vagrant instructions coming soon...
