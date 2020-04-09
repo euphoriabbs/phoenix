@@ -1,7 +1,7 @@
 //phoenix.message_reader.js
 
 //load the phoenix/s3 configuration script...
-load("../phoenix/config.js");
+load("/euphoria/phoenix/config.js");
 
 /* s t r i n g _ c u s t o m i z a t i o n */
 messageReaderStrings();

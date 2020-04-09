@@ -1,6 +1,6 @@
 //phoenix.email_reader.js
 
-load("../phoenix/config.js");
+load("/euphoria/phoenix/config.js");
 
 /* s t r i n g _ c u s t o m i z a t i o n */
 messageReaderStrings();
