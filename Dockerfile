@@ -1,7 +1,7 @@
 
 FROM ubuntu:18.04 as Synchronet
 LABEL name="synchronet"
-LABEL version="latest"
+LABEL version="3.17b"
 
 WORKDIR /sbbs
 ENV SBBSCTRL=/sbbs/ctrl
@@ -12,11 +12,9 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && apt-get -y install libncurses5-dev libc6-dev libc-dev g++ libnspr4-dev git cvs dosemu \
     && apt-get -y install pkg-config libzip-dev libsdl-kitchensink-dev zip unzip apt-utils \
     && apt-get -y install libmozjs-38-dev libmozjs-52-dev libcap2-dev libcap2-bin sudo lrzsz vim nodejs npm \ 
-    # && wget http://cvs.synchro.net/cgi-bin/viewcvs.cgi/*checkout*/install/terminfo \
-    # && wget http://cvs.synchro.net/cgi-bin/viewcvs.cgi/*checkout*/install/termcap \
-    # && tic terminfo && cat termcap >> /etc/termcap \
-    # && wget 'http://cvs.synchro.net/cgi-bin/viewcvs.cgi/*checkout*/install/GNUmakefile' \
-    # && make install SYMLINK=1 CVSTAG=sbbs317b DEBUG=1 \
+    && wget http://cvs.synchro.net/cgi-bin/viewcvs.cgi/*checkout*/install/terminfo \
+    && wget http://cvs.synchro.net/cgi-bin/viewcvs.cgi/*checkout*/install/termcap \
+    && tic terminfo && cat termcap >> /etc/termcap \
     && wget ftp://vert.synchro.net/Synchronet/ssrc317b.tgz \
     && wget ftp://vert.synchro.net/Synchronet/srun317b.tgz \ 
     && tar -xzf ssrc317b.tgz && tar -xzf srun317b.tgz \
@@ -24,10 +22,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update \
     && cd src/sbbs3 \
     && echo USE_DOSEMU=1 > localdefs.mk \
     && SBBSEXEC=/sbbs/exec make symlinks \
-    &&  SBBSCTRL=/sbbs/ctrl /sbbs/exec/jsexec update.js \
+    && SBBSCTRL=/sbbs/ctrl /sbbs/exec/jsexec update.js \
     && apt-get -y autoremove
 
 FROM Synchronet as Euphoria
+LABEL name="euphoria"
+LABEL version="2.1.0"
 
 WORKDIR /euphoria
 COPY . .
