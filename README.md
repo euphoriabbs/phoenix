@@ -10,9 +10,11 @@ A pure JavaScript command shell powered by Synchronet in Docker
 git clone https://github.com/euphoriabbs/phoenix.git
 ```
 
-## Build Euphoria
+## Start your instance of Phoenix
 
-Docker and Vagrant instructions coming soon...
+```bash
+docker-compose up
+```
 
 ## Issues
 
